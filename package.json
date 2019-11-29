@@ -1,0 +1,19 @@
+{
+  "name": "comfort-order",
+  "version": "1.0.0",
+  "description": "https://drive.google.com/file/d/1JZU4BCi5K0Uycf1OYymhe-VAAUCzJsik/view?usp=sharing comfortorder.com",
+  "main": "client/src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmhernandez2525/Comfort-Order.git"
+  },
+  "author": "Daniel Hernandez",
+  "license": "Proprietary",
+  "bugs": {
+    "url": "https://github.com/dmhernandez2525/Comfort-Order/issues"
+  },
+  "homepage": "https://github.com/dmhernandez2525/Comfort-Order#readme"
+}
