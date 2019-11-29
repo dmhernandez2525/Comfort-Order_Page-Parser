@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const db = require("../keys/secret.js").MONGO_URI;
+const db = require("../config/keys").MONGO_URI;
 
 const app = express();
 
@@ -11,6 +11,7 @@ if (!db) {
 
 mongoose
     .connect(db, {
+        useUnifiedTopology: true,
         useNewUrlParser: true
     })
     .then(() => console.log("Connected to MongoDB successfully"))
