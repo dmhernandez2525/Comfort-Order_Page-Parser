@@ -1,6 +1,8 @@
+// Users have an _id, name, and email
+
 const mongoose = require("mongoose");
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLID } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLBoolean } = graphql;
 
 const UserType = new GraphQLObjectType({
   name: "UserType",
@@ -9,7 +11,8 @@ const UserType = new GraphQLObjectType({
     _id: { type: GraphQLID },
     name: { type: GraphQLString },
     email: { type: GraphQLString },
-    userRole: { type: GraphQLString }
+    token: { type: GraphQLString },
+    loggedIn: { type: GraphQLBoolean }
   })
 });
 
