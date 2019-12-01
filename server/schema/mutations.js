@@ -1,9 +1,10 @@
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID } = graphql;
+const mongoose = require('mongoose');
+const Bussness = mongoose.model('bussness');
+const { GraphQLObjectType, GraphQLString, GraphQLID,GraphQLList} = graphql;
 const UserType = require("../schema/types/user_type");
 const BussnessType = require("../schema/types/bussness_type");
 
-const Bussness = mongoose.model('bussness');
 
 const AuthService = require("../services/auth")
 
@@ -26,13 +27,16 @@ const mutation = new GraphQLObjectType({
             templett,
             bussnessData
       }) {
-        return new Bussness({
+        let newBussnes =  new Bussness({
             name,
             userId,
             features,
             templett,
             bussnessData
-        }).save();
+        })
+        console.log(newBussnes)
+        newBussnes.save();
+        return newBussnes
       }
     },
     register: {

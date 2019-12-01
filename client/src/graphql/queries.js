@@ -10,6 +10,7 @@ export default {
     query FetchBussness($id: ID!) {
         bussness(_id: $id) {
           name
+        }
     }
   `
 }

@@ -1,9 +1,10 @@
+const models = require("../server/models");
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const db = require("../config/keys.js").MONGO_URI;
 const expressGraphQL = require("express-graphql");
-const User = require("../server/models/User");
+// const User = require("../server/models/User");
 const schema = require("./schema/schema");
 const cors = require("cors");
 const app = express();
@@ -14,6 +15,7 @@ if (!db) {
 
 mongoose
   .connect(db, {
+    // introspection: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
   })

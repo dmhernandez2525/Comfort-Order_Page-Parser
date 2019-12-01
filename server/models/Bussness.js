@@ -21,4 +21,4 @@ const BussnessSchema = new Schema({
     }]
 });
 
-module.exports = Resume = mongoose.model('bussness', BussnessSchema);
+module.exports = mongoose.model('bussness', BussnessSchema);
