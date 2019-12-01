@@ -23,5 +23,16 @@ export default {
         loggedIn
       }
     }
-  `
+  `,
+    CREATE_BUSSNESS: gql `
+    mutation CreateBussness($name: String!, $userId: ID!, $features: [String], $templett: String!, $bussinessData: [String]) {
+      makeBussness(name: $name, userId: $userId, features: $features, templett: $templett,bussinessData:$bussinessData ) {
+        _id
+        user
+        features
+        templett
+        bussinessData
+      }
+    }
+  `,
 }
