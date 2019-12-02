@@ -19,10 +19,10 @@ const BussnessType = new GraphQLObjectType({
             });
         }
     },
-    features: { type: GraphQLList },
+    features: { type:  new GraphQLList(GraphQLString) },
     templett: { type: GraphQLString },
     name: { type: GraphQLString },
-    bussnessData: { type: GraphQLList }
+    bussnessData: { type: new GraphQLList(GraphQLString) }
   })
 });
 
