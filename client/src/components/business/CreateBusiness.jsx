@@ -3,11 +3,11 @@ import { Mutation } from "react-apollo";
 import { withRouter } from 'react-router-dom';
 import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
-const { CREATE_BUSSNESS } = Mutations;
-const { FETCH_BUSSNESS } = Queries;
+const { CREATE_BUSINESS } = Mutations;
+const { FETCH_BUSINESS } = Queries;
 
 
-class CreateBussness extends Component {
+class CreateBusiness extends Component {
   constructor(props) {
     super(props);
 
@@ -28,7 +28,7 @@ class CreateBussness extends Component {
   render() {
     return (
       <Mutation
-        mutation={CREATE_BUSSNESS}
+        mutation={CREATE_BUSINESS}
         update={(cache, data) => this.updateCache(cache, data)}
         onCompleted={
             (cache, data) => {
@@ -36,7 +36,7 @@ class CreateBussness extends Component {
             }
         }
       >
-            {(makeBussness, { loading, error,data }) => {
+            {(makeBusiness, { loading, error,data }) => {
                 if(error){
                     debugger
                     return(
@@ -48,7 +48,7 @@ class CreateBussness extends Component {
                 <h1> create a new site </h1>
                 <form onSubmit={e => {
                     e.preventDefault();
-                    makeBussness({
+                    makeBusiness({
                     variables: {
                         name: this.state.name,
                         templett: this.state.templett,
@@ -103,4 +103,4 @@ class CreateBussness extends Component {
   }
 }
 
-export default withRouter(CreateBussness);
+export default withRouter(CreateBusiness);

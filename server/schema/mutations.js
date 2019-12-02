@@ -1,9 +1,9 @@
 const graphql = require("graphql");
 const mongoose = require('mongoose');
-const Bussness = mongoose.model('bussness');
+const Business = mongoose.model('business');
 const { GraphQLObjectType, GraphQLString, GraphQLID,GraphQLList} = graphql;
 const UserType = require("../schema/types/user_type");
-const BussnessType = require("../schema/types/bussness_type");
+const BusinessType = require("../schema/types/business_type");
 
 
 const AuthService = require("../services/auth")
@@ -11,28 +11,28 @@ const AuthService = require("../services/auth")
 const mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
-    newBussness: {
-      type: BussnessType,
+    newBusiness: {
+      type: BusinessType,
       args: {
           name: {type: GraphQLString},
           userId: { type: GraphQLID },
           features: { type: GraphQLList },
           templett: { type: GraphQLString },
-          bussnessData: { type: GraphQLList }
+          businessData: { type: GraphQLList }
       },
       resolve(parentValue, {
             name,
             userId,
             features,
             templett,
-            bussnessData
+            businessData
       }) {
-        let newBussnes =  new Bussness({
+        let newBussnes =  new Business({
             name,
             userId,
             features,
             templett,
-            bussnessData
+            businessData
         })
         console.log(newBussnes)
         newBussnes.save();
