@@ -27,16 +27,15 @@ const mutation = new GraphQLObjectType({
             template,
             businessData
       }) {
-        let newBussnes =  new Business({
+        let newBusiness =  new Business({
             name,
             userId,
             features,
             template,
             businessData
         })
-        console.log(newBussnes)
-        newBussnes.save();
-        return newBussnes
+        newBusiness.save();
+        return newBusiness
       }
     },
     register: {
