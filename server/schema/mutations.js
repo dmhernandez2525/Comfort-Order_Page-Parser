@@ -1,13 +1,43 @@
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID } = graphql;
+const mongoose = require('mongoose');
+const Business = mongoose.model('business');
+const { GraphQLObjectType, GraphQLString, GraphQLID,GraphQLList} = graphql;
 const UserType = require("../schema/types/user_type");
+const BusinessType = require("../schema/types/business_type");
+
 
 const AuthService = require("../services/auth")
 
 const mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
-
+    makeBusiness: {
+      type: BusinessType,
+      args: {
+          name: {type: GraphQLString},
+          userId: { type: GraphQLID },
+          features: { type: new GraphQLList(GraphQLString) },
+          template: { type: GraphQLString },
+          businessData: { type: new GraphQLList(GraphQLString) }
+      },
+      resolve(parentValue, {
+            name,
+            userId,
+            features,
+            template,
+            businessData
+      }) {
+        let newBusiness =  new Business({
+            name,
+            userId,
+            features,
+            template,
+            businessData
+        })
+        newBusiness.save();
+        return newBusiness
+      }
+    },
     register: {
       type: UserType,
       args: {

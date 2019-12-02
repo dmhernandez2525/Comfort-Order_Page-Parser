@@ -23,5 +23,18 @@ export default {
         loggedIn
       }
     }
-  `
+  `,
+    CREATE_BUSINESS: gql `
+    mutation CreateBusiness($name: String!, $userId: ID!, $features: [String], $template: String!, $businessData: [String]) {
+      makeBusiness(name: $name, userId: $userId, features: $features, template: $template,businessData:$businessData ) {
+        _id
+        user{
+          email
+        }
+        features
+        template
+        businessData
+      }
+    }
+  `,
 }

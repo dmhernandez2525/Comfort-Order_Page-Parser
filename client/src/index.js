@@ -20,7 +20,12 @@ const cache = new InMemoryCache({
 });
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:5000/graphql"
+  // uri: "http://localhost:5000/graphql"
+  uri: "https://comfort-order.herokuapp.com/graphql",
+  headers: {
+    // pass our token into the header of each request
+    authorization: localStorage.getItem("auth-token")
+  }
 });
 
 const errorLink = onError(({ graphQLErrors }) => {

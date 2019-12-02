@@ -18,7 +18,6 @@ class Login extends Component {
   }
   
   updateCache(client, {data}) {
-    console.log(data);
     client.writeData({
       data: { isLoggedIn: data.login.loggedIn }
     });
