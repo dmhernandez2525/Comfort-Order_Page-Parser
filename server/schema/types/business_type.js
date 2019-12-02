@@ -19,10 +19,10 @@ const BusinessType = new GraphQLObjectType({
             });
         }
     },
-    features: { type: GraphQLList },
+    features: { type:  new GraphQLList(GraphQLString) },
     template: { type: GraphQLString },
     name: { type: GraphQLString },
-    businessData: { type: GraphQLList }
+    businessData: { type: new GraphQLList(GraphQLString) }
   })
 });
 

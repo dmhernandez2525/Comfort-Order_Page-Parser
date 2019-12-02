@@ -16,9 +16,9 @@ const mutation = new GraphQLObjectType({
       args: {
           name: {type: GraphQLString},
           userId: { type: GraphQLID },
-          features: { type: GraphQLList },
+          features: { type: new GraphQLList(GraphQLString) },
           template: { type: GraphQLString },
-          businessData: { type: GraphQLList }
+          businessData: { type: new GraphQLList(GraphQLString) }
       },
       resolve(parentValue, {
             name,
