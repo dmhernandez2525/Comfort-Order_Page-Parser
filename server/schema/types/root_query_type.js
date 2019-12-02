@@ -5,6 +5,9 @@ const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLNonNull } = graphql;
 const UserType = require("./user_type");
 const User = mongoose.model("user");
 
+const BussnessType = require("./bussness_type");
+const Bussness = mongoose.model("bussness");
+
 
 const RootQueryType = new GraphQLObjectType({
   name: "RootQueryType",
@@ -20,6 +23,13 @@ const RootQueryType = new GraphQLObjectType({
       args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
       resolve(_, args) {
         return User.findById(args._id);
+      }
+    },
+    bussness: {
+      type: BussnessType,
+      args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
+      resolve(_, args) {
+        return Bussness.findById(args._id);
       }
     }
   })
