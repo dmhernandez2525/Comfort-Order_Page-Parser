@@ -25,13 +25,15 @@ export default {
     }
   `,
     CREATE_BUSINESS: gql `
-    mutation CreateBusiness($name: String!, $userId: ID!, $features: [String], $template: String!, $bussinessData: [String]) {
-      makeBusiness(name: $name, userId: $userId, features: $features, template: $template,bussinessData:$bussinessData ) {
+    mutation CreateBusiness($name: String!, $userId: ID!, $features: [String], $template: String!, $businessData: [String]) {
+      makeBusiness(name: $name, userId: $userId, features: $features, template: $template,businessData:$businessData ) {
         _id
-        user
+        user{
+          email
+        }
         features
         template
-        bussinessData
+        businessData
       }
     }
   `,

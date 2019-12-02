@@ -16,7 +16,7 @@ const BusinessSchema = new Schema({
         type: String,
         required: true
     },
-    bussinessData: [{
+    businessData: [{
         type: String
     }]
 });

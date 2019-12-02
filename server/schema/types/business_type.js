@@ -1,4 +1,4 @@
-// Business have an _id, userId, features, template, bussinessData
+// Business have an _id, userId, features, template, businessData
 
 const mongoose = require("mongoose");
 const graphql = require("graphql");

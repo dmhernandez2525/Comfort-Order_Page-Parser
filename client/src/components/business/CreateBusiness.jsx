@@ -16,14 +16,21 @@ class CreateBusiness extends Component {
     template: "",
     userId: "",
     features: "",
-    bussinessData: "",
+    businessData: "",
     };
+    this.updateCache = this.updateCache.bind(this)
   }
 
   update(field) {
     return e => this.setState({ [field]: e.target.value });
   }
-
+  
+  updateCache(client, { data }) {
+    debugger
+    client.writeData({
+      data: { site: data.makeBusiness }
+    });
+  }  
 
   render() {
     return (
@@ -54,7 +61,7 @@ class CreateBusiness extends Component {
                         template: this.state.template,
                         userId: this.state.userId,
                         features: [this.state.features],
-                        bussinessData: [this.state.bussinessData],
+                        businessData: [this.state.businessData],
                     }
                     });
                 }}
@@ -87,9 +94,9 @@ class CreateBusiness extends Component {
                     </select>
 
                     <select 
-                        value={this.state.bussinessData}
-                        onChange={this.update("bussinessData")}>
-                        <option defaultValue>bussinessData</option>
+                        value={this.state.businessData}
+                        onChange={this.update("businessData")}>
+                        <option defaultValue>businessData</option>
                         <option value="About me">About me</option>
                     </select>
                     <button  type="submit">Create Site</button>

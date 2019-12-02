@@ -11,7 +11,7 @@ const AuthService = require("../services/auth")
 const mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
-    newBusiness: {
+    makeBusiness: {
       type: BusinessType,
       args: {
           name: {type: GraphQLString},
