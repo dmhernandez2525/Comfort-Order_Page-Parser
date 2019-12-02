@@ -3,17 +3,17 @@ import { Mutation } from "react-apollo";
 import { withRouter } from 'react-router-dom';
 import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
-const { CREATE_BUSSNESS } = Mutations;
-const { FETCH_BUSSNESS } = Queries;
+const { CREATE_BUSINESS } = Mutations;
+const { FETCH_BUSINESS } = Queries;
 
 
-class CreateBussness extends Component {
+class CreateBusiness extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
     name: "",
-    templett: "",
+    template: "",
     userId: "",
     features: "",
     bussinessData: "",
@@ -28,7 +28,7 @@ class CreateBussness extends Component {
   render() {
     return (
       <Mutation
-        mutation={CREATE_BUSSNESS}
+        mutation={CREATE_BUSINESS}
         update={(cache, data) => this.updateCache(cache, data)}
         onCompleted={
             (cache, data) => {
@@ -36,7 +36,7 @@ class CreateBussness extends Component {
             }
         }
       >
-            {(makeBussness, { loading, error,data }) => {
+            {(makeBusiness, { loading, error,data }) => {
                 if(error){
                     debugger
                     return(
@@ -48,10 +48,10 @@ class CreateBussness extends Component {
                 <h1> create a new site </h1>
                 <form onSubmit={e => {
                     e.preventDefault();
-                    makeBussness({
+                    makeBusiness({
                     variables: {
                         name: this.state.name,
-                        templett: this.state.templett,
+                        template: this.state.template,
                         userId: this.state.userId,
                         features: [this.state.features],
                         bussinessData: [this.state.bussinessData],
@@ -72,9 +72,9 @@ class CreateBussness extends Component {
                     />
                     
                     <select 
-                        value={this.state.templett}
-                        onChange={this.update("templett")}>
-                        <option defaultValue>templett</option>
+                        value={this.state.template}
+                        onChange={this.update("template")}>
+                        <option defaultValue>template</option>
                         <option value="Restaurant">Restaurant</option>
                     </select>
 
@@ -103,4 +103,4 @@ class CreateBussness extends Component {
   }
 }
 
-export default withRouter(CreateBussness);
+export default withRouter(CreateBusiness);

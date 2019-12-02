@@ -6,9 +6,9 @@ export default {
       isLoggedIn @client
     }
   `,
-  FETCH_BUSSNESS: gql`
-    query FetchBussness($id: ID!) {
-        bussness(_id: $id) {
+  FETCH_BUSINESS: gql`
+    query FetchBusiness($id: ID!) {
+        business(_id: $id) {
           name
         }
     }

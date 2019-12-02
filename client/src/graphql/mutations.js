@@ -24,13 +24,13 @@ export default {
       }
     }
   `,
-    CREATE_BUSSNESS: gql `
-    mutation CreateBussness($name: String!, $userId: ID!, $features: [String], $templett: String!, $bussinessData: [String]) {
-      makeBussness(name: $name, userId: $userId, features: $features, templett: $templett,bussinessData:$bussinessData ) {
+    CREATE_BUSINESS: gql `
+    mutation CreateBusiness($name: String!, $userId: ID!, $features: [String], $template: String!, $bussinessData: [String]) {
+      makeBusiness(name: $name, userId: $userId, features: $features, template: $template,bussinessData:$bussinessData ) {
         _id
         user
         features
-        templett
+        template
         bussinessData
       }
     }

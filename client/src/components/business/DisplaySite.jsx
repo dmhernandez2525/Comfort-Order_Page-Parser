@@ -4,7 +4,7 @@ import Queries from "../../graphql/queries";
 import { withRouter } from 'react-router-dom';
 import * as FeatureLibrary from "../features/Order";
 import * as TemplateLibrary from "../templates/Restaurant";
-const { FETCH_BUSSNESS, IS_LOGGED_IN } = Queries;
+const { FETCH_BUSINESS, IS_LOGGED_IN } = Queries;
 
 
 class DisplaySite extends React.Component {
@@ -30,7 +30,7 @@ class DisplaySite extends React.Component {
   render() {
     return (
       <div>
-      <Query query={FETCH_BUSSNESS} variables={{ id: this.props.match.params.id }}>
+      <Query query={FETCH_BUSINESS} variables={{ id: this.props.match.params.id }}>
         {({ loading, error, data }) => {
           if (loading) return <div>Loading</div>;
           if (error) return `Error! ${error.message}`;

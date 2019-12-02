@@ -1,4 +1,4 @@
-// Bussness have an _id, userId, features, templett, bussinessData
+// Business have an _id, userId, features, template, bussinessData
 
 const mongoose = require("mongoose");
 const graphql = require("graphql");
@@ -6,8 +6,8 @@ const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLBoolean,GraphQLList 
 const User = mongoose.model("user");
 
 
-const BussnessType = new GraphQLObjectType({
-  name: "BussnessType",
+const BusinessType = new GraphQLObjectType({
+  name: "BusinessType",
   fields: () => ({
     _id: { type: GraphQLID },
     user: {
@@ -20,10 +20,10 @@ const BussnessType = new GraphQLObjectType({
         }
     },
     features: { type:  new GraphQLList(GraphQLString) },
-    templett: { type: GraphQLString },
+    template: { type: GraphQLString },
     name: { type: GraphQLString },
-    bussnessData: { type: new GraphQLList(GraphQLString) }
+    businessData: { type: new GraphQLList(GraphQLString) }
   })
 });
 
-module.exports = BussnessType;
+module.exports = BusinessType;
