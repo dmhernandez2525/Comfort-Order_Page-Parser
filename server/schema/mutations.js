@@ -17,21 +17,21 @@ const mutation = new GraphQLObjectType({
           name: {type: GraphQLString},
           userId: { type: GraphQLID },
           features: { type: GraphQLList },
-          templett: { type: GraphQLString },
+          template: { type: GraphQLString },
           businessData: { type: GraphQLList }
       },
       resolve(parentValue, {
             name,
             userId,
             features,
-            templett,
+            template,
             businessData
       }) {
         let newBussnes =  new Business({
             name,
             userId,
             features,
-            templett,
+            template,
             businessData
         })
         console.log(newBussnes)

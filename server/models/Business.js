@@ -12,7 +12,7 @@ const BusinessSchema = new Schema({
     features: [{
         type: String
     }],
-    templett: {
+    template: {
         type: String,
         required: true
     },

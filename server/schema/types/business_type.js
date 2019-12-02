@@ -1,4 +1,4 @@
-// Business have an _id, userId, features, templett, bussinessData
+// Business have an _id, userId, features, template, bussinessData
 
 const mongoose = require("mongoose");
 const graphql = require("graphql");
@@ -20,7 +20,7 @@ const BusinessType = new GraphQLObjectType({
         }
     },
     features: { type: GraphQLList },
-    templett: { type: GraphQLString },
+    template: { type: GraphQLString },
     name: { type: GraphQLString },
     businessData: { type: GraphQLList }
   })

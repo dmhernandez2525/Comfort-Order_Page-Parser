@@ -13,7 +13,7 @@ class CreateBusiness extends Component {
 
     this.state = {
     name: "",
-    templett: "",
+    template: "",
     userId: "",
     features: "",
     bussinessData: "",
@@ -51,7 +51,7 @@ class CreateBusiness extends Component {
                     makeBusiness({
                     variables: {
                         name: this.state.name,
-                        templett: this.state.templett,
+                        template: this.state.template,
                         userId: this.state.userId,
                         features: [this.state.features],
                         bussinessData: [this.state.bussinessData],
@@ -72,9 +72,9 @@ class CreateBusiness extends Component {
                     />
                     
                     <select 
-                        value={this.state.templett}
-                        onChange={this.update("templett")}>
-                        <option defaultValue>templett</option>
+                        value={this.state.template}
+                        onChange={this.update("template")}>
+                        <option defaultValue>template</option>
                         <option value="Restaurant">Restaurant</option>
                     </select>
 
