@@ -3,7 +3,7 @@ import { HashRouter, Switch , Route} from 'react-router-dom';
 import Login from "./Login";
 import Register from "./Register";
 import DisplaySite from "./business/DisplaySite";
-import CreateBusiness from "./business/CreateBusiness";
+import CreateBusiness from "./MasterAccount/CreateBusiness";
 import AuthRoute from '../util/route_util'
 import Nav from "./Nav";
 

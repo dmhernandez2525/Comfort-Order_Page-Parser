@@ -24,15 +24,21 @@ mongoose
   
 app.use(cors());
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
 app.use(
-  "/graphql",
-  expressGraphQL({
-    schema,
-    graphiql: true
+  "/graphql", expressGraphQL(req => {
+    return {
+      schema,
+      context: {
+        token: req.headers.authorization
+      },
+      graphiql: true
+    };
   })
 );
 
-// remember we use bodyParser to parse requests into json
-app.use(bodyParser.json());
-
 module.exports = app;
+

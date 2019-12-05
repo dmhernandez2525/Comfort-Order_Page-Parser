@@ -10,6 +10,9 @@ export default {
     query FetchBusiness($id: ID!) {
         business(_id: $id) {
           name
+          features
+          template
+          businessData
         }
     }
   `
