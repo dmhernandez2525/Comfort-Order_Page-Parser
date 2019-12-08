@@ -28,7 +28,9 @@ const App = () => {
   return (
     <HashRouter>
       <div>
-        <Nav />
+          <Route exact path="/" component={Nav} />
+          <AuthRoute exact path="/register" component={Nav} routeType="auth" />
+          <AuthRoute exact path="/login" component={Nav} routeType="auth" />
         <Switch>
           <AuthRoute exact path="/register" component={Register} routeType="auth" />
           <AuthRoute exact path="/login" component={Login} routeType="auth" />
@@ -47,7 +49,11 @@ const App = () => {
 
           <Route exact path="/site/:id" component={DisplaySite} />
           <Route exact path="/restdummy" component={Restaurant} />
+
+          {/* <AuthRoute exact path="/" component={BusinessLanding} routeType="Business"/> */}
           <Route exact path="/" component={Splash} />
+          {/* <AuthRoute exact path="/" component={MasterLanding} routeType="Master"/> */}
+          {/* <AuthRoute exact path="/" component={UserLanding} routeType="EndUser" /> */}
           <Route path="/" component={Four0Four} />
         </Switch>
       </div>
