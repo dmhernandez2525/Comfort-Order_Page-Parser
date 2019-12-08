@@ -12,7 +12,7 @@ class UserLanding extends React.Component {
   }
   
   updateCache(client, { data }) {
-    debugger
+    
     client.writeData({
       data: { site: data.makeBusiness }
     });
