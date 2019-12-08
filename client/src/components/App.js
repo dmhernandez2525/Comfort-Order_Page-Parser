@@ -17,7 +17,7 @@ import UserSupport from "./EndUser/UserSupport";
 import MasterLanding from "./MasterAccount/MasterLanding";
 import AuthRoute from '../util/route_util'
 import Nav from "./Nav";
-import Restaurant from "./templates/Restaurant"
+import Restaurant from "./Templates/Restaurant"
 
 import DisplaySite from "./Business/DisplaySite";
 

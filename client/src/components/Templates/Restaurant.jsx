@@ -21,23 +21,40 @@ class Restaurant extends React.Component {
         <header>
           <Nav />
         </header>
-        <div className="landing-photo">
-          <img src={placeholder}/>
+        <section id="restaurant-hero-section">
+          <div className="hero-photo-sizing">
+            <div className="landing-photo-container">
+              <img src={placeholder}/>
+              <div className="top-hero-content">
+                <span className="small-hero-title">Welcome</span>
+                <h2 className="hero-title">Lorem Ipsum</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque voluptatem accusamus non quidem, deleniti optio.</p>           
+              </div>
+            </div>
+          </div>
+        </section>
+        <div className="container">
+          <div id="teleport-option1" className="feature">
+  
+          </div>
         </div>
-        <div id={`teleport-${this.props.navOption}`} className="feature">
 
+        <div className="container">
+          <div id="teleport-option2" className="feature">
+  
+          </div>
         </div>
 
-        <div id={`teleport-${this.props.navOption}`} className="feature">
-
+        <div className="container">
+          <div id="teleport-option3" className="feature">
+  
+          </div>
         </div>
 
-        <div id={`teleport-${this.props.navOption}`} className="feature">
-
-        </div>
-
-        <div id={`teleport-${this.props.navOption}`} className="feature">
-
+        <div className="container">
+          <div id="teleport-option4" className="feature">
+  
+          </div>
         </div>
         <footer>
           <Footer /> 
