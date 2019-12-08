@@ -26,7 +26,7 @@ class CreateBusiness extends Component {
   }
   
   updateCache(client, { data }) {
-    debugger
+    
     client.writeData({
       data: { site: data.makeBusiness }
     });
@@ -39,13 +39,13 @@ class CreateBusiness extends Component {
         update={(cache, data) => this.updateCache(cache, data)}
         onCompleted={
             (cache, data) => {
-                debugger
+                
             }
         }
       >
             {(makeBusiness, { loading, error,data }) => {
                 if(error){
-                    debugger
+                    
                     return(
                         <div>{error.networkError.message}</div>
                     )

@@ -20,8 +20,8 @@ const cache = new InMemoryCache({
 });
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:5000/graphql",
-  // uri: "http://comfort-order.herokuapp.com/graphql",
+  // uri: "http://localhost:5000/graphql",
+  uri: "http://comfort-order.herokuapp.com/graphql",
   headers: {
     // pass our token into the header of each request
     authorization: localStorage.getItem("auth-token")
@@ -55,7 +55,7 @@ if (token) {
     // user is loggedIn
     .mutate({ mutation: VERIFY_USER, variables: { token } })
     .then(({ data }) => {
-      debugger
+      
       cache.writeData({
         data: {
           isLoggedIn: data.verifyUser.loggedIn,

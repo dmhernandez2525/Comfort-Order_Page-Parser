@@ -31,7 +31,7 @@ class Login extends Component {
       <Mutation
         mutation={LOGIN_USER}
         onCompleted={data => {
-          debugger
+          
           const { token } = data.login;
           localStorage.setItem("auth-token", token);
           if (data.login.role === "Master"){
