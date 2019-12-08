@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom"
 
-class Profile extends React.Component {
+class Support extends React.Component {
     constructor(props) {
         super(props);
 
@@ -14,8 +14,8 @@ class Profile extends React.Component {
 
         return (
             <div>
-                <h1>User Profile</h1>
-                <Link to="/UserLanding"> Back </Link>
+                <h1>Support</h1>
+                <Link to="/businessLogin"> Back </Link>
 
             </div>
         )
@@ -24,4 +24,4 @@ class Profile extends React.Component {
 }
 
 
-export default Profile 
+export default Support 

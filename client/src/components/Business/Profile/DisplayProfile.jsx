@@ -14,8 +14,8 @@ class Profile extends React.Component {
 
         return (
             <div>
-                <h1>User Profile</h1>
-                <Link to="/UserLanding"> Back </Link>
+                <h1>Profile</h1>
+                <Link to="/businessLogin"> Back </Link>
 
             </div>
         )

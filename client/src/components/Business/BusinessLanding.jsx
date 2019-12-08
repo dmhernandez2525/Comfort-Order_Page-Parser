@@ -2,7 +2,7 @@ import  React from "react";
 import { Link } from "react-router-dom"
 
 
-class UserLanding extends React.Component {
+class BusinessLanding extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -21,12 +21,13 @@ class UserLanding extends React.Component {
   render() {
     return (
       <div>
-            <h1>User Landing</h1>
-            <Link to="/UserProfile"> Profile </Link>
-            <Link to="/UserSupport"> Support </Link>
+                <Link to="/Profile"> Profile </Link>
+                <Link to="/Support"> Support </Link>
+                <Link to="/POS"> POS </Link>
+                <Link to="/Inventory"> Inventory </Link>
       </div>
     );
   }
 }
 
-export default UserLanding;
+export default BusinessLanding;
