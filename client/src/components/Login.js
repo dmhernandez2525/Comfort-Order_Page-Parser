@@ -19,7 +19,10 @@ class Login extends Component {
   
   updateCache(client, {data}) {
     client.writeData({
-      data: { isLoggedIn: data.login.loggedIn }
+      data: {
+        isLoggedIn: data.login.loggedIn,
+        role: data.login.role
+      }
     });
   }  
   
@@ -28,9 +31,18 @@ class Login extends Component {
       <Mutation
         mutation={LOGIN_USER}
         onCompleted={data => {
+          debugger
           const { token } = data.login;
           localStorage.setItem("auth-token", token);
-          this.props.history.push("/");
+          if (data.login.role === "Master"){
+            this.props.history.push("/Master");
+          }
+          else if (data.login.role === "Business"){
+            this.props.history.push("/BusinessLogin");
+          }
+          else if (data.login.role === "EndUser"){
+            this.props.history.push("/UserLanding");
+          }
         }}
         update={(client, data) => this.updateCache(client, data)}
       >
