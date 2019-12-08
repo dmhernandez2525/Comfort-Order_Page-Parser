@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { withRouter } from 'react-router-dom';
 import AllBusiness from './AllBusiness';
-import CreateBusiness from './CreateBusiness'
+import CreateBusiness from './CreateBusiness';
+import MasterRegister from './MasterRegister';
 
 
 class MasterLanding extends Component {
@@ -25,6 +26,10 @@ class MasterLanding extends Component {
         <br/>
         <h1>CreateBusiness</h1>
           <CreateBusiness/>
+        <br/>
+        <br/>
+        <h1>Make User</h1>
+          <MasterRegister/>
       </div>
     );
   }
