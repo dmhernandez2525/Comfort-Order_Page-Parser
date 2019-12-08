@@ -2,8 +2,8 @@ import React from "react";
 import { Query } from "react-apollo";
 import Queries from "../../graphql/queries";
 import { withRouter } from 'react-router-dom';
-import * as FeatureLibrary from "../features/Order";
-import * as TemplateLibrary from "../templates/Restaurant";
+import * as FeatureLibrary from "../Features/Order";
+import * as TemplateLibrary from "../Templates/index";
 const { FETCH_BUSINESS, IS_LOGGED_IN } = Queries;
 
 
@@ -34,10 +34,10 @@ class DisplaySite extends React.Component {
         {({ loading, error, data }) => {
           if (loading) return <div>Loading</div>;
           if (error) return `Error! ${error.message}`;
-          debugger
+          
           return (
             <div >
-                
+              <TemplateLibrary template={data.FetchBusiness.template}  features={data.FetchBusiness.features} businessData={data.FetchBusiness.businessData}/>
             </div>
           )
         }}
