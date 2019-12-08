@@ -3,10 +3,6 @@ import { HashRouter, Switch , Route} from 'react-router-dom';
 import Login from "./Login";
 import Register from "./Register";
 
-
-import DisplaySite from "./business/DisplaySite";
-
-
 import BusinessLanding from "./business/BusinessLanding";
 import Profile from "./business/Profile/DisplayProfile";
 import Support from "./business/Support/DisplaySupport";
@@ -22,12 +18,16 @@ import MasterLanding from "./MasterAccount/MasterLanding";
 import AuthRoute from '../util/route_util'
 import Nav from "./Nav";
 
+import DisplaySite from "./business/DisplaySite";
+
+import Four0Four from "./ComfortOrder/Four0Four";
+import Splash from "./ComfortOrder/Splash";
+
 const App = () => {
   return (
     <HashRouter>
       <div>
         <Nav />
-        <h1>Comfort Order</h1>
         <Switch>
           <AuthRoute exact path="/register" component={Register} routeType="auth" />
           <AuthRoute exact path="/login" component={Login} routeType="auth" />
@@ -45,6 +45,8 @@ const App = () => {
 
 
           <Route exact path="/site/:id" component={DisplaySite} />
+          <Route exact path="/" component={Splash} />
+          <Route path="/" component={Four0Four} />
         </Switch>
       </div>
     </HashRouter>
