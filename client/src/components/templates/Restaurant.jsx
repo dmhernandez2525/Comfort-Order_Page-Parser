@@ -1,6 +1,7 @@
 import React from "react";
 import Nav from "./nav";
 import Footer from "./footer";
+import placeholder from "./placeholder.jpg"
 import "./global.css"
 
 class Restaurant extends React.Component {
@@ -20,7 +21,9 @@ class Restaurant extends React.Component {
         <header>
           <Nav />
         </header>
-
+        <div className="landing-photo">
+          <img src={placeholder}/>
+        </div>
         <div id={`teleport-${this.props.navOption}`} className="feature">
 
         </div>
