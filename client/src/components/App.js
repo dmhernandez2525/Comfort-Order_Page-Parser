@@ -3,11 +3,11 @@ import { HashRouter, Switch , Route} from 'react-router-dom';
 import Login from "./Login";
 import Register from "./Register";
 
-import BusinessLanding from "./business/BusinessLanding";
-import Profile from "./business/Profile/DisplayProfile";
-import Support from "./business/Support/DisplaySupport";
-import Pos from "./business/POS/DisplayPos";
-import Inventory from "./business/Inventory/DisplayInventory";
+import BusinessLanding from "./Business/BusinessLanding";
+import Profile from "./Business/Profile/DisplayProfile";
+import Support from "./Business/Support/DisplaySupport";
+import Pos from "./Business/POS/DisplayPos";
+import Inventory from "./Business/Inventory/DisplayInventory";
 
 import UserLanding from "./EndUser/UserLanding";
 import UserProfile from "./EndUser/UserProfile";
@@ -18,7 +18,7 @@ import MasterLanding from "./MasterAccount/MasterLanding";
 import AuthRoute from '../util/route_util'
 import Nav from "./Nav";
 
-import DisplaySite from "./business/DisplaySite";
+import DisplaySite from "./Business/DisplaySite";
 
 import Four0Four from "./ComfortOrder/Four0Four";
 import Splash from "./ComfortOrder/Splash";
@@ -31,7 +31,7 @@ const App = () => {
         <Switch>
           <AuthRoute exact path="/register" component={Register} routeType="auth" />
           <AuthRoute exact path="/login" component={Login} routeType="auth" />
-          <AuthRoute exact path="/mainLogin" component={MasterLanding} routeType="auth" />
+          <AuthRoute exact path="/Master" component={MasterLanding} routeType="auth" />
 
           <AuthRoute exact path="/BusinessLogin" component={BusinessLanding} routeType="auth" />
           <AuthRoute exact path="/Profile" component={Profile} routeType="auth" />

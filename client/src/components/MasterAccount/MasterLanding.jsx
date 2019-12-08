@@ -7,6 +7,7 @@ import CreateBusiness from './CreateBusiness'
 class MasterLanding extends Component {
   constructor(props) {
     super(props);
+    this.update = this.update.bind(this)
   }
 
   update(field) {
