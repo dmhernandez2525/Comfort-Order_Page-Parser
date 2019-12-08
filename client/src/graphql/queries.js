@@ -4,6 +4,7 @@ export default {
   IS_LOGGED_IN: gql`
     query IsUserLoggedIn {
       isLoggedIn @client
+      role @client
     }
   `,
   FETCH_BUSINESS: gql`

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
-import Mutations from "../graphql/mutations"
+import Mutations from "../../graphql/mutations"
 const { REGISTER_USER } = Mutations
 
-class Register extends Component {
+class MasterRegister extends Component {
   constructor(props) {
     super(props);
 
@@ -11,7 +11,8 @@ class Register extends Component {
       name: "",
       email: "",
       password: "",
-      role:"EndUser"
+      role: "",
+      messege: ""
     };
   }
 
@@ -19,9 +20,13 @@ class Register extends Component {
     return e => this.setState({ [field]: e.target.value });
   }
 
-  updateCache(client, { data }) {
-    client.writeData({
-      data: { isLoggedIn: data.register.loggedIn }
+  clearFealds() {
+     this.setState({
+      name: "",
+      email: "",
+      password: "",
+      role: "",
+      messege: "User Successfully Created"
     });
   }
 
@@ -30,14 +35,12 @@ class Register extends Component {
       <Mutation
         mutation={REGISTER_USER}
         onCompleted={data => {
-          const { token } = data.register;
-          localStorage.setItem("auth-token", token);
-          this.props.history.push("/");
+          this.clearFealds()
         }}
-        update={(client, data) => this.updateCache(client, data)}
       >
         {registerUser => (
           <div>
+            <h1>{this.state.messege}</h1>
             <form
               onSubmit={e => {
                 e.preventDefault();
@@ -67,6 +70,15 @@ class Register extends Component {
                 type="password"
                 placeholder="Password"
               />
+              <select
+                value={this.state.role}
+                onChange={this.update("role")}>
+                <option defaultValue>role</option>
+                <option value="Master">Master</option>
+                <option value="Business">Business</option>
+                <option value="EndUser">EndUser</option>
+              </select>
+
               <button type="submit">Register Account</button>
             </form>
           </div>
@@ -75,4 +87,4 @@ class Register extends Component {
     );
   }
 }
-export default Register;
+export default MasterRegister;
