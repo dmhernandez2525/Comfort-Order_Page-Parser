@@ -1,6 +1,8 @@
 import React from "react";
 import Nav from "./nav";
 import Footer from "./footer";
+import "./global.css"
+
 class Restaurant extends React.Component {
   constructor(props){
     super(props);
@@ -19,19 +21,19 @@ class Restaurant extends React.Component {
           <Nav />
         </header>
 
-        <div className="feature">
+        <div id={`teleport-${this.props.navOption}`} className="feature">
 
         </div>
 
-        <div className="feature">
+        <div id={`teleport-${this.props.navOption}`} className="feature">
 
         </div>
 
-        <div className="feature">
+        <div id={`teleport-${this.props.navOption}`} className="feature">
 
         </div>
 
-        <div className="feature">
+        <div id={`teleport-${this.props.navOption}`} className="feature">
 
         </div>
         <footer>
