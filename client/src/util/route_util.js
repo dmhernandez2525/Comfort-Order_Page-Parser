@@ -26,8 +26,61 @@ const AuthRoute = ({
               }
             />
           );
-        } else {
-          debugger
+        } 
+        
+        else if (routeType === "Master") {
+          // otherwise this will be a protected route which will only
+          // render the component if the user is logged in
+          return (
+            <Route
+              {...rest}
+              render={props =>
+                (data.isLoggedIn && data.role === "Master") ? (
+                  <Component {...props} />
+                ) : (
+                    <Redirect to="/login" />
+                  )
+              }
+            />
+          );
+        }
+        
+        
+        else if (routeType === "Business") {
+          // otherwise this will be a protected route which will only
+          // render the component if the user is logged in
+          return (
+            <Route
+              {...rest}
+              render={props =>
+                (data.isLoggedIn && data.role === "Business") ? (
+                  <Component {...props} />
+                ) : (
+                    <Redirect to="/login" />
+                  )
+              }
+            />
+          );
+        }
+
+        else if (routeType === "EndUser") {
+          // otherwise this will be a protected route which will only
+          // render the component if the user is logged in
+          return (
+            <Route
+              {...rest}
+              render={props =>
+                (data.isLoggedIn && data.role === "EndUser") ? (
+                  <Component {...props} />
+                ) : (
+                    <Redirect to="/login" />
+                  )
+              }
+            />
+          );
+        }
+
+        else {
           // otherwise this will be a protected route which will only
           // render the component if the user is logged in
           return (
@@ -43,6 +96,8 @@ const AuthRoute = ({
             />
           );
         }
+
+
       }}
     </Query>
   );
