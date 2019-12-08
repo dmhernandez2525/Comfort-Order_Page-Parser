@@ -13,6 +13,10 @@ import Support from "./business/Support/DisplaySupport";
 import Pos from "./business/POS/DisplayPos";
 import Inventory from "./business/Inventory/DisplayInventory";
 
+import UserLanding from "./EndUser/UserLanding";
+import UserProfile from "./EndUser/UserProfile";
+import UserSupport from "./EndUser/UserSupport";
+
 
 import MasterLanding from "./MasterAccount/MasterLanding";
 import AuthRoute from '../util/route_util'
@@ -29,11 +33,15 @@ const App = () => {
           <AuthRoute exact path="/login" component={Login} routeType="auth" />
           <AuthRoute exact path="/mainLogin" component={MasterLanding} routeType="auth" />
 
-          <AuthRoute exact path="/businessLogin" component={BusinessLanding} routeType="auth" />
+          <AuthRoute exact path="/BusinessLogin" component={BusinessLanding} routeType="auth" />
           <AuthRoute exact path="/Profile" component={Profile} routeType="auth" />
           <AuthRoute exact path="/Support" component={Support} routeType="auth" />
           <AuthRoute exact path="/POS" component={Pos} routeType="auth" />
           <AuthRoute exact path="/Inventory" component={Inventory} routeType="auth" />
+
+          <AuthRoute exact path="/UserLanding" component={UserLanding} routeType="auth" />
+          <AuthRoute exact path="/UserProfile" component={UserProfile} routeType="auth" />
+          <AuthRoute exact path="/UserSupport" component={UserSupport} routeType="auth" />
 
 
           <Route exact path="/site/:id" component={DisplaySite} />
