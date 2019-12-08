@@ -12,13 +12,6 @@ class MasterLanding extends Component {
   update(field) {
     return e => this.setState({ [field]: e.target.value });
   }
-  
-  updateCache(client, { data }) {
-    debugger
-    client.writeData({
-      data: { site: data.makeBusiness }
-    });
-  }  
 
   render() {
     return (

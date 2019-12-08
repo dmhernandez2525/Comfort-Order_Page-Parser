@@ -19,7 +19,7 @@ class AllBusiness extends Component {
   updateCache(client, { data }) {
     debugger
     client.writeData({
-      data: { site: data.makeBusiness }
+      data: { site: data.FetchAllBusiness }
     });
   }  
 
