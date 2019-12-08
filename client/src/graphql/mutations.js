@@ -14,6 +14,7 @@ export default {
       login(email: $email, password: $password) {
         token
         loggedIn
+        role
       }
     }
   `,
@@ -21,6 +22,7 @@ export default {
     mutation VerifyUser($token: String!) {
       verifyUser(token: $token) {
         loggedIn
+        role
       }
     }
   `,

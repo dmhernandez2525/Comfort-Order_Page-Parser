@@ -16,7 +16,6 @@ const register = async data => {
     }
     // deconstruct our data
     const { name, email, password, role } = data;
-    console.log(data)
 
     // we want to wait until our model can tell us whether a user exists with that email
     const existingEmail = await User.findOne({ email });
@@ -117,8 +116,11 @@ const verifyUser = async data => {
     const loggedIn = await User.findById(id).then(user => {
       return user ? true : false;
     });
+    const role = await User.findById(id).then(user => {
+      return user ? user.role : false;
+    });
 
-    return { loggedIn };
+    return { loggedIn,role };
   } catch (err) {
     return { loggedIn: false };
   }

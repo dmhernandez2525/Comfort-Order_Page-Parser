@@ -31,17 +31,17 @@ const App = () => {
         <Switch>
           <AuthRoute exact path="/register" component={Register} routeType="auth" />
           <AuthRoute exact path="/login" component={Login} routeType="auth" />
-          <AuthRoute exact path="/Master" component={MasterLanding} routeType="auth" />
+          <AuthRoute exact path="/Master" component={MasterLanding} routeType="protected" />
 
-          <AuthRoute exact path="/BusinessLogin" component={BusinessLanding} routeType="auth" />
-          <AuthRoute exact path="/Profile" component={Profile} routeType="auth" />
-          <AuthRoute exact path="/Support" component={Support} routeType="auth" />
-          <AuthRoute exact path="/POS" component={Pos} routeType="auth" />
-          <AuthRoute exact path="/Inventory" component={Inventory} routeType="auth" />
+          <AuthRoute exact path="/BusinessLogin" component={BusinessLanding} routeType="protected" />
+          <AuthRoute exact path="/Profile" component={Profile} routeType="protected" />
+          <AuthRoute exact path="/Support" component={Support} routeType="protected" />
+          <AuthRoute exact path="/POS" component={Pos} routeType="protected" />
+          <AuthRoute exact path="/Inventory" component={Inventory} routeType="protected" />
 
-          <AuthRoute exact path="/UserLanding" component={UserLanding} routeType="auth" />
-          <AuthRoute exact path="/UserProfile" component={UserProfile} routeType="auth" />
-          <AuthRoute exact path="/UserSupport" component={UserSupport} routeType="auth" />
+          <AuthRoute exact path="/UserLanding" component={UserLanding} routeType="protected" />
+          <AuthRoute exact path="/UserProfile" component={UserProfile} routeType="protected" />
+          <AuthRoute exact path="/UserSupport" component={UserSupport} routeType="protected" />
 
 
           <Route exact path="/site/:id" component={DisplaySite} />

@@ -27,6 +27,7 @@ const AuthRoute = ({
             />
           );
         } else {
+          debugger
           // otherwise this will be a protected route which will only
           // render the component if the user is logged in
           return (
