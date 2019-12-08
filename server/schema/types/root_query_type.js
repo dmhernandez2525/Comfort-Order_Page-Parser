@@ -31,6 +31,12 @@ const RootQueryType = new GraphQLObjectType({
       resolve(_, args) {
         return Business.findById(args._id);
       }
+    },
+    allBusiness: {
+      type: BusinessType,
+      resolve(_) {
+        return Business.find();
+      }
     }
   })
 });

@@ -15,5 +15,11 @@ export default {
           businessData
         }
     }
+  `,
+  FETCH_All_BUSINESS: gql`
+    query FetchAllBusiness {
+          name
+          businessData
+    }
   `
 }
