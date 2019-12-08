@@ -17,6 +17,7 @@ import UserSupport from "./EndUser/UserSupport";
 import MasterLanding from "./MasterAccount/MasterLanding";
 import AuthRoute from '../util/route_util'
 import Nav from "./Nav";
+import Restaurant from "./Templates/Restaurant"
 
 import DisplaySite from "./Business/DisplaySite";
 
@@ -27,7 +28,8 @@ const App = () => {
   return (
     <HashRouter>
       <div>
-        <Nav />
+        {/* <Nav /> */}
+        {/* <h1>Comfort Order</h1> */}
         <Switch>
           <AuthRoute exact path="/register" component={Register} routeType="auth" />
           <AuthRoute exact path="/login" component={Login} routeType="auth" />
@@ -45,8 +47,7 @@ const App = () => {
 
 
           <Route exact path="/site/:id" component={DisplaySite} />
-          <Route exact path="/" component={Splash} />
-          <Route path="/" component={Four0Four} />
+          <Route exact path="/restdummy" component={Restaurant} />
         </Switch>
       </div>
     </HashRouter>
