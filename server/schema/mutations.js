@@ -34,7 +34,10 @@ const mutation = new GraphQLObjectType({
             template,
             businessData
         })
+        console.log(newBusiness)
+        console.log(111111111111111111)
         newBusiness.save();
+        console.log(newBusiness)
         return newBusiness
       }
     },
