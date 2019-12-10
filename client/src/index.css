@@ -20,6 +20,7 @@ time, mark, audio, video {
   text-decoration: none;
   color: black;
   box-sizing: border-box;
+  scroll-behavior: smooth;
   /* background-color: #fafafa; */
   /* font-family: "Bilbo Swash Caps"; */
 } 

@@ -28,7 +28,7 @@ const App = () => {
   return (
     <HashRouter>
       <div>
-        <Nav />
+        {/* <Nav /> */}
         <Switch>
           <AuthRoute exact path="/register" component={Register} routeType="auth" />
           <AuthRoute exact path="/login" component={Login} routeType="auth" />

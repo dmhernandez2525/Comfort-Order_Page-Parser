@@ -1,14 +1,27 @@
 /*==================
       NAVBAR
 ====================*/
-
-.navbar{
+.restaurant-nav{
 	left: 0;
 	right: 0;
 	top: 0;
 	position: fixed;
   z-index: 99;
-  background: yellowgreen;
+  /* background: yellowgreen; */
+}
+.navbar{
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  background-color: transparent;
+  border: none;
+  padding: 25px 0;
+  border-radius: 0;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
 }
 .navbar-nav{
   display: flex;
@@ -20,13 +33,19 @@
 }
 .navbar-nav > li > a{
   text-decoration: none;
+  padding: 10px 20px;
+  color: #fff;
+
 }
 .navbar-right {
   right: auto;
   left: 0;
   float: right
 }
-
+.navbar-bg{
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px 0;
+}
 /*==================
     HERO LANDING
 ====================*/
@@ -122,6 +141,8 @@
   margin-right: auto;
   margin-left: auto;
   max-width: 100%;
+}
+.container.feature-display{
   height: 500px;
   background-color: #222;
 }
