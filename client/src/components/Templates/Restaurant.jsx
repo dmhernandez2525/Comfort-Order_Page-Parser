@@ -33,26 +33,26 @@ class Restaurant extends React.Component {
             </div>
           </div>
         </section>
-        <div className="container">
-          <div id="teleport-option1" className="feature">
+        <div id="teleport-option1" className="feature">
+          <div className="container">
   
           </div>
         </div>
 
-        <div className="container">
-          <div id="teleport-option2" className="feature">
+        <div id="teleport-option2" className="feature">
+          <div className="container">
   
           </div>
         </div>
 
-        <div className="container">
-          <div id="teleport-option3" className="feature">
+        <div id="teleport-option3" className="feature">
+          <div className="container">
   
           </div>
         </div>
 
-        <div className="container">
-          <div id="teleport-option4" className="feature">
+        <div id="teleport-option4" className="feature">
+          <div className="container">
   
           </div>
         </div>
