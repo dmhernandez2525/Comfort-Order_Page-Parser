@@ -39,6 +39,7 @@ class CreateBusiness extends Component {
         update={(cache, data) => this.updateCache(cache, data)}
         onCompleted={
             (cache, data) => {
+              debugger
                 
             }
         }
