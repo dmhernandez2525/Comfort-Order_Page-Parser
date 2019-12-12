@@ -29,11 +29,14 @@ class Restaurant extends React.Component {
   componentDidMount(){
     window.addEventListener('scroll', this.handleScroll);
     document.getElementById("favicon").href = `${favicon}`
+    document.getElementById("site-title").innerText = `Dark Spark Games`
+
   }
 
   componentWillUnmount(){
     window.removeEventListener('scroll', this.handleScroll);
     document.getElementById("favicon").href = `${companyLogo}`
+    document.getElementById("site-title").innerText = `Comfort Order`
   }
 
   handleScroll(event){
