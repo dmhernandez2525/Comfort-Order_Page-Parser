@@ -20,6 +20,9 @@ time, mark, audio, video {
   text-decoration: none;
   color: black;
   box-sizing: border-box;
+  scroll-behavior: smooth;
+  /* font-family: "Tangerine", cursive; */
+
   /* background-color: #fafafa; */
   /* font-family: "Bilbo Swash Caps"; */
 } 

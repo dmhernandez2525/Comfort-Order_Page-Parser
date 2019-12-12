@@ -2,24 +2,70 @@ import React from "react";
 import Nav from "./nav";
 import Footer from "./footer";
 import placeholder from "./placeholder.jpg"
+import favicon from "./favicon.ico"
+import companyLogo from "./ComfortOrderLogo.png"
 import "./global.css"
+
+const token = process.env.REACT_APP_TOKEN
+
 
 class Restaurant extends React.Component {
   constructor(props){
     super(props);
 
     this.state = {
+      transform: 0
+    }  
+    this.teleRef1 = React.createRef()
+    this.teleRef2 = React.createRef()
+    this.teleRef3 = React.createRef()
+    this.teleRef4 = React.createRef()
 
-    }
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
+  executeScroll = (ref) => window.scrollTo(0, ref.current.offsetTop) 
+
+  componentDidMount(){
+    window.addEventListener('scroll', this.handleScroll);
+    document.getElementById("favicon").href = `${favicon}`
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener('scroll', this.handleScroll);
+    document.getElementById("favicon").href = `${companyLogo}`
+  }
+
+  handleScroll(event){
+    let scrollHeight = event.currentTarget.scrollY
+      if(scrollHeight >= 500){
+        document.getElementById("navbar").classList.add("navbar-bg")
+      }else{
+        document.getElementById("navbar").classList.remove("navbar-bg")
+      }
+}
 
   render(){
 
     return(
       <div className="restaurant template">
-        <header>
-          <Nav />
+        <header className="restaurant-nav">
+          <div id="navbar" className="navbar" role="navigation">
+            <div className="container">
+              <ul id="top-menu" className="navbar-nav navbar-right">
+                <li><a onClick={() => this.executeScroll(this.teleRef1)}>Option 1</a></li>
+                <li><a onClick={() => this.executeScroll(this.teleRef2)}>Option 2</a></li>                     
+                <li><a onClick={() => this.executeScroll(this.teleRef3)}>Option 3</a></li>                      
+                <li><a onClick={() => this.executeScroll(this.teleRef4)}>Option 4</a></li>
+                {/* <li><a href="#one">Option 5</a></li>                        */}
+  
+                {/* <li><a href={`teleport-${this.props.navOption}`}>Option 5</a></li>
+                <li><a href={`teleport-${this.props.navOption}`}>Option 6</a></li>
+                <li><a href={`teleport-${this.props.navOption}`}>Option 7</a></li> 
+                <li><a href={`teleport-${this.props.navOption}`}>Option 8</a></li>  */}
+              </ul>
+            </div>                            
+          </div>
         </header>
         <section id="restaurant-hero-section">
           <div className="hero-photo-sizing">
@@ -33,29 +79,37 @@ class Restaurant extends React.Component {
             </div>
           </div>
         </section>
-        <div className="container">
-          <div id="teleport-option1" className="feature">
-  
+        <div id="teleport-option1" className="feature" ref={this.teleRef1}>
+          <div className="container feature-display">
+            <h2 className="hero-title">Feature 1</h2>
           </div>
         </div>
 
-        <div className="container">
-          <div id="teleport-option2" className="feature">
-  
+        <div id="teleport-option2" className="feature" ref={this.teleRef2}>
+          <div className="container feature-display">
+            <h2 className="hero-title">Feature 2</h2>
           </div>
         </div>
 
-        <div className="container">
-          <div id="teleport-option3" className="feature">
-  
+        <div id="teleport-option3" className="feature" ref={this.teleRef3}>
+          <div className="container feature-display">
+            <h2 className="hero-title">Feature 3</h2>
           </div>
         </div>
 
-        <div className="container">
-          <div id="teleport-option4" className="feature">
-  
+        <div id="teleport-option4" className="feature" ref={this.teleRef4}>
+          <div className="container feature-display">
+            <h2 className="hero-title">Feature 4</h2>
           </div>
         </div>
+        <a href="https://www.google.com/maps/dir//84-740 Kili Dr?hl=en-US">CLICK HERE IF YOU DONT KNOW HOW TO USER THE MAP DUMBO</a>
+        <iframe
+          width="600"
+          height="450"
+          frameborder="0"
+          src={`https://www.google.com/maps/embed/v1/place?key=${token}
+            &q=84-740 Kili Dr`} allowfullscreen>
+        </iframe>
         <footer>
           <Footer /> 
         </footer>  
