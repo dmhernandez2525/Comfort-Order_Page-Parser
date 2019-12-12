@@ -2,7 +2,12 @@ import React from "react";
 import Nav from "./nav";
 import Footer from "./footer";
 import placeholder from "./placeholder.jpg"
+import favicon from "./favicon.ico"
+import companyLogo from "./ComfortOrderLogo.png"
 import "./global.css"
+
+const token = process.env.REACT_APP_TOKEN
+
 
 class Restaurant extends React.Component {
   constructor(props){
@@ -23,10 +28,12 @@ class Restaurant extends React.Component {
 
   componentDidMount(){
     window.addEventListener('scroll', this.handleScroll);
+    document.getElementById("favicon").href = `${favicon}`
   }
 
   componentWillUnmount(){
     window.removeEventListener('scroll', this.handleScroll);
+    document.getElementById("favicon").href = `${companyLogo}`
   }
 
   handleScroll(event){
@@ -95,6 +102,14 @@ class Restaurant extends React.Component {
             <h2 className="hero-title">Feature 4</h2>
           </div>
         </div>
+        <a href="https://www.google.com/maps/dir//84-740 Kili Dr?hl=en-US">CLICK HERE IF YOU DONT KNOW HOW TO USER THE MAP DUMBO</a>
+        <iframe
+          width="600"
+          height="450"
+          frameborder="0"
+          src={`https://www.google.com/maps/embed/v1/place?key=${token}
+            &q=84-740 Kili Dr`} allowfullscreen>
+        </iframe>
         <footer>
           <Footer /> 
         </footer>  
