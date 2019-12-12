@@ -24,6 +24,9 @@ import DisplaySite from "./Business/DisplaySite";
 import Four0Four from "./ComfortOrder/Four0Four";
 import Splash from "./ComfortOrder/Splash";
 
+require('dotenv').config();
+
+
 const App = () => {
   return (
     <HashRouter>
