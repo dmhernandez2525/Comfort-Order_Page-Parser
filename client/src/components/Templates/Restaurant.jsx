@@ -20,6 +20,7 @@ class Restaurant extends React.Component {
     this.teleRef2 = React.createRef()
     this.teleRef3 = React.createRef()
     this.teleRef4 = React.createRef()
+    this.teleRef5 = React.createRef()
 
     this.handleScroll = this.handleScroll.bind(this);
   }
@@ -57,12 +58,12 @@ class Restaurant extends React.Component {
                 <li><a onClick={() => this.executeScroll(this.teleRef2)}>Option 2</a></li>                     
                 <li><a onClick={() => this.executeScroll(this.teleRef3)}>Option 3</a></li>                      
                 <li><a onClick={() => this.executeScroll(this.teleRef4)}>Option 4</a></li>
-                {/* <li><a href="#one">Option 5</a></li>                        */}
+                <li><a onClick={() => this.executeScroll(this.teleRef5)}>Option 5</a></li>
   
-                {/* <li><a href={`teleport-${this.props.navOption}`}>Option 5</a></li>
-                <li><a href={`teleport-${this.props.navOption}`}>Option 6</a></li>
-                <li><a href={`teleport-${this.props.navOption}`}>Option 7</a></li> 
-                <li><a href={`teleport-${this.props.navOption}`}>Option 8</a></li>  */}
+                {/* <li><a href="#one">Option 5</a></li>                        */}
+                {/* <li><a href={`teleport-${this.props.navOption}`}>Option 6</a></li> */}
+                {/* <li><a href={`teleport-${this.props.navOption}`}>Option 7</a></li>  */}
+                {/* <li><a href={`teleport-${this.props.navOption}`}>Option 8</a></li>  */}
               </ul>
             </div>                            
           </div>
@@ -79,38 +80,40 @@ class Restaurant extends React.Component {
             </div>
           </div>
         </section>
+
         <div id="teleport-option1" className="feature" ref={this.teleRef1}>
-          <div className="container feature-display">
+          <div className="container feature-display black">
             <h2 className="hero-title">Feature 1</h2>
           </div>
         </div>
 
         <div id="teleport-option2" className="feature" ref={this.teleRef2}>
-          <div className="container feature-display">
+          <div className="container feature-display ">
             <h2 className="hero-title">Feature 2</h2>
           </div>
         </div>
 
         <div id="teleport-option3" className="feature" ref={this.teleRef3}>
-          <div className="container feature-display">
+          <div className="container feature-display black">
             <h2 className="hero-title">Feature 3</h2>
           </div>
         </div>
 
         <div id="teleport-option4" className="feature" ref={this.teleRef4}>
-          <div className="container feature-display">
+          <div className="container feature-display ">
             <h2 className="hero-title">Feature 4</h2>
           </div>
         </div>
-        <a href="https://www.google.com/maps/dir//84-740 Kili Dr?hl=en-US">CLICK HERE IF YOU DONT KNOW HOW TO USER THE MAP DUMBO</a>
-        <iframe
-          width="600"
-          height="450"
-          frameborder="0"
-          src={`https://www.google.com/maps/embed/v1/place?key=${token}
-            &q=84-740 Kili Dr`} allowfullscreen>
-        </iframe>
-        <footer>
+
+        <div id="teleport-option5" className="feature" ref={this.teleRef5}>
+          <div className="container feature-display black">
+            <h2 className="hero-title">Feature 5</h2>
+          </div>
+        </div>
+
+        <div id="map-directions-button" className="container"><a href="https://www.google.com/maps/dir//84-740 Kili Dr?hl=en-US">Click Here For Directions Help</a></div>
+        <div className="map-wrapper"><iframe id="restaurant-map" className="restaurant-map" src={`https://www.google.com/maps/embed/v1/place?key=${token}&q=84-740 Kili Dr`}></iframe></div>
+        <footer id="restaurant-footer">
           <Footer /> 
         </footer>  
       </div>
