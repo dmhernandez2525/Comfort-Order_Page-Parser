@@ -1,9 +1,14 @@
 const graphql = require("graphql");
 const mongoose = require('mongoose');
+
 const Business = mongoose.model('business');
+const PicSlide = mongoose.model('picSlide');
+
 const { GraphQLObjectType, GraphQLString, GraphQLID,GraphQLList} = graphql;
+
 const UserType = require("../schema/types/user_type");
 const BusinessType = require("../schema/types/business_type");
+const PicSlideType = require("../schema/types/pic_slide_type");
 
 
 const AuthService = require("../services/auth")
@@ -34,11 +39,22 @@ const mutation = new GraphQLObjectType({
             template,
             businessData
         })
-        console.log(newBusiness)
-        console.log(111111111111111111)
         newBusiness.save();
-        console.log(newBusiness)
         return newBusiness
+      }
+    },
+    makePicSlide: {
+      type: PicSlideType,
+      args: {
+          pic: { type: new GraphQLList(GraphQLString) },
+          text: { type: new GraphQLList(GraphQLString) }
+      },
+      resolve(parentValue, {}) {
+        let newPicSlide = new PicSlide({
+            text,
+            pic
+        })
+        return newPicSlide
       }
     },
     register: {
