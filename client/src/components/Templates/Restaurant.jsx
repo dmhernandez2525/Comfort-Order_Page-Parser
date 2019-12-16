@@ -4,6 +4,8 @@ import Footer from "./footer";
 import placeholder from "./placeholder.jpg"
 import favicon from "./favicon.ico"
 import companyLogo from "./ComfortOrderLogo.png"
+import Modal from "../Features/modal"
+import { modalHOC } from "../apollo_hooks_hoc"
 import "./global.css"
 
 const token = process.env.REACT_APP_TOKEN
@@ -14,14 +16,18 @@ class Restaurant extends React.Component {
     super(props);
 
     this.state = {
-      transform: 0
+      modalBool: this.props.modalBool
+
     }  
+
     this.teleRef1 = React.createRef()
     this.teleRef2 = React.createRef()
     this.teleRef3 = React.createRef()
     this.teleRef4 = React.createRef()
+    this.teleRef5 = React.createRef()
 
     this.handleScroll = this.handleScroll.bind(this);
+    this.setStateModalCB = this.setStateModalCB.bind(this);
   }
 
   executeScroll = (ref) => window.scrollTo(0, ref.current.offsetTop) 
@@ -48,6 +54,12 @@ class Restaurant extends React.Component {
       }
 }
 
+  setStateModalCB(modalBool) {
+    // is invoked in HOC to cause React re-render 
+    // passed to child component so it can pass to HOC to then invoke
+    this.setState({modalBool})
+  } 
+
   render(){
 
     return(
@@ -55,19 +67,20 @@ class Restaurant extends React.Component {
         <header className="restaurant-nav">
           <div id="navbar" className="navbar" role="navigation">
             <div className="container">
+              <div className="nav-cart" onClick={() => this.props.setModalCache(true, this.setStateModalCB)}> <Modal modal="cart" modalBool={this.props.modalBool} setParentModalBool={this.setStateModalCB}/> </div>
               <ul id="top-menu" className="navbar-nav navbar-right">
                 <li><a onClick={() => this.executeScroll(this.teleRef1)}>Option 1</a></li>
                 <li><a onClick={() => this.executeScroll(this.teleRef2)}>Option 2</a></li>                     
                 <li><a onClick={() => this.executeScroll(this.teleRef3)}>Option 3</a></li>                      
                 <li><a onClick={() => this.executeScroll(this.teleRef4)}>Option 4</a></li>
-                {/* <li><a href="#one">Option 5</a></li>                        */}
+                <li><a onClick={() => this.executeScroll(this.teleRef5)}>Option 5</a></li>
   
-                {/* <li><a href={`teleport-${this.props.navOption}`}>Option 5</a></li>
-                <li><a href={`teleport-${this.props.navOption}`}>Option 6</a></li>
-                <li><a href={`teleport-${this.props.navOption}`}>Option 7</a></li> 
-                <li><a href={`teleport-${this.props.navOption}`}>Option 8</a></li>  */}
+                {/* <li><a href="#one">Option 5</a></li>                        */}
+                {/* <li><a href={`teleport-${this.props.navOption}`}>Option 6</a></li> */}
+                {/* <li><a href={`teleport-${this.props.navOption}`}>Option 7</a></li>  */}
+                {/* <li><a href={`teleport-${this.props.navOption}`}>Option 8</a></li>  */}
               </ul>
-            </div>                            
+            </div>                        
           </div>
         </header>
         <section id="restaurant-hero-section">
@@ -82,38 +95,40 @@ class Restaurant extends React.Component {
             </div>
           </div>
         </section>
+
         <div id="teleport-option1" className="feature" ref={this.teleRef1}>
-          <div className="container feature-display">
+          <div className="container feature-display black">
             <h2 className="hero-title">Feature 1</h2>
           </div>
         </div>
 
         <div id="teleport-option2" className="feature" ref={this.teleRef2}>
-          <div className="container feature-display">
+          <div className="container feature-display ">
             <h2 className="hero-title">Feature 2</h2>
           </div>
         </div>
 
         <div id="teleport-option3" className="feature" ref={this.teleRef3}>
-          <div className="container feature-display">
+          <div className="container feature-display black">
             <h2 className="hero-title">Feature 3</h2>
           </div>
         </div>
 
         <div id="teleport-option4" className="feature" ref={this.teleRef4}>
-          <div className="container feature-display">
+          <div className="container feature-display ">
             <h2 className="hero-title">Feature 4</h2>
           </div>
         </div>
-        <a href="https://www.google.com/maps/dir//84-740 Kili Dr?hl=en-US">CLICK HERE IF YOU DONT KNOW HOW TO USER THE MAP DUMBO</a>
-        <iframe
-          width="600"
-          height="450"
-          frameborder="0"
-          src={`https://www.google.com/maps/embed/v1/place?key=${token}
-            &q=84-740 Kili Dr`} allowfullscreen>
-        </iframe>
-        <footer>
+
+        <div id="teleport-option5" className="feature" ref={this.teleRef5}>
+          <div className="container feature-display black">
+            <h2 className="hero-title">Feature 5</h2>
+          </div>
+        </div>
+
+        <div id="map-directions-button" className="container"><a href="https://www.google.com/maps/dir//84-740 Kili Dr?hl=en-US">Click Here For Directions Help</a></div>
+        <div className="map-wrapper"><iframe id="restaurant-map" className="restaurant-map" src={`https://www.google.com/maps/embed/v1/place?key=${token}&q=84-740 Kili Dr`}></iframe></div>
+        <footer id="restaurant-footer">
           <Footer /> 
         </footer>  
       </div>
@@ -123,4 +138,4 @@ class Restaurant extends React.Component {
 }
 
 
-export default Restaurant
+export default modalHOC(Restaurant)

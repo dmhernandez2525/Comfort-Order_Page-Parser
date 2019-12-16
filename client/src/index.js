@@ -7,6 +7,7 @@ import ApolloClient from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { createHttpLink } from "apollo-link-http";
 import { ApolloProvider } from "react-apollo";
+import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks'
 import { onError } from "apollo-link-error";
 import { ApolloLink } from "apollo-link";
 
@@ -56,7 +57,8 @@ const client = new ApolloClient({
 cache.writeData({
   data: {
     isLoggedIn: Boolean(token),
-    role: ""
+    role: "",
+    modalBool: false
   }
 });
 
@@ -67,7 +69,6 @@ if (token) {
     // user is loggedIn
     .mutate({ mutation: VERIFY_USER, variables: { token } })
     .then(({ data }) => {
-      
       cache.writeData({
         data: {
           isLoggedIn: data.verifyUser.loggedIn,
@@ -80,7 +81,9 @@ if (token) {
 const Root = () => {
   return (
     <ApolloProvider client={client}>
-      <App />
+      <ApolloHooksProvider client={client}>
+        <App />
+      </ApolloHooksProvider>
     </ApolloProvider>
   );
 };
