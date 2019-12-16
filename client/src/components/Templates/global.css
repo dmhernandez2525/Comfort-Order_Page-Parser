@@ -1,6 +1,13 @@
 /*==================
       NAVBAR
 ====================*/
+.nav-cart{
+  width: 3%;
+  height: 35px;
+  background-color: darkorchid;
+  padding: 10px;
+  position: absolute;
+}
 .restaurant-nav{
 	left: 0;
 	right: 0;
@@ -48,6 +55,21 @@
   background-color: rgba(0, 0, 0, 0.8);
   padding: 10px 0;
 }
+
+.modal-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 8;
+  transition: all 0.3s;
+}
+
 /*==================
     HERO LANDING
 ====================*/

@@ -4,6 +4,8 @@ import Footer from "./footer";
 import placeholder from "./placeholder.jpg"
 import favicon from "./favicon.ico"
 import companyLogo from "./ComfortOrderLogo.png"
+import Modal from "../Features/modal"
+import { modalHOC } from "../apollo_hooks_hoc"
 import "./global.css"
 
 const token = process.env.REACT_APP_TOKEN
@@ -14,8 +16,10 @@ class Restaurant extends React.Component {
     super(props);
 
     this.state = {
-      transform: 0
+      modalBool: this.props.modalBool
+
     }  
+
     this.teleRef1 = React.createRef()
     this.teleRef2 = React.createRef()
     this.teleRef3 = React.createRef()
@@ -23,6 +27,7 @@ class Restaurant extends React.Component {
     this.teleRef5 = React.createRef()
 
     this.handleScroll = this.handleScroll.bind(this);
+    this.setStateModalCB = this.setStateModalCB.bind(this);
   }
 
   executeScroll = (ref) => window.scrollTo(0, ref.current.offsetTop) 
@@ -49,6 +54,10 @@ class Restaurant extends React.Component {
       }
 }
 
+  setStateModalCB(modalBool) {
+    this.setState({modalBool})
+  } 
+
   render(){
 
     return(
@@ -56,6 +65,7 @@ class Restaurant extends React.Component {
         <header className="restaurant-nav">
           <div id="navbar" className="navbar" role="navigation">
             <div className="container">
+              <div className="nav-cart" onClick={() => this.props.setModalCache(true, this.setStateModalCB)}> <Modal modal="cart" modalBool={this.props.modalBool} setParentModalBool={this.setStateModalCB}/> </div>
               <ul id="top-menu" className="navbar-nav navbar-right">
                 <li><a onClick={() => this.executeScroll(this.teleRef1)}>Option 1</a></li>
                 <li><a onClick={() => this.executeScroll(this.teleRef2)}>Option 2</a></li>                     
@@ -68,7 +78,7 @@ class Restaurant extends React.Component {
                 {/* <li><a href={`teleport-${this.props.navOption}`}>Option 7</a></li>  */}
                 {/* <li><a href={`teleport-${this.props.navOption}`}>Option 8</a></li>  */}
               </ul>
-            </div>                            
+            </div>                        
           </div>
         </header>
         <section id="restaurant-hero-section">
@@ -126,4 +136,4 @@ class Restaurant extends React.Component {
 }
 
 
-export default Restaurant
+export default modalHOC(Restaurant)
