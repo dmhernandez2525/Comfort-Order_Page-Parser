@@ -55,6 +55,8 @@ class Restaurant extends React.Component {
 }
 
   setStateModalCB(modalBool) {
+    // is invoked in HOC to cause React re-render 
+    // passed to child component so it can pass to HOC to then invoke
     this.setState({modalBool})
   } 
 
