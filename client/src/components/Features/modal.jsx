@@ -10,18 +10,13 @@ function Modal({modal, modalBool, setModalCache, setParentModalBool, match, hist
   }
   let component;
   switch (modal) {
-    // case 'login':
-    //   component = <LoginFormContainer />;
-    //   break;
-    // case 'signup':
-    //   component = <SignupFormContainer />;
-    //   break;
     case 'cart':
       component = <Cart />;
       break;
     default:
       return null;
   }
+  
   const modalFunc = (e) =>{
     e.stopPropagation()
     e.preventDefault()

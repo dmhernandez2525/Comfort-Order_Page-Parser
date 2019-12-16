@@ -12,6 +12,8 @@ class Cart extends React.Component {
 
     return(
     <div id="cart" className="cart" onClick={() => console.log("HELLO BB FROM CART")}>
+      <h1>WHAT IT DOOOOOOO BB </h1>
+      <h1>-Cart</h1>
       <ul id="top-menu" className="cart-nav cart-right">
         
       </ul>                            
