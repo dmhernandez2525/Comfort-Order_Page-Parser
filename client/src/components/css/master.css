@@ -1,0 +1,82 @@
+.all-businesses{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.single-business {
+    margin: 5vw;
+}
+.single-business, ul {
+
+}
+
+.main-all-sites{
+    text-align: center;
+    font-size: xx-large;
+}
+
+.main-all-bus-users {
+    text-align: center;
+    font-size: xx-large;
+    margin: 6vh;
+}
+
+.main-make-business {
+    text-align: center;
+    font-size: xx-large;
+    margin: 6vh;
+}
+
+.main-make-user{
+    text-align: center;
+    font-size: xx-large;
+    margin: 6vh;
+}
+
+.create-business-site{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.new-site-data{
+    height: 20%;
+    width: 30%;
+    margin: 1vw;
+}
+
+.new-user-data {
+    height: 20%;
+    width: 30%;
+    margin: 1vw;
+}
+
+.make-business-user{
+    height: 30vh;
+    display: flex;
+    align-items: center;
+}
+
+
+.format-make-site{
+}
+
+.new-site-data-div{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+}
+
+.business-user-holders{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2vh;
+    align-items: center;
+}
+
+.business-user-holders > h1{
+    margin: 8px;
+    font-size: larger;
+}

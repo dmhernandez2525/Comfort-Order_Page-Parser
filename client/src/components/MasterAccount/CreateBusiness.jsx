@@ -3,6 +3,7 @@ import { Mutation } from "react-apollo";
 import { withRouter } from 'react-router-dom';
 import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
+import "../css/master.css";
 const { CREATE_BUSINESS } = Mutations;
 const { FETCH_BUSINESS } = Queries;
 
@@ -49,8 +50,7 @@ class CreateBusiness extends Component {
         {(makeBusiness, { loading, error,data }) => {
             if(error) return(<div>{error.networkError.message}</div>)
             return (                
-                <div>
-                <h1> create a new site </h1>
+                <div className="format-make-site">
                     <form onSubmit={e => {
                         e.preventDefault();
                         makeBusiness({
@@ -70,81 +70,91 @@ class CreateBusiness extends Component {
                             }
                         });
                     }}>
-                    <div >
-                        <input
+                        <div className="create-business-site" >
+                        <input className="new-site-data"
                             onChange={this.update("name")}
                             value={this.state.name}
                             placeholder="Name"
                         />
-                        <input
+                        <input className="new-site-data"
                             onChange={this.update("map")}
                             value={this.state.map}
                             placeholder="map"
                         />
-                        <input
+                        <input className="new-site-data"
                             onChange={this.update("url")}
                             value={this.state.url}
                             placeholder="url"
                         />
-                        <input
+                        <input className="new-site-data"
                             type="tel"
                             onChange={this.update("phoneNumber")}
                             value={this.state.phoneNumber}
                             placeholder="phoneNumber"
                         />
-                        <input
+                        <input className="new-site-data"
                             onChange={this.update("address")}
                             value={this.state.address}
                             placeholder="address"
                         />
-                        <input
+                        <input className="new-site-data"
                             onChange={this.update("slogan")}
                             value={this.state.slogan}
                             placeholder="slogan"
                         />
                         {/* rfq days and hours */}
-                        <input
+                        <input className="new-site-data"
                             onChange={this.update("hours")}
                             value={this.state.hours}
                             placeholder="hours"
                         />
-                        <textarea
+                        <textarea className="new-site-data"
                             onChange={this.update("about")}
                             value={this.state.about}
                             placeholder="about"
                         />
-                        <input
+                        <input className="new-site-data"
                             onChange={this.update("name")}
                             value={this.state.name}
                             placeholder="Name"
                         />
-                        <input 
+                        
+                         <input 
+                            className="new-site-data"
                             onChange={this.update("userId")}
                             value={this.state.userId}
                             placeholder="userId"
                         />
                         {/* rfq  Needs to be dinamic do a quirey */}
-                        <select 
-                            value={this.state.template}
-                            onChange={this.update("template")}>
-                            <option defaultValue>template</option>
-                            <option value="Restaurant">Restaurant</option>
-                        </select>
-                        {/* rfq  Needs to be dinamic do a quirey */}
-                        <select 
-                            value={this.state.features}
-                            onChange={this.update("features")}>
-                            <option defaultValue>features</option>
-                            <option value="Order">Order</option>
-                            <option value="Booking">Booking</option>
-                        </select>
+                        
+                        <div className="new-site-data-div">
+                            <select 
+                                className="new-site-data"
+                                value={this.state.template}
+                                onChange={this.update("template")}>
+                                <option defaultValue>template</option>
+                                <option value="Restaurant">Restaurant</option>
+                            </select>
+                            {/* rfq  Needs to be dinamic do a quirey */}
+                            
+                            <select 
+                                className="new-site-data"
+                                value={this.state.features}
+                                onChange={this.update("features")}>
+                                <option defaultValue>features</option>
+                                <option value="Order">Order</option>
+                                <option value="Booking">Booking</option>
+                            </select>
 
-                        <select 
-                            value={this.state.businessData}
-                            onChange={this.update("businessData")}>
-                            <option defaultValue>businessData</option>
-                            <option value="About me">About me</option>
-                        </select>
+                            
+                            <select 
+                                className="new-site-data"
+                                value={this.state.businessData}
+                                onChange={this.update("businessData")}>
+                                <option defaultValue>businessData</option>
+                                <option value="About me">About me</option>
+                            </select>
+                        </div>
                         <button  type="submit">Create Site</button>
                     </div>
                 </form>
