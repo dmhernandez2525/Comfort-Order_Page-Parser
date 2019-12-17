@@ -23,7 +23,11 @@ class CreateBusiness extends Component {
     about: "",
     template: "",
     userId: "",
-    features: "",
+    feature1: "",
+    feature2: "",
+    feature3: "",
+    feature4: "",
+    feature5: "",
     businessData: "",
     };
     this.updateCache = this.updateCache.bind(this)
@@ -65,7 +69,7 @@ class CreateBusiness extends Component {
                                 about: this.state.about,
                                 template: this.state.template,
                                 userId: this.state.userId,
-                                features: [this.state.features],
+                                features: [this.state.feature1, this.state.feature2, this.state.feature3, this.state.feature4, this.state.feature5],
                                 businessData: [this.state.businessData],
                             }
                         });
@@ -139,11 +143,52 @@ class CreateBusiness extends Component {
                             
                             <select 
                                 className="new-site-data"
-                                value={this.state.features}
-                                onChange={this.update("features")}>
-                                <option defaultValue>features</option>
+                                value={this.state.feature1}
+                                onChange={this.update("feature1")}>
+                                <option defaultValue>Feature One</option>
                                 <option value="Order">Order</option>
                                 <option value="Booking">Booking</option>
+                                <option value="Three Pic Slider">Three Pic</option>
+                            </select>
+
+                            <select 
+                                className="new-site-data"
+                                value={this.state.feature2}
+                                onChange={this.update("feature2")}>
+                                <option defaultValue>Feature Two</option>
+                                <option value="Order">Order</option>
+                                <option value="Booking">Booking</option>
+                                <option value="Three Pic Slider">Three Pic</option>
+                            </select>
+
+                            <select 
+                                className="new-site-data"
+                                value={this.state.feature3}
+                                onChange={this.update("feature3")}>
+                                <option defaultValue>Feature Three</option>
+                                <option value="Order">Order</option>
+                                <option value="Booking">Booking</option>
+                                <option value="Three Pic Slider">Three Pic</option>
+                            </select>
+
+                            <select 
+                                className="new-site-data"
+                                value={this.state.feature4}
+                                onChange={this.update("feature4")}>
+                                <option defaultValue>Feature Four</option>
+                                <option value="Order">Order</option>
+                                <option value="Booking">Booking</option>
+                                <option value="Three Pic Slider">Three Pic</option>
+                            </select>
+
+                            <select 
+                                className="new-site-data"
+                                value={this.state.feature5}
+                                onChange={this.update("feature5")}>
+                                <option defaultValue>Feature Five</option>
+                                <option value="Order">Order</option>
+                                <option value="Booking">Booking</option>
+                                <option value="Three Pic Slider">Three Pic</option>
                             </select>
 
                             
