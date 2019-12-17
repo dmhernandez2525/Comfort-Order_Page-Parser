@@ -22,6 +22,13 @@ const BusinessType = new GraphQLObjectType({
     features: { type:  new GraphQLList(GraphQLString) },
     template: { type: GraphQLString },
     name: { type: GraphQLString },
+    map: { type: GraphQLString },
+    url: { type: GraphQLString },
+    phoneNumber: { type: GraphQLString },
+    address: { type: GraphQLString },
+    slogan: { type: GraphQLString },
+    hours: { type: GraphQLString },
+    about: { type: GraphQLString },
     businessData: { type: new GraphQLList(GraphQLString) }
   })
 });

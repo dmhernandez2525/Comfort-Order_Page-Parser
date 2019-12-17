@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from 'react-router-dom';
 import AllBusiness from './AllBusiness';
+import AllBusinessUsers from './AllBusinessUsers';
 import CreateBusiness from './CreateBusiness';
 import MasterRegister from './MasterRegister';
 
@@ -22,6 +23,10 @@ class MasterLanding extends Component {
         <br/>
         <h1>AllBusiness</h1>
           <AllBusiness/>
+        <br/>
+        <br/>
+        <h1>AllBusiness</h1>
+          <AllBusinessUsers/>
         <br/>
         <br/>
         <h1>CreateBusiness</h1>

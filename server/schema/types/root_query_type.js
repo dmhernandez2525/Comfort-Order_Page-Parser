@@ -25,6 +25,12 @@ const RootQueryType = new GraphQLObjectType({
         return User.findById(args._id);
       }
     },
+    businessUsers: {
+      type: new GraphQLList(UserType),
+      resolve() {
+        return User.find({role: "Business"});
+      }
+    },
     business: {
       type: BusinessType,
       args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
@@ -32,10 +38,11 @@ const RootQueryType = new GraphQLObjectType({
         return Business.findById(args._id);
       }
     },
-    allBusiness: {
-      type: BusinessType,
+    businesses: {
+      type: new GraphQLList(BusinessType),
       resolve(_) {
-        return Business.find();
+        let allBusiness = Business.find({})
+        return allBusiness
       }
     }
   })

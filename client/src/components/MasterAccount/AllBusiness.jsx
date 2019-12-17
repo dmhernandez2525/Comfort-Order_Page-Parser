@@ -17,7 +17,6 @@ class AllBusiness extends Component {
   }
   
   updateCache(client, { data }) {
-    
     client.writeData({
       data: { site: data.FetchAllBusiness }
     });
@@ -28,25 +27,25 @@ class AllBusiness extends Component {
       <Query
         query={FETCH_All_BUSINESS}
         update={(cache, data) => this.updateCache(cache, data)}
-        onCompleted={
-            (cache, data) => {
-                
-            }
-        }
+        onCompleted={(cache, data) => {}}
       >
-            {({ loading, error,data }) => {
-                if(error){
-                    
-                    return(
-                        <div>{error.networkError.message}</div>
-                    )
-                }
-                return (                
-                <div></div>
-                )
-
-            }}
-        </Query>
+          {({ loading, error,data }) => {
+              if(error){return(<div>{error.networkError.message}</div>)}
+              else if (loading){return(<div>loading</div>)}
+              // rfq Make a Business index 
+              // let fealds = [_id, user, features, template, name, map, url, phoneNumber, address, slogan, hours, about, businessData]
+              let allBusinesses = data.businesses.map(business => {
+                return <li key={business._id}>{`${business.name}: ${business._id}`}<a href={business.name}>Url</a> </li>
+              })
+              return (                
+                <div>
+                    <ul>
+                      {allBusinesses}
+                    </ul>
+                </div>
+              )
+          }}
+      </Query>
     );
   }
 }

@@ -5,6 +5,28 @@ const BusinessSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "user"
     },
+    map: {
+        type: String
+    },
+    url: {
+        type: String,
+        required: true
+    },
+    phoneNumber: {
+        type: String
+    },
+    address: {
+        type: String
+    },
+    slogan: {
+        type: String
+    },
+    hours: {
+        type: String
+    },
+    about: {
+        type: String
+    },
     name: {
         type: String,
         required: true

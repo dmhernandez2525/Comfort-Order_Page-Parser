@@ -27,16 +27,49 @@ export default {
     }
   `,
     CREATE_BUSINESS: gql `
-    mutation CreateBusiness($name: String!, $userId: ID!, $features: [String], $template: String!, $businessData: [String]) {
-      makeBusiness(name: $name, userId: $userId, features: $features, template: $template,businessData:$businessData ) {
-        _id
-        user{
-          email
+      mutation CreateBusiness(
+        $name: String!,
+        $map: String!,
+        $url: String!,
+        $phoneNumber: String!,
+        $address: String!,
+        $slogan: String!,
+        $hours: String!,
+        $about: String!,
+        $userId: ID!,
+        $features: [String], 
+        $template: String!, 
+        $businessData: [String]) {
+        makeBusiness(
+          name: $name,
+          map: $map,
+          url: $url,
+          phoneNumber: $phoneNumber,
+          address: $address,
+          slogan: $slogan,
+          hours: $hours,
+          about: $about,
+          userId: $userId,
+          features: $features,
+          template: $template,
+          businessData:$businessData 
+          ){
+            _id
+            user{
+              email
+            }
+            features
+            template
+            businessData
+            name
+            map
+            url
+            phoneNumber
+            address
+            slogan
+            hours
+            about
         }
-        features
-        template
-        businessData
       }
-    }
   `,
 }
