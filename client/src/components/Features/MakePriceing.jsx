@@ -3,15 +3,11 @@ import React from "react";
 class MakePriceing extends React.Component  {
   constructor(props){
     super(props)
-
-
     this.state = {
       rows: [],
-      // rows:[this.row],
       rowValues:[]
     }
     this.createRow = this.createRow.bind(this)
-    // this.row = this.createRow()
     this.pricingBoxCreate = this.pricingBoxCreate.bind(this)
     this.handleFeatureSubmit = this.props.handleFeatureSubmit
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -21,15 +17,23 @@ class MakePriceing extends React.Component  {
   createRow(){
     debugger
     let counter = this.state.rows.length
+    this.setState(state => {
+      const list = state.rowValues.concat({counter:{[`input1${counter}`]:0,[`input2${counter}`]:0}});
+      debugger
+      return {
+        rowValues: list
+      };
+    })
+
     return (
       <div>
         <input className="new-site-data"
-          onChange={this.update(`input1${counter}`)}
+          onChange={this.update(counter,`input1${counter}`)}
+          value={this.state.rowValues.counter}
           placeholder="Name"
         />
-
         <input className="new-site-data"
-          onChange={this.update(`input2${counter}`)}
+          onChange={this.update(counter,`input2${counter}`)}
           placeholder="Name"
         />
 
@@ -37,23 +41,37 @@ class MakePriceing extends React.Component  {
     )
   }
 
-  pricingBoxCreate(defaultValue){
-    // e.preventdefault
+  pricingBoxCreate(){
     this.setState(state =>{
       const list = state.rows.concat(this.createRow());
-      // const list = state.rows.concat(this.row);
       debugger
       return {
         rows:list
       }; 
     })
   }
+
   handleSubmit(){
     debugger
     this.handleFeatureSubmit(this.state.rows)
   }
-  update(field) {
-    return e => this.setState({ [field]: e.target.value });
+
+  update(priceSec,field) {
+    return e => {
+      e.persist()
+        this.setState( state => { 
+        debugger
+        let newState = Object.assign({},state)
+        let newPrice = priceSec
+        let newField = field
+        debugger
+        newState.rowValues[newPrice].counter[newField] =  e.target.value
+        return{
+          rowValues:newState.rowValues
+        }
+      })}
+
+
   }
 // EXAMPLE INPUT
 //   data:{
@@ -105,7 +123,6 @@ class MakePriceing extends React.Component  {
           <input type="submit"/>
         </form>
         <button onClick={e => this.pricingBoxCreate()}>Add More Pricing options</button>
-
     </div>
     )
   }
