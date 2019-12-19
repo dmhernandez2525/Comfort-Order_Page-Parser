@@ -12,7 +12,6 @@ const { FETCH_BUSINESS } = Queries;
 class CreateBusiness extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
         name: "",
         map: "",
@@ -24,7 +23,7 @@ class CreateBusiness extends Component {
         about: "",
         template: "",
         userId: "",
-        feature1: {co:"",form:""},
+        feature1: {co:"",form:"",return:""},
         feature2: "",
         feature3: "",
         feature4: "",
@@ -39,12 +38,13 @@ class CreateBusiness extends Component {
             Order:"a",
             Booking:"a",
             ThreePicSlider:"a",
-            Pricing:<Pricing handleFeatureSubmit={ this.handleFeatureSubmit } ref={this.tete} />
+            Pricing: <Pricing handleFeatureSubmit={this.handleFeatureSubmit} feature={"feature1"} ref={this.tete} />
         }
 
     }
 
     update(field) {
+        
         return e => this.setState({ [field]: e.target.value });
     }
     
@@ -54,9 +54,11 @@ class CreateBusiness extends Component {
         });
     }  
 
-    handleFeatureSubmit(data){
-        // this.tete.current.pricingBoxCreate()
+    handleFeatureSubmit(feature,data){
+        let newFeature = Object.assign({}, this.state[feature])
+        newFeature.return = data
         debugger
+        this.setState({ [feature]: newFeature })
     }
     updateFeature(field) {
         return (e) => {
@@ -99,7 +101,8 @@ class CreateBusiness extends Component {
                                     about: this.state.about,
                                     template: this.state.template,
                                     userId: this.state.userId,
-                                    features: [this.state.feature1, this.state.feature2, this.state.feature3, this.state.feature4, this.state.feature5],
+                                    // features: [this.state.feature1, this.state.feature2, this.state.feature3, this.state.feature4, this.state.feature5],
+                                    features: [this.state.feature1],
                                     businessData: [this.state.businessData],
                                 }
                             });
@@ -237,8 +240,6 @@ class CreateBusiness extends Component {
                     </form>
                         <div>
                             {this.state.feature1.form}
-                            {/* <button onClick={e => this.handleFeatureSubmit(this.state.feature1.form)}>Add More Pricing options</button> */}
-
                         </div>
                 </div>
             )}}

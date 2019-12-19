@@ -15,11 +15,9 @@ class MakePriceing extends React.Component  {
   }
 
   createRow(){
-    debugger
     let counter = this.state.rows.length
     this.setState(state => {
-      const list = state.rowValues.concat({counter:{[`input1${counter}`]:0,[`input2${counter}`]:0}});
-      debugger
+      const list = state.rowValues.concat({counter:{[`name${counter}`]:0,[`price${counter}`]:0,[`details${counter}`]:0}});
       return {
         rowValues: list
       };
@@ -28,13 +26,19 @@ class MakePriceing extends React.Component  {
     return (
       <div>
         <input className="new-site-data"
-          onChange={this.update(counter,`input1${counter}`)}
+          onChange={this.update(counter,`name${counter}`)}
           value={this.state.rowValues.counter}
           placeholder="Name"
         />
+
         <input className="new-site-data"
-          onChange={this.update(counter,`input2${counter}`)}
-          placeholder="Name"
+          onChange={this.update(counter,`price${counter}`)}
+          placeholder="Price"
+        />
+
+        <input className="new-site-data"
+          onChange={this.update(counter,`details${counter}`)}
+          placeholder="Details"
         />
 
       </div>
@@ -44,7 +48,6 @@ class MakePriceing extends React.Component  {
   pricingBoxCreate(){
     this.setState(state =>{
       const list = state.rows.concat(this.createRow());
-      debugger
       return {
         rows:list
       }; 
@@ -53,18 +56,22 @@ class MakePriceing extends React.Component  {
 
   handleSubmit(){
     debugger
-    this.handleFeatureSubmit(this.state.rows)
+    let returnState = this.state.rowValues.map(obj => { 
+      let dets = Object.keys(obj.counter)[2]
+      let newFormat = obj.counter[dets].split("/")
+      obj.counter[dets] = newFormat
+      return obj
+    })
+    this.handleFeatureSubmit(this.props.feature, returnState)
   }
 
   update(priceSec,field) {
     return e => {
       e.persist()
         this.setState( state => { 
-        debugger
         let newState = Object.assign({},state)
         let newPrice = priceSec
         let newField = field
-        debugger
         newState.rowValues[newPrice].counter[newField] =  e.target.value
         return{
           rowValues:newState.rowValues
