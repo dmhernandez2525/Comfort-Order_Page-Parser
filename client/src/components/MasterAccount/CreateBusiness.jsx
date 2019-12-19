@@ -38,7 +38,7 @@ class CreateBusiness extends Component {
             Order:"a",
             Booking:"a",
             ThreePicSlider:"a",
-            Pricing: <Pricing handleFeatureSubmit={this.handleFeatureSubmit} feature={"feature1"} ref={this.tete} />
+            Pricing: <Pricing handleFeatureSubmit={(a,b) => this.handleFeatureSubmit(a,b)} feature={"feature1"}  />
         }
 
     }
@@ -56,9 +56,12 @@ class CreateBusiness extends Component {
 
     handleFeatureSubmit(feature,data){
         let newFeature = Object.assign({}, this.state[feature])
+        let oldFeature = Object.assign({}, this.state[feature])
         newFeature.return = data
         debugger
         this.setState({ [feature]: newFeature })
+        debugger
+        alert(`OLD:${JSON.stringify(oldFeature.return)} vs NEW:${JSON.stringify(newFeature.return)} `);
     }
     updateFeature(field) {
         return (e) => {
@@ -84,11 +87,15 @@ class CreateBusiness extends Component {
             onCompleted={(cache, data) => {}}
         >
             {(makeBusiness, { loading, error,data }) => {
-                if(error) return(<div>{error.networkError.message}</div>)
+                if(error) {
+                    debugger
+                    return (<div>{error.networkError.message}</div>)
+                }
                 return (                
                     <div className="format-make-site">
                         <form onSubmit={e => {
                             e.preventDefault();
+                            debugger
                             makeBusiness({
                                 variables: {
                                     name: this.state.name,
@@ -102,7 +109,7 @@ class CreateBusiness extends Component {
                                     template: this.state.template,
                                     userId: this.state.userId,
                                     // features: [this.state.feature1, this.state.feature2, this.state.feature3, this.state.feature4, this.state.feature5],
-                                    features: [this.state.feature1],
+                                    features: [JSON.stringify({[this.state.feature1.co]:this.state.feature1.return})],
                                     businessData: [this.state.businessData],
                                 }
                             });
@@ -150,11 +157,6 @@ class CreateBusiness extends Component {
                                 value={this.state.about}
                                 placeholder="about"
                             />
-                            <input className="new-site-data"
-                                onChange={this.update("name")}
-                                value={this.state.name}
-                                placeholder="Name"
-                            />
                             
                             <input 
                                 className="new-site-data"
@@ -174,57 +176,64 @@ class CreateBusiness extends Component {
                                 </select>
                                 {/* rfq  Needs to be dinamic do a quirey */}
                                 
-                                <select 
-                                    className="new-site-data"
-                                    value={this.state.feature1.co}
-                                    onChange={this.updateFeature("feature1")}>
-                                    <option defaultValue>Feature One</option>
-                                    <option value="Order">Order</option>
-                                    <option value="Booking">Booking</option>
-                                    <option value="Three Pic Slider">Three Pic</option>
-                                    <option value="Pricing">Pricing</option>
-                                </select>
+
+                                {/* THIS IS THE START OF THE FEATURES */}
+                                <div>
+
+                                    <select 
+                                        className="new-site-data"
+                                        value={this.state.feature1.co}
+                                        onChange={this.updateFeature("feature1")}>
+                                        <option defaultValue>Feature One</option>
+                                        <option value="Order">Order</option>
+                                        <option value="Booking">Booking</option>
+                                        <option value="Three Pic Slider">Three Pic</option>
+                                        <option value="Pricing">Pricing</option>
+                                    </select>
 
 
-                                <select 
-                                    className="new-site-data"
-                                    value={this.state.feature2}
-                                    onChange={this.update("feature2")}>
-                                    <option defaultValue>Feature Two</option>
-                                    <option value="Order">Order</option>
-                                    <option value="Booking">Booking</option>
-                                    <option value="Three Pic Slider">Three Pic</option>
-                                </select>
+                                    {/* <select 
+                                        className="new-site-data"
+                                        value={this.state.feature2}
+                                        onChange={this.update("feature2")}>
+                                        <option defaultValue>Feature Two</option>
+                                        <option value="Order">Order</option>
+                                        <option value="Booking">Booking</option>
+                                        <option value="Three Pic Slider">Three Pic</option>
+                                    </select>
 
-                                <select 
-                                    className="new-site-data"
-                                    value={this.state.feature3}
-                                    onChange={this.update("feature3")}>
-                                    <option defaultValue>Feature Three</option>
-                                    <option value="Order">Order</option>
-                                    <option value="Booking">Booking</option>
-                                    <option value="Three Pic Slider">Three Pic</option>
-                                </select>
+                                    <select 
+                                        className="new-site-data"
+                                        value={this.state.feature3}
+                                        onChange={this.update("feature3")}>
+                                        <option defaultValue>Feature Three</option>
+                                        <option value="Order">Order</option>
+                                        <option value="Booking">Booking</option>
+                                        <option value="Three Pic Slider">Three Pic</option>
+                                    </select>
 
-                                <select 
-                                    className="new-site-data"
-                                    value={this.state.feature4}
-                                    onChange={this.update("feature4")}>
-                                    <option defaultValue>Feature Four</option>
-                                    <option value="Order">Order</option>
-                                    <option value="Booking">Booking</option>
-                                    <option value="Three Pic Slider">Three Pic</option>
-                                </select>
+                                    <select 
+                                        className="new-site-data"
+                                        value={this.state.feature4}
+                                        onChange={this.update("feature4")}>
+                                        <option defaultValue>Feature Four</option>
+                                        <option value="Order">Order</option>
+                                        <option value="Booking">Booking</option>
+                                        <option value="Three Pic Slider">Three Pic</option>
+                                    </select>
 
-                                <select 
-                                    className="new-site-data"
-                                    value={this.state.feature5}
-                                    onChange={this.update("feature5")}>
-                                    <option defaultValue>Feature Five</option>
-                                    <option value="Order">Order</option>
-                                    <option value="Booking">Booking</option>
-                                    <option value="Three Pic Slider">Three Pic</option>
-                                </select>
+                                    <select 
+                                        className="new-site-data"
+                                        value={this.state.feature5}
+                                        onChange={this.update("feature5")}>
+                                        <option defaultValue>Feature Five</option>
+                                        <option value="Order">Order</option>
+                                        <option value="Booking">Booking</option>
+                                        <option value="Three Pic Slider">Three Pic</option>
+                                    </select> */}
+                                </div>
+
+                                {/* THIS IS THE END OF THE FEATURES */}
 
                                 
                                 <select 
