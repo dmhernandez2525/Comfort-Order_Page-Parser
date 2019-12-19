@@ -24,6 +24,7 @@ import DisplaySite from "./Business/DisplaySite";
 import Four0Four from "./ComfortOrder/Four0Four";
 import Splash from "./ComfortOrder/Splash";
 import FeatureTest from "./Features/FeatureTest";
+import Test from "./Features/MakePriceing";
 
 require('dotenv').config();
 
@@ -54,6 +55,7 @@ const App = () => {
           <Route exact path="/site/:id" component={DisplaySite} />
           <Route exact path="/restdummy" component={Restaurant} />
           <Route exact path="/featuretest" component={FeatureTest} />
+          <Route exact path="/test" component={Test} />
 
           {/* <AuthRoute exact path="/" component={BusinessLanding} routeType="Business"/> */}
           <Route exact path="/" component={Splash} />
