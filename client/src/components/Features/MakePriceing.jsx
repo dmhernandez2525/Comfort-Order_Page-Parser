@@ -3,33 +3,57 @@ import React from "react";
 class MakePriceing extends React.Component  {
   constructor(props){
     super(props)
-    this.row = (
+
+
+    this.state = {
+      rows: [],
+      // rows:[this.row],
+      rowValues:[]
+    }
+    this.createRow = this.createRow.bind(this)
+    // this.row = this.createRow()
+    this.pricingBoxCreate = this.pricingBoxCreate.bind(this)
+    this.handleFeatureSubmit = this.props.handleFeatureSubmit
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.update = this.update.bind(this)
+  }
+
+  createRow(){
+    debugger
+    let counter = this.state.rows.length
+    return (
       <div>
         <input className="new-site-data"
+          onChange={this.update(`input1${counter}`)}
           placeholder="Name"
         />
 
         <input className="new-site-data"
+          onChange={this.update(`input2${counter}`)}
           placeholder="Name"
         />
 
       </div>
     )
-    this.state = {
-      rows:[this.row]
-    }
-    this.pricingBoxCreate = this.pricingBoxCreate.bind(this)
-    this.handleFeatureSubmit = this.props.handleFeatureSubmit
   }
 
-  pricingBoxCreate(){
+  pricingBoxCreate(defaultValue){
+    // e.preventdefault
     this.setState(state =>{
-      const list = state.rows.concat(this.row);
+      const list = state.rows.concat(this.createRow());
+      // const list = state.rows.concat(this.row);
       debugger
       return {
         rows:list
       }; 
     })
+  }
+  handleSubmit(){
+    debugger
+    this.handleFeatureSubmit(this.state.rows)
+  }
+  update(field) {
+    return e => this.setState({ [field]: e.target.value });
   }
 // EXAMPLE INPUT
 //   data:{
@@ -74,23 +98,13 @@ class MakePriceing extends React.Component  {
 // }
 
   render(){
-    // let allInputs = this.state.rows.map
-    // let display = Object.values(this.data).map(plan =>{
-    //     let rowDetails = plan.details.map(detail => (
-    //         <li key={`${plan.name}:${detail}`}>{detail}</li>
-    //     ))
-    //     return(
-    //         <div key={plan.name}>
-    //         </div>
-    //     )
-    // })
     return(
     <div > 
-        <form onSubmit={this.handleFeatureSubmit(this.state.rows)}>
+        <form onSubmit={this.handleSubmit }>
           {this.state.rows}
           <input type="submit"/>
         </form>
-        <button  onClick={this.pricingBoxCreate}>Add More Pricing options</button>
+        <button onClick={e => this.pricingBoxCreate()}>Add More Pricing options</button>
 
     </div>
     )

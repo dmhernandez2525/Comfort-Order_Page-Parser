@@ -31,6 +31,7 @@ class CreateBusiness extends Component {
         feature5: "",
         businessData: "",
         };
+        this.tete = React.createRef();
         this.updateCache = this.updateCache.bind(this)
         this.handleFeatureSubmit = this.handleFeatureSubmit.bind(this)
         this.updateFeature = this.updateFeature.bind(this)
@@ -38,8 +39,9 @@ class CreateBusiness extends Component {
             Order:"a",
             Booking:"a",
             ThreePicSlider:"a",
-            Pricing:<Pricing handleFeatureSubmit = { this.handleFeatureSubmit } />
+            Pricing:<Pricing handleFeatureSubmit={ this.handleFeatureSubmit } ref={this.tete} />
         }
+
     }
 
     update(field) {
@@ -47,13 +49,13 @@ class CreateBusiness extends Component {
     }
     
     updateCache(client, { data }) {
-        
         client.writeData({
         data: { site: data.makeBusiness }
         });
     }  
 
-    handleFeatureSubmit(){
+    handleFeatureSubmit(data){
+        // this.tete.current.pricingBoxCreate()
         debugger
     }
     updateFeature(field) {
@@ -63,15 +65,10 @@ class CreateBusiness extends Component {
             this.setState(state => {
                 let a = aa
                 let newField = field;
-                // let a = state[newField]
-                // let newState = Object.assign({},a,aa)
                 debugger
                 return{
                     [newField]:a
                 }
-                debugger
-                //  [field.co]: e.target.value, [field.form]: <e.target.value handleFeatureSubmit={this.handleFeatureSubmit}/> 
-                
                 }
             );
         }
@@ -184,7 +181,7 @@ class CreateBusiness extends Component {
                                     <option value="Three Pic Slider">Three Pic</option>
                                     <option value="Pricing">Pricing</option>
                                 </select>
-                                    {this.state.feature1.form}
+
 
                                 <select 
                                     className="new-site-data"
@@ -238,6 +235,11 @@ class CreateBusiness extends Component {
                             <button  type="submit">Create Site</button>
                         </div>
                     </form>
+                        <div>
+                            {this.state.feature1.form}
+                            {/* <button onClick={e => this.handleFeatureSubmit(this.state.feature1.form)}>Add More Pricing options</button> */}
+
+                        </div>
                 </div>
             )}}
         </Mutation>
