@@ -19,6 +19,7 @@ class Restaurant extends React.Component {
       modalBool: this.props.modalBool
 
     } 
+    this.teleRefHome = React.createRef()
     this.teleRef1 = React.createRef()
     this.teleRef2 = React.createRef()
     this.teleRef3 = React.createRef()
@@ -91,6 +92,7 @@ class Restaurant extends React.Component {
               <div className="nav-cart" onClick={() => this.props.setModalCache(true, this.setStateModalCB)}> <Modal modal="cart" modalBool={this.props.modalBool} setParentModalBool={this.setStateModalCB}/> </div>
 
               <ul id="top-menu" className="navbar-nav navbar-right">
+                <li><a onClick={() => this.executeScroll(this.teleRefHome)}>Home</a></li>
                 {nav}
                 <li><a onClick={() => this.executeScroll(this.teleRefContact)}>Contact</a></li>
                 <li><a onClick={() => this.executeScroll(this.teleRefSocal)}>Socal</a></li>
@@ -99,18 +101,21 @@ class Restaurant extends React.Component {
             </div>                        
           </div>
         </header>
-        <section id="restaurant-hero-section">
-          <div className="hero-photo-sizing">
-            <div className="landing-photo-container">
-              <img src={placeholder}/>
-              <div className="top-hero-content">
-                <span className="small-hero-title">Welcome</span>
-                <h2 className="hero-title">Lorem Ipsum</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque voluptatem accusamus non quidem, deleniti optio.</p>           
+
+        <div id="teleport-Home" className="feature" ref={this.teleRefHome}>
+          <section id="restaurant-hero-section">
+            <div className="hero-photo-sizing">
+              <div className="landing-photo-container">
+                <img src={placeholder}/>
+                <div className="top-hero-content">
+                  <span className="small-hero-title">Welcome</span>
+                  <h2 className="hero-title">Lorem Ipsum</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque voluptatem accusamus non quidem, deleniti optio.</p>           
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
 
         {display}
 
