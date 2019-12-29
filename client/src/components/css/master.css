@@ -82,7 +82,7 @@
     font-size: larger;
 }
 
-#FeatureOneDiv{
+.FeatureDiv{
     display: flex;
     height: fit-content;
     flex-direction: column;
@@ -92,13 +92,13 @@
 }
 
 
-#FeatureOne {
+.FeatureNum {
     width: fit-content;
     height: fit-content;
     background-color: #CCCCCC;
 }
 
-#FeatureOneDynamic {
+.FeatureDynamic {
     display: flex;
     align-items: center;
     flex-direction: column;

@@ -23,6 +23,8 @@ class CreateBusiness extends Component {
         about: "",
         template: "",
         userId: "",
+        allFeatures:[],
+        allFeaturesValues:[],
         feature1: {co:"",form:"",return:""},
         feature2: "",
         feature3: "",
@@ -39,9 +41,60 @@ class CreateBusiness extends Component {
             Booking:"a",
             ThreePicSlider:"a",
             Pricing: <Pricing handleFeatureSubmit={(a,b) => this.handleFeatureSubmit(a,b)} feature={"feature1"}  />
-        }
+        };
+        this.CreateFeatureOption = this.CreateFeatureOption.bind(this);
+        this.CreateFeature = this.CreateFeature.bind(this);
 
     }
+
+
+
+    CreateFeatureOption(){
+        this.setState(state => {
+            const listOfAllFeatures = state.allFeatures(this.CreateFeature());
+            return {
+                features: listOfAllFeatures
+            };
+        })
+    }
+
+    CreateFeature(){
+        let all = this.state.allFeatures.length
+        debugger
+        this.setState(state => {
+        const list = state.allFeaturesValues.concat({ [all]:{co:"",form:"",return:""}});
+        return {
+            allFeaturesValues: list
+        };
+        })
+
+        return (
+            <div
+                key={`Feature${all}`}
+                onSubmit={e => { e.preventDefault(); }}
+                className="FeatureDiv">
+                <select
+                    className="new-site-data FeatureNum"
+                    value={this.state.allFeaturesValues[all].co}
+                    onChange={this.updateFeature(`feature${all}`)}>
+                    <option defaultValue>{`Feature ${all}`} </option>
+                    <option value="Order">Order</option>
+                    <option value="Booking">Booking</option>
+                    <option value="Three Pic Slider">Three Pic</option>
+                    <option value="Pricing">Pricing</option>
+                </select>
+
+                <div className="FeatureDynamic">
+                    <h1> {`Feature ${all}`} </h1>
+                    {this.state.feature1.form}
+                </div>
+            </div>
+        )
+    }
+
+
+
+
     componentDidMount(){
         // let FeatureOne = document.getElementById("FeatureOne")
         // let FeatureOneDynamic = document.getElementById("FeatureOneDynamic")
@@ -192,15 +245,15 @@ class CreateBusiness extends Component {
                         </form>
 
                             {/* rfq  Needs to be dinamic do a quirey */}
+                            <button onClick={e => this.CreateFeatureOption()}>Add More Feature Option</button>
                             {/* THIS IS THE START OF THE FEATURES */}
                             <div>
-
+                                {this.state.allFeatures}
                                 <div
                                     onSubmit={e => { e.preventDefault(); }}
-                                    id="FeatureOneDiv">
+                                    className="FeatureOneDiv">
                                     <select
                                         className="new-site-data FeatureOne"
-                                        id="FeatureOne"
                                         value={this.state.feature1.co}
                                         onChange={this.updateFeature("feature1")}>
                                         <option defaultValue>Feature One</option>
@@ -210,7 +263,7 @@ class CreateBusiness extends Component {
                                         <option value="Pricing">Pricing</option>
                                     </select>
 
-                                    <div id="FeatureOneDynamic">
+                                    <div className="FeatureOneDynamic">
                                         <h1> Feature One </h1>
                                         {this.state.feature1.form}
                                     </div>
