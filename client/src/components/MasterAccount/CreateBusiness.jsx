@@ -62,10 +62,9 @@ class CreateBusiness extends Component {
         let oldFeature = Object.assign({}, this.state.allFeaturesValues[feature])
         let dupFeature = [...this.state.allFeaturesValues]
         debugger
-        let all = { co: this.state.divs[feature].props.returnType, form: this.state.divs[feature], return: data }
+        let all = { co: this.state.divs[feature].props.returnType, form: this.state.divs[feature], return: data, num: feature}
         dupFeature.splice(feature, 1, all);
-        // let newFeature = Object.assign({}, this.state[feature])
-        // let oldFeature = Object.assign({}, this.state[feature])
+
         newFeature.return = data
         this.setState({ allFeaturesValues: dupFeature })
         alert(`OLD:${JSON.stringify(oldFeature.return)} vs NEW:${JSON.stringify(newFeature.return)} `);
@@ -100,7 +99,7 @@ class CreateBusiness extends Component {
     CreateFeature(){
         let all = this.state.allFeatures.length
         this.setState( state =>  {
-        const list = state.allFeaturesValues.concat({ [all]:{co:"",form:"",return:""}});
+        const list = state.allFeaturesValues.concat({ [all]:{co:"",form:"",return:"",num:all}});
         return {
             allFeaturesValues: list
         };
@@ -208,7 +207,6 @@ class CreateBusiness extends Component {
                                         template: this.state.template,
                                         userId: this.state.userId,
                                         features: endFeatures,
-                                        // features: [JSON.stringify({[this.state.feature1.co]:this.state.feature1.return})],
                                         businessData: [this.state.businessData],
                                     }
                                 });

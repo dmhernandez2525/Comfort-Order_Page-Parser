@@ -4,11 +4,8 @@ import Footer from "./footer";
 import placeholder from "./placeholder.jpg"
 import favicon from "./favicon.ico"
 import companyLogo from "./ComfortOrderLogo.png"
-
-// START OF ALL THE FEATURES
 import Modal from "../Features/modal"
-import Pricing from "../Features/Pricing";
-// END OF ALL THE FEATURES
+
 
 
 import { modalHOC } from "../apollo_hooks_hoc"
@@ -26,9 +23,6 @@ class Restaurant extends React.Component {
 
     } 
 
-    this.allFeatures = {
-      "Pricing": <Pricing data={this.props.features["Pricing"]}/>
-    } 
 
     this.teleRef1 = React.createRef()
     this.teleRef2 = React.createRef()
@@ -72,17 +66,6 @@ class Restaurant extends React.Component {
 
   render(){
     debugger
-    let idkk;
-    idkk = this.allFeatures["Pricing"]
-    debugger
-    // let featureCom = Object.keys(this.props.features).map(fe => {
-    // // let featureCom = Object.keys(this.props.features).map(fe => {
-    //   let re = this.allFeatures[fe] 
-    //   idkk = ree
-    //   debugger
-    //   return ree
-    // })
-    // debugger
     return(
       <div className="restaurant template">
         <header className="restaurant-nav">
@@ -120,9 +103,9 @@ class Restaurant extends React.Component {
         <div id="teleport-option1" className="feature" ref={this.teleRef1}>
           <div className="container feature-display black">
             <h2 className="hero-title">Feature 1</h2>
+            {this.props.features.feature1}
           </div>
         </div>
-            {idkk}
 
         <div id="teleport-option2" className="feature" ref={this.teleRef2}>
           <div className="container feature-display ">
