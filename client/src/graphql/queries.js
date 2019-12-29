@@ -19,8 +19,33 @@ export default {
   `,
   FETCH_All_BUSINESS: gql`
     query FetchAllBusiness {
+        businesses{
+          _id
+          user{
+            _id
+            email
+          }
+          features
+          template
           name
+          map
+          url
+          phoneNumber
+          address
+          slogan
+          hours
+          about
           businessData
+        }
+    }
+  `,
+  FETCH_All_BUSINESS_USERS: gql`
+    query FetchAllBusinessUsers {
+        businessUsers{
+          _id
+          email
+          name
+        }
     }
   `
 }

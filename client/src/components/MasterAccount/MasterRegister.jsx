@@ -41,7 +41,7 @@ class MasterRegister extends Component {
         {registerUser => (
           <div>
             <h1>{this.state.messege}</h1>
-            <form
+            <form className="make-business-user"
               onSubmit={e => {
                 e.preventDefault();
                 registerUser({
@@ -54,23 +54,23 @@ class MasterRegister extends Component {
                 });
               }}
             >
-              <input
+              <input className="new-user-data" 
                 value={this.state.name}
                 onChange={this.update("name")}
                 placeholder="name"
               />
-              <input
+              <input className="new-user-data"
                 value={this.state.email}
                 onChange={this.update("email")}
                 placeholder="Email"
               />
-              <input
+              <input className="new-user-data"
                 value={this.state.password}
                 onChange={this.update("password")}
                 type="password"
                 placeholder="Password"
               />
-              <select
+              <select className="new-user-data"
                 value={this.state.role}
                 onChange={this.update("role")}>
                 <option defaultValue>role</option>
