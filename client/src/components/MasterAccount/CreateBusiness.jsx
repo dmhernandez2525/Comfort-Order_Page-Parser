@@ -27,11 +27,6 @@ class CreateBusiness extends Component {
         allFeaturesDisplay:[],
         allFeaturesValues:[],
         divs:[],
-        feature1: {co:"",form:"",return:""},
-        feature2: "",
-        feature3: "",
-        feature4: "",
-        feature5: "",
         businessData: "",
         };
         this.tete = React.createRef();
@@ -42,10 +37,12 @@ class CreateBusiness extends Component {
             Order:"a",
             Booking:"a",
             ThreePicSlider:"a",
-            Pricing: <Pricing handleFeatureSubmit={(a,b) => this.handleFeatureSubmit(a,b)} feature={"feature1"}  />
+            Pricing: <Pricing returnType={"Pricing"} handleFeatureSubmit={(a,b) => this.handleFeatureSubmit(a,b)} feature={this.state.allFeatures.length}  />
+            // Pricing: <Pricing handleFeatureSubmit={(a,b) => this.handleFeatureSubmit(a,b)} feature={"feature1"}  />
         };
         this.CreateFeatureOption = this.CreateFeatureOption.bind(this);
         this.CreateFeature = this.CreateFeature.bind(this);
+        this.handleMainSubmit = this.handleMainSubmit.bind(this);
 
     }
 
@@ -61,10 +58,16 @@ class CreateBusiness extends Component {
     }  
 
     handleFeatureSubmit(feature,data){
-        let newFeature = Object.assign({}, this.state[feature])
-        let oldFeature = Object.assign({}, this.state[feature])
+        let newFeature = Object.assign({}, this.state.allFeaturesValues[feature])
+        let oldFeature = Object.assign({}, this.state.allFeaturesValues[feature])
+        let dupFeature = [...this.state.allFeaturesValues]
+        debugger
+        let all = { co: this.state.divs[feature].props.returnType, form: this.state.divs[feature], return: data }
+        dupFeature.splice(feature, 1, all);
+        // let newFeature = Object.assign({}, this.state[feature])
+        // let oldFeature = Object.assign({}, this.state[feature])
         newFeature.return = data
-        this.setState({ [feature]: newFeature })
+        this.setState({ allFeaturesValues: dupFeature })
         alert(`OLD:${JSON.stringify(oldFeature.return)} vs NEW:${JSON.stringify(newFeature.return)} `);
     }
 
@@ -147,27 +150,16 @@ class CreateBusiness extends Component {
     }
 
 
+    handleMainSubmit(){
+        return this.state.allFeaturesValues.map(feature => {
+            debugger
+           return JSON.stringify({ [feature.co]: feature.return })
+        })
+    }
 
 
 
 
-
-
-
-    // updateFeature(field) {
-    //     debugger
-    //     return (e) => {
-    //         let aa = { co: e.target.value, form: this.allFeatures[e.target.value] } 
-    //         this.setState(state => {
-    //             let a = aa
-    //             let newField = field;
-    //             return{
-    //                 [newField]:a
-    //             }
-    //             }
-    //         );
-    //     }
-    // }
 
     render() {
         debugger
@@ -201,6 +193,7 @@ class CreateBusiness extends Component {
                         <div className="format-make-site">
                             <form onSubmit={e => {
                                 e.preventDefault();
+                                let endFeatures = this.handleMainSubmit()
                                 debugger
                                 makeBusiness({
                                     variables: {
@@ -214,8 +207,8 @@ class CreateBusiness extends Component {
                                         about: this.state.about,
                                         template: this.state.template,
                                         userId: this.state.userId,
-                                        // features: [this.state.feature1, this.state.feature2, this.state.feature3, this.state.feature4, this.state.feature5],
-                                        features: [JSON.stringify({[this.state.feature1.co]:this.state.feature1.return})],
+                                        features: endFeatures,
+                                        // features: [JSON.stringify({[this.state.feature1.co]:this.state.feature1.return})],
                                         businessData: [this.state.businessData],
                                     }
                                 });
@@ -293,75 +286,14 @@ class CreateBusiness extends Component {
 
                             </div>
                         </form>
-
                             {/* rfq  Needs to be dinamic do a quirey */}
-                            <button onClick={e => this.CreateFeatureOption()}>Add More Feature Option</button>
                             {/* THIS IS THE START OF THE FEATURES */}
                             <div>
                                 {diplay}
-                                {/* <div
-                                    onSubmit={e => { e.preventDefault(); }}
-                                    className="FeatureOneDiv">
-                                    <select
-                                        className="new-site-data FeatureOne"
-                                        value={this.state.feature1.co}
-                                        onChange={this.updateFeature("feature1")}>
-                                        <option defaultValue>Feature One</option>
-                                        <option value="Order">Order</option>
-                                        <option value="Booking">Booking</option>
-                                        <option value="Three Pic Slider">Three Pic</option>
-                                        <option value="Pricing">Pricing</option>
-                                    </select>
-
-                                    <div className="FeatureOneDynamic">
-                                        <h1> Feature One </h1>
-                                        {this.state.feature1.form}
-                                    </div>
-                                </div> */}
-
-                                {/* <select 
-                                    className="new-site-data"
-                                    value={this.state.feature2}
-                                    onChange={this.update("feature2")}>
-                                    <option defaultValue>Feature Two</option>
-                                    <option value="Order">Order</option>
-                                    <option value="Booking">Booking</option>
-                                    <option value="Three Pic Slider">Three Pic</option>
-                                </select>
-
-                                <select 
-                                    className="new-site-data"
-                                    value={this.state.feature3}
-                                    onChange={this.update("feature3")}>
-                                    <option defaultValue>Feature Three</option>
-                                    <option value="Order">Order</option>
-                                    <option value="Booking">Booking</option>
-                                    <option value="Three Pic Slider">Three Pic</option>
-                                </select>
-
-                                <select 
-                                    className="new-site-data"
-                                    value={this.state.feature4}
-                                    onChange={this.update("feature4")}>
-                                    <option defaultValue>Feature Four</option>
-                                    <option value="Order">Order</option>
-                                    <option value="Booking">Booking</option>
-                                    <option value="Three Pic Slider">Three Pic</option>
-                                </select>
-
-                                <select 
-                                    className="new-site-data"
-                                    value={this.state.feature5}
-                                    onChange={this.update("feature5")}>
-                                    <option defaultValue>Feature Five</option>
-                                    <option value="Order">Order</option>
-                                    <option value="Booking">Booking</option>
-                                    <option value="Three Pic Slider">Three Pic</option>
-                                </select> */}
-
                             </div>
-
                             {/* THIS IS THE END OF THE FEATURES */}
+
+                            <button onClick={e => this.CreateFeatureOption()}>Add More Feature Option</button>
 
                         <div className="fake-bit-div">
                             <button
