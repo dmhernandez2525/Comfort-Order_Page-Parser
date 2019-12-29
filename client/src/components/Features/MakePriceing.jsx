@@ -24,7 +24,7 @@ class MakePriceing extends React.Component  {
     })
 
     return (
-      <div>
+      <div key={`name${counter}`}>
         <input className="new-site-data"
           onChange={this.update(counter,`name${counter}`)}
           value={this.state.rowValues.counter}
@@ -56,12 +56,19 @@ class MakePriceing extends React.Component  {
 
   handleSubmit(){
     debugger
-    let returnState = this.state.rowValues.map(obj => { 
+    let returnState = {}
+    this.state.rowValues.forEach((obj,i) => { 
+      debugger
       let dets = Object.keys(obj.counter)[2]
       let newFormat = obj.counter[dets].split("/")
-      obj.counter[dets] = newFormat
-      return obj
+
+      returnState[`row${i}`] = {
+        name:obj.counter[`name${i}`],
+        price:obj.counter[`price${i}`],
+        details: newFormat
+      }
     })
+    debugger
     this.handleFeatureSubmit(this.props.feature, returnState)
   }
 
@@ -125,6 +132,7 @@ class MakePriceing extends React.Component  {
   render(){
     return(
     <div > 
+        <h1> Priceing Feature </h1>
         <form onSubmit={this.handleSubmit }>
           {this.state.rows}
           <input type="submit"/>

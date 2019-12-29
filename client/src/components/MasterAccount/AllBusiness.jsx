@@ -38,7 +38,6 @@ class AllBusiness extends Component {
               let fealds = ["_id", "user", "features", "template", "name", "map", "url", "phoneNumber", "address", "slogan", "hours", "about", "businessData"]
               let allBusinesses = data.businesses.map(business => {
                 let businessInfo = fealds.map(feald => {
-                  debugger
                   return (
                     <li key={`${business._id}` + feald }>
                       {`${feald}: ${business[feald]}`}

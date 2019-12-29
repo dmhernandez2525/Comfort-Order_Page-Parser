@@ -49,30 +49,8 @@ class Pricing extends React.Component {
 // }
 
   render(){
-    debugger
-    let dataFormt = {}
-    Object.values(this.data).map((a ,i)=>{
-    // let corectFormating2 = Object.values(this.data).map(a =>{
-      let some = ["name","price","details"]
-      debugger
-      let somedum = Object.values(a)
-      dataFormt[i] = {}
-      for (let j = 0; j < some.length; j++) {
-        debugger
-        const goodForm = some[j];
-        const badForm = somedum[j];
-        dataFormt[i][goodForm] = badForm
-      }
-
-      debugger
-    })
-    let display = Object.values(dataFormt).map(plan =>{
-    // let display = Object.values(this.data).map(plan =>{
-      debugger
-      // rfq NEED TO REFACTOR THE FLOW
-      // let rowDetails = plan.counter[Object.keys(plan.counter)[Object.keys(plan.counter).length - 1]].map(detail => (
+    let display = Object.values(this.data).map(plan =>{
         let rowDetails = plan.details.map(detail => {
-          debugger
           return (
             <li key={`${plan.name}:${detail}`}>{detail}</li>
           )
@@ -89,7 +67,6 @@ class Pricing extends React.Component {
             </div>
         )
     })
-    debugger
     return(
     <div > 
         {display}
