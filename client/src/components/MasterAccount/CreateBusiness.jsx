@@ -164,7 +164,7 @@ class CreateBusiness extends Component {
                     </div>
                 )
                 return(
-                    <div>
+                    <div className="featureWrap" >
                         {d}
                         {a}
                     </div>
@@ -284,7 +284,11 @@ class CreateBusiness extends Component {
                             </div>
                             {/* THIS IS THE END OF THE FEATURES */}
 
-                            <button onClick={e => this.CreateFeatureOption()}>Add More Feature Option</button>
+                            
+
+                        <div className="fake-bit-div">
+                            <button onClick={e => this.CreateFeatureOption()}>Add More Feature Option</button> 
+                        </div>
 
                         <div className="fake-bit-div">
                             <button

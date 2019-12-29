@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/Price.css"
 
 class MakePriceing extends React.Component  {
   constructor(props){
@@ -23,7 +24,7 @@ class MakePriceing extends React.Component  {
       };
     })
     return (
-      <div key={`name${counter}`}>
+      <div className="price-items" key={`name${counter}`}>
         <input className="new-site-data"
           onChange={this.update(counter,`name${counter}`)}
           value={this.state.rowValues.counter}
@@ -127,13 +128,16 @@ class MakePriceing extends React.Component  {
 
   render(){
     return(
-    <div > 
+    <div className="price-div" > 
         <h1> Priceing Feature </h1>
-        <form onSubmit={this.handleSubmit }>
+
+        <button onClick={e => this.pricingBoxCreate()}>Add More Pricing options</button>
+
+        <form className="price-submit" onSubmit={this.handleSubmit }>
           {this.state.rows}
           <input type="submit"/>
         </form>
-        <button onClick={e => this.pricingBoxCreate()}>Add More Pricing options</button>
+        
     </div>
     )
   }
