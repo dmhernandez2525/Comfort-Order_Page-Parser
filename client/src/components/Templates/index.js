@@ -31,19 +31,19 @@ class Index extends React.Component {
   }
 
   formatFeatures(){
-    debugger
     let fe = {}
     Object.keys(this.props.features).map(feature => {
       let key = Object.keys(this.props.features[feature]);
       let value = Object.values(this.props.features[feature]);
-      fe[feature] = this.makeFeature(key[0], value[0]);
-      debugger
+      fe[feature] = {
+        feature: this.makeFeature(key[0], value[0]),
+        type: key[0]
+      };
     })
     return fe
   }
 
     render() {
-      debugger
         if (this.props.template === "Restaurant"){
             return <Restaurant features={this.features} businessData={this.props.businessData}/>
         }

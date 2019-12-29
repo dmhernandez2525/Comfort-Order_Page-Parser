@@ -61,7 +61,6 @@ class CreateBusiness extends Component {
         let newFeature = Object.assign({}, this.state.allFeaturesValues[feature])
         let oldFeature = Object.assign({}, this.state.allFeaturesValues[feature])
         let dupFeature = [...this.state.allFeaturesValues]
-        debugger
         let all = { co: this.state.divs[feature].props.returnType, form: this.state.divs[feature], return: data, num: feature}
         dupFeature.splice(feature, 1, all);
 
@@ -105,8 +104,6 @@ class CreateBusiness extends Component {
         };
         })
 
-        debugger
-
         return (
             <div
                 key={`Feature${all}`}
@@ -139,7 +136,6 @@ class CreateBusiness extends Component {
             this.setState(state => {
                 const listOfAllFeatures = state.allFeaturesDisplay.concat(aa.form);
                 const listOfAlldivs = state.divs.concat(aa.form);
-                debugger
                 return {
                     allFeaturesDisplay: listOfAllFeatures, divs: listOfAlldivs
                 };
@@ -151,7 +147,6 @@ class CreateBusiness extends Component {
 
     handleMainSubmit(){
         return this.state.allFeaturesValues.map(feature => {
-            debugger
            return JSON.stringify({ [feature.co]: feature.return })
         })
     }
@@ -161,9 +156,7 @@ class CreateBusiness extends Component {
 
 
     render() {
-        debugger
         let diplay = this.state.allFeatures.map((d,i) => {
-                debugger
                 let a =(
                     <div id={`featureDiv${i}`} className="FeatureDynamic">
                         <h1> {`Feature${i}`} </h1>

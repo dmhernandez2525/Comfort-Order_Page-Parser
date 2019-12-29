@@ -7,12 +7,9 @@ import companyLogo from "./ComfortOrderLogo.png"
 import Modal from "../Features/modal"
 
 
-
 import { modalHOC } from "../apollo_hooks_hoc"
 import "./global.css"
-
 const token = process.env.REACT_APP_TOKEN
-
 
 class Restaurant extends React.Component {
   constructor(props){
@@ -22,14 +19,17 @@ class Restaurant extends React.Component {
       modalBool: this.props.modalBool
 
     } 
-
-
     this.teleRef1 = React.createRef()
     this.teleRef2 = React.createRef()
     this.teleRef3 = React.createRef()
     this.teleRef4 = React.createRef()
-    this.teleRef5 = React.createRef()
-
+    this.teleRef6 = React.createRef()
+    this.teleRef7 = React.createRef()
+    this.teleRef8 = React.createRef()
+    this.teleRef9 = React.createRef()
+    this.teleRef10 = React.createRef()
+    this.teleRefContact = React.createRef()
+    this.teleRefSocal = React.createRef()
     this.handleScroll = this.handleScroll.bind(this);
     this.setStateModalCB = this.setStateModalCB.bind(this);
   }
@@ -65,25 +65,37 @@ class Restaurant extends React.Component {
   } 
 
   render(){
-    debugger
+    let allFeatures = this.props.features
+    let css = ["container feature-display black", "container feature-display"]
+
+    let nav = Object.keys(allFeatures).map((feature,i) =>{
+      return <li><a onClick={() => this.executeScroll(this[`teleRef${i + 1}`])}>{allFeatures[feature].type}</a></li>
+    })
+
+    let display = Object.keys(allFeatures).map((currentFeature,i) =>{
+      return (
+        <div id={`teleport-option${i}`} className="feature" ref={this[`teleRef${i + 1}`]}>
+          <div className={css[ i % 2 ]}>
+            <h2 className="hero-title">{allFeatures[currentFeature].type}</h2>
+            {allFeatures[currentFeature].feature}
+          </div>
+        </div>
+      )
+    })
+
     return(
       <div className="restaurant template">
         <header className="restaurant-nav">
           <div id="navbar" className="navbar" role="navigation">
             <div className="container">
               <div className="nav-cart" onClick={() => this.props.setModalCache(true, this.setStateModalCB)}> <Modal modal="cart" modalBool={this.props.modalBool} setParentModalBool={this.setStateModalCB}/> </div>
+
               <ul id="top-menu" className="navbar-nav navbar-right">
-                <li><a onClick={() => this.executeScroll(this.teleRef1)}>Option 1</a></li>
-                <li><a onClick={() => this.executeScroll(this.teleRef2)}>Option 2</a></li>                     
-                <li><a onClick={() => this.executeScroll(this.teleRef3)}>Option 3</a></li>                      
-                <li><a onClick={() => this.executeScroll(this.teleRef4)}>Option 4</a></li>
-                <li><a onClick={() => this.executeScroll(this.teleRef5)}>Option 5</a></li>
-  
-                {/* <li><a href="#one">Option 5</a></li>                        */}
-                {/* <li><a href={`teleport-${this.props.navOption}`}>Option 6</a></li> */}
-                {/* <li><a href={`teleport-${this.props.navOption}`}>Option 7</a></li>  */}
-                {/* <li><a href={`teleport-${this.props.navOption}`}>Option 8</a></li>  */}
+                {nav}
+                <li><a onClick={() => this.executeScroll(this.teleRefContact)}>Contact</a></li>
+                <li><a onClick={() => this.executeScroll(this.teleRefSocal)}>Socal</a></li>
               </ul>
+
             </div>                        
           </div>
         </header>
@@ -100,42 +112,19 @@ class Restaurant extends React.Component {
           </div>
         </section>
 
-        <div id="teleport-option1" className="feature" ref={this.teleRef1}>
-          <div className="container feature-display black">
-            <h2 className="hero-title">Feature 1</h2>
-            {this.props.features.feature1}
-          </div>
+        {display}
+
+        <div id="teleport-Contact" className="feature" ref={this.teleRefContact}>
+          <div id="map-directions-button" className="container"><a href="https://www.google.com/maps/dir//84-740 Kili Dr?hl=en-US">Click Here For Directions Help</a></div>
+          <div className="map-wrapper"><iframe id="restaurant-map" className="restaurant-map" src={`https://www.google.com/maps/embed/v1/place?key=${token}&q=84-740 Kili Dr`}></iframe></div>
+        </div>       
+
+        <div id="teleport-footer" className="feature" ref={this.teleRefSocal}>
+          <footer id="restaurant-footer">
+            <Footer /> 
+          </footer>  
         </div>
 
-        <div id="teleport-option2" className="feature" ref={this.teleRef2}>
-          <div className="container feature-display ">
-            <h2 className="hero-title">Feature 2</h2>
-          </div>
-        </div>
-
-        <div id="teleport-option3" className="feature" ref={this.teleRef3}>
-          <div className="container feature-display black">
-            <h2 className="hero-title">Feature 3</h2>
-          </div>
-        </div>
-
-        <div id="teleport-option4" className="feature" ref={this.teleRef4}>
-          <div className="container feature-display ">
-            <h2 className="hero-title">Feature 4</h2>
-          </div>
-        </div>
-
-        <div id="teleport-option5" className="feature" ref={this.teleRef5}>
-          <div className="container feature-display black">
-            <h2 className="hero-title">Feature 5</h2>
-          </div>
-        </div>
-
-        <div id="map-directions-button" className="container"><a href="https://www.google.com/maps/dir//84-740 Kili Dr?hl=en-US">Click Here For Directions Help</a></div>
-        <div className="map-wrapper"><iframe id="restaurant-map" className="restaurant-map" src={`https://www.google.com/maps/embed/v1/place?key=${token}&q=84-740 Kili Dr`}></iframe></div>
-        <footer id="restaurant-footer">
-          <Footer /> 
-        </footer>  
       </div>
     )
 
