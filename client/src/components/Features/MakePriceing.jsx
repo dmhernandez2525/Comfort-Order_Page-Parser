@@ -18,11 +18,12 @@ class MakePriceing extends React.Component  {
     let counter = this.state.rows.length
     this.setState(state => {
       const list = state.rowValues.concat({counter:{[`name${counter}`]:0,[`price${counter}`]:0,[`details${counter}`]:0}});
+      debugger
       return {
         rowValues: list
       };
     })
-
+    debugger
     return (
       <div key={`name${counter}`}>
         <input className="new-site-data"
@@ -48,6 +49,7 @@ class MakePriceing extends React.Component  {
   pricingBoxCreate(){
     this.setState(state =>{
       const list = state.rows.concat(this.createRow());
+      debugger
       return {
         rows:list
       }; 
