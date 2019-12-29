@@ -34,9 +34,11 @@ class DisplaySite extends React.Component {
         {({ loading, error, data }) => {
           if (loading) return <div>Loading</div>;
           if (error) return `Error! ${error.message}`;
+          debugger
           return (
             <div >
-              <TemplateLibrary template={data.business.template}  features={data.business.features} businessData={data.business.businessData}/>
+              <TemplateLibrary template={data.business.template} features={JSON.parse(data.business.features)} businessData={data.business} />
+              {/* <TemplateLibrary template={data.business.template}  features={data.business.features} businessData={data.business.businessData}/> */}
             </div>
           )
         }}
