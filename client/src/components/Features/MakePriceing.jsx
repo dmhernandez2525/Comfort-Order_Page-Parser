@@ -144,3 +144,6 @@ class MakePriceing extends React.Component  {
 }
 
 export default MakePriceing
+
+
+

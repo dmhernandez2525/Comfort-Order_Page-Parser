@@ -108,9 +108,9 @@ class Restaurant extends React.Component {
               <div className="landing-photo-container">
                 <img src={placeholder}/>
                 <div className="top-hero-content">
-                  <span className="small-hero-title">Welcome</span>
-                  <h2 className="hero-title">Lorem Ipsum</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque voluptatem accusamus non quidem, deleniti optio.</p>           
+                  <span className="small-hero-title">Welcome To</span>
+                   <h2 className="hero-title">{this.props.businessData.name}</h2>
+                   <p>{this.props.businessData.slogan}</p>           
                 </div>
               </div>
             </div>
@@ -120,8 +120,8 @@ class Restaurant extends React.Component {
         {display}
 
         <div id="teleport-Contact" className="feature" ref={this.teleRefContact}>
-          <div id="map-directions-button" className="container"><a href="https://www.google.com/maps/dir//84-740 Kili Dr?hl=en-US">Click Here For Directions Help</a></div>
-          <div className="map-wrapper"><iframe id="restaurant-map" className="restaurant-map" src={`https://www.google.com/maps/embed/v1/place?key=${token}&q=84-740 Kili Dr`}></iframe></div>
+          <div id="map-directions-button" className="container"><a href={`https://www.google.com/maps/dir//${this.props.businessData.map}?hl=en-US`}>Click Here For Directions Help</a></div>
+          <div className="map-wrapper"><iframe id="restaurant-map" className="restaurant-map" src={`https://www.google.com/maps/embed/v1/place?key=${token}&q=${this.props.businessData.map}`}></iframe></div>
         </div>       
 
         <div id="teleport-footer" className="feature" ref={this.teleRefSocal}>

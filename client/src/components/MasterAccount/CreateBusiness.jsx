@@ -6,39 +6,41 @@ import Queries from "../../graphql/queries";
 import Pricing from "../Features/MakePriceing";
 import "../css/master.css";
 const { CREATE_BUSINESS } = Mutations;
-const { FETCH_BUSINESS } = Queries;
+// const { FETCH_BUSINESS } = Queries; rfq for editing
 
 
 class CreateBusiness extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        name: "",
-        map: "",
-        url: "",
-        phoneNumber: "",
-        address: "",
-        slogan: "",
-        hours: "",
-        about: "",
-        template: "",
-        userId: "",
-        allFeatures:[],
-        allFeaturesDisplay:[],
-        allFeaturesValues:[],
-        divs:[],
-        businessData: "",
+            name: "Demo Site name",
+            map: "Demo Site map",
+            url: "Demo Site url",
+            phoneNumber: "Demo Site phoneNumber",
+            address: "Demo Site address",
+            slogan: "Demo Site slogan",
+            hours: "Demo Site hours",
+            about: "Demo Site about",
+            template: "",
+            userId: "5dee13bb4613a10017103002",
+            allFeatures:[],
+            allFeaturesDisplay:[],
+            allFeaturesValues:[],
+            divs:[],
+            businessData: "",
+            message:""
         };
         this.tete = React.createRef();
         this.updateCache = this.updateCache.bind(this)
+        this.displayMessage = this.displayMessage.bind(this)
         this.handleFeatureSubmit = this.handleFeatureSubmit.bind(this)
         this.updateFeature = this.updateFeature.bind(this)
+        // Rember to update CreateFeature if you add more
         this.allFeatures = {
             Order:"a",
             Booking:"a",
             ThreePicSlider:"a",
-            Pricing: <Pricing returnType={"Pricing"} handleFeatureSubmit={(a,b) => this.handleFeatureSubmit(a,b)} feature={this.state.allFeatures.length}  />
-            // Pricing: <Pricing handleFeatureSubmit={(a,b) => this.handleFeatureSubmit(a,b)} feature={"feature1"}  />
+            Pricing: <Pricing returnType={"Pricing"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />
         };
         this.CreateFeatureOption = this.CreateFeatureOption.bind(this);
         this.CreateFeature = this.CreateFeature.bind(this);
@@ -52,15 +54,23 @@ class CreateBusiness extends Component {
     }
     
     updateCache(client, { data }) {
+        this.displayMessage(data)
         client.writeData({
         data: { site: data.makeBusiness }
         });
     }  
 
+    displayMessage(data) {
+        alert(`Your New Site Is UP!!`)
+        this.setState({ message: data.makeBusiness._id })
+    }  
+
     handleFeatureSubmit(feature,data){
         let newFeature = Object.assign({}, this.state.allFeaturesValues[feature])
         let oldFeature = Object.assign({}, this.state.allFeaturesValues[feature])
+
         let dupFeature = [...this.state.allFeaturesValues]
+
         let all = { co: this.state.divs[feature].props.returnType, form: this.state.divs[feature], return: data, num: feature}
         dupFeature.splice(feature, 1, all);
 
@@ -69,46 +79,36 @@ class CreateBusiness extends Component {
         alert(`OLD:${JSON.stringify(oldFeature.return)} vs NEW:${JSON.stringify(newFeature.return)} `);
     }
 
-
-
-
-
-
-
-// ////////////////////////////////////////////////////////////
-
     CreateFeatureOption(){
         this.setState(state => {
             const listOfAllFeatures = state.allFeatures.concat(this.CreateFeature());
-            return {
-                allFeatures: listOfAllFeatures
-            };
+            return {allFeatures: listOfAllFeatures};
         })
     }
 
-
-
-
-
-
-
-// ////////////////////////////////////////////////////////////
-
-
     CreateFeature(){
-        let all = this.state.allFeatures.length
-        this.setState( state =>  {
-        const list = state.allFeaturesValues.concat({ [all]:{co:"",form:"",return:"",num:all}});
-        return {
-            allFeaturesValues: list
+        let all = this.state.allFeatures.length;
+
+        this.allFeatures = {
+            Order: "a",
+            Booking: "a",
+            ThreePicSlider: "a",
+            Pricing: <Pricing key={`Feature${all}Pricing` } returnType={"Pricing"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />
         };
-        })
+
+
+
+        this.setState( state =>  {
+            const list = state.allFeaturesValues.concat({ [all]:{co:"",form:"",return:"",num:all}});
+            return {allFeaturesValues: list};
+        });
 
         return (
             <div
                 key={`Feature${all}`}
                 onSubmit={e => { e.preventDefault(); }}
-                className="FeatureDiv">
+                className="FeatureDiv"
+            >
                 <select
                     className="new-site-data FeatureNum"
                     onChange={this.updateFeature(`feature${all}`)}>
@@ -119,17 +119,10 @@ class CreateBusiness extends Component {
                     <option value="Pricing">Pricing</option>
                 </select>
 
-
             </div>
         )
     }
 
-
-
-
-
-
-// ////////////////////////////////////////////////////////////
     updateFeature(field) {
         return (e) => {
             let aa = { co: e.target.value, form: this.allFeatures[e.target.value] } 
@@ -137,10 +130,10 @@ class CreateBusiness extends Component {
                 const listOfAllFeatures = state.allFeaturesDisplay.concat(aa.form);
                 const listOfAlldivs = state.divs.concat(aa.form);
                 return {
-                    allFeaturesDisplay: listOfAllFeatures, divs: listOfAlldivs
+                    allFeaturesDisplay: listOfAllFeatures,
+                    divs: listOfAlldivs
                 };
-                }
-            );
+            });
         }
     }
 
@@ -151,25 +144,30 @@ class CreateBusiness extends Component {
         })
     }
 
-
-
-
-
     render() {
-        let diplay = this.state.allFeatures.map((d,i) => {
-                let a =(
-                    <div id={`featureDiv${i}`} className="FeatureDynamic">
+        let messageSite;
+        if(this.state.message !== ""){
+            messageSite = (
+                <div className="siteLink">
+                    <a href={`http://localhost:3000/#/site/${this.state.message}`} target="_blank">Visit Your new Site</a> 
+                </div>
+            )
+        }
+
+        let diplay = this.state.allFeatures.map((featureSelector,i) => {
+                let featureInput =(
+                    <div key={`featureDiv${i}`} id={`featureDiv${i}`} className="FeatureDynamic">
                         <h1> {`Feature${i}`} </h1>
                         {this.state.divs[i]}
                     </div>
                 )
                 return(
-                    <div className="featureWrap" >
-                        {d}
-                        {a}
+                    <div key={`featureDiv${i}`} className="featureWrap" >
+                        {featureSelector}
+                        {featureInput}
                     </div>
                 )
-            })
+        })
 
         return (
             <Mutation
@@ -186,7 +184,6 @@ class CreateBusiness extends Component {
                             <form onSubmit={e => {
                                 e.preventDefault();
                                 let endFeatures = this.handleMainSubmit()
-                                debugger
                                 makeBusiness({
                                     variables: {
                                         name: this.state.name,
@@ -284,19 +281,19 @@ class CreateBusiness extends Component {
                             </div>
                             {/* THIS IS THE END OF THE FEATURES */}
 
-                            
-
-                        <div className="fake-bit-div">
-                            <button onClick={e => this.CreateFeatureOption()}>Add More Feature Option</button> 
+                        <div className="add-fe-button">
+                            <button onClick={e => this.CreateFeatureOption()}>Add Feature</button> 
                         </div>
 
                         <div className="fake-bit-div">
                             <button
+                                className="img-back-button"
                             onClick={ e => {
                                 document.getElementsByClassName("cr-btt")[0].click()
                             }
                             } type="submit">Create Site</button>    
                         </div>
+                        {messageSite}
 
                     </div>
                 )}}
