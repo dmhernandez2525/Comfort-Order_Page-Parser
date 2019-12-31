@@ -6,6 +6,7 @@ import favicon from "./favicon.ico"
 import companyLogo from "./ComfortOrderLogo.png"
 import Modal from "../Features/modal"
 import { modalHOC } from "../apollo_hooks_hoc"
+import Menu from "../Features/menu"
 import "./global.css"
 
 const token = process.env.REACT_APP_TOKEN
@@ -105,6 +106,7 @@ class Restaurant extends React.Component {
         <div id="teleport-option2" className="feature" ref={this.teleRef2}>
           <div className="container feature-display ">
             <h2 className="hero-title">Feature 2</h2>
+              <Menu />
           </div>
         </div>
 
