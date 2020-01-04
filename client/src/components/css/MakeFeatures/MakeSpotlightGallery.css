@@ -1,0 +1,19 @@
+.gallery-div {
+    height: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.gallery-submit {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: inherit;
+}
+
+.gallery-items {
+    display: flex;
+    width: 90vw;
+}
