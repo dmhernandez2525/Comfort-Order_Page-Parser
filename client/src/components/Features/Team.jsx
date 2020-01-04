@@ -21,15 +21,12 @@ class Team extends React.Component {
 //         socialLinks: {
 //              facebook:{
 //                  url:"https://www.facebook.com",
-//                  icon:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/facebook-icon_32x32.png"
 //              },
 //              instagram:{
 //                  url:"https://www.instagram.com",
-//                  icon:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/instagram-icon_24x24.png"
 //              },
 //              linkedin:{
 //                  url:"https://www.linkedin.com",
-//                  icon:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/linkedin-icon_24x24.png"
 //              }
 //          },
 //      
@@ -41,15 +38,12 @@ class Team extends React.Component {
 //         socialLinks: {
 //              facebook:{
 //                  url:"https://www.facebook.com",
-//                  icon:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/facebook-icon_32x32.png"
 //              },
 //              instagram:{
 //                  url:"https://www.instagram.com",
-//                  icon:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/instagram-icon_24x24.png"
 //              },
 //              linkedin:{
 //                  url:"https://www.linkedin.com",
-//                  icon:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/linkedin-icon_24x24.png"
 //              }
 //          },
 //     },
@@ -60,15 +54,12 @@ class Team extends React.Component {
 //         socialLinks: {
 //              facebook:{
 //                  url:"https://www.facebook.com",
-//                  icon:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/facebook-icon_32x32.png"
 //              },
 //              instagram:{
 //                  url:"https://www.instagram.com",
-//                  icon:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/instagram-icon_24x24.png"
 //              },
 //              linkedin:{
 //                  url:"https://www.linkedin.com",
-//                  icon:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/linkedin-icon_24x24.png"
 //              }
 //          }
 //         
@@ -76,12 +67,24 @@ class Team extends React.Component {
 // }
 
   render(){
+    let links = { 
+      facebook:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/facebook-icon_32x32.png",
+      linkedin:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/linkedin-icon_32x32.png",
+      twitter:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/twitter-icon_32x32.png",
+      youtube:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/youtube-icon_32x32.png",
+      instagram:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/instagram-icon_32x32.png",
+      skype:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/skype-icon_32x32.png",
+      pinterest:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/pinterest-icon_32x32.png",
+      reddit:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/reddit-icon_32x32.png",
+      pr:"",
+    }
     let display = Object.values(this.data).map(member =>{
-        let socialLinks = Object.values(member.socialLinks).map((data,i) => {
+        let socialLinks = Object.keys(member.socialLinks).map((social,i) => {
             debugger
+          let socialData = member.socialLinks[social]
           return (
               <li key={`${member.name}:${i}`}>
-                  <button className={"social-links"} onClick={e => this.socialOpen(data.url)} style={{ backgroundImage: `url(${data.icon})` }} ></button>
+              <button className={"social-links"} onClick={e => this.socialOpen(socialData.url)} style={{ backgroundImage: `url(${links[social]})` }} ></button>
                 </li>
           )
         })
