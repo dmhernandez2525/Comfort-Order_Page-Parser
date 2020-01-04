@@ -32,7 +32,6 @@ class MakeHours extends React.Component  {
     return e => {
       e.persist()
         this.setState( state => { 
-            debugger
         let newState = [...state[day]]
         newState[field] =  e.target.value
         return{

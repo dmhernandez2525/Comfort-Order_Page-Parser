@@ -81,8 +81,6 @@ class MakeTeam extends React.Component  {
           newFormat[formating[0]] = {url:formating[1]} 
 
       })
-      debugger
-
       returnState[`member${i}`] = {
         pic:obj.counter[`pic${i}`],
         name:obj.counter[`name${i}`],
@@ -90,21 +88,20 @@ class MakeTeam extends React.Component  {
           socialLinks: newFormat
       }
     })
-    debugger
     this.handleFeatureSubmit(this.props.feature, returnState)
   }
 
-  update(priceSec,field,social = "none") {
+  update(memberSection,field,social = "none") {
     return e => {
       e.persist()
         this.setState( state => { 
         let newState = Object.assign({},state);
-        let newPrice = priceSec;
+        let newMember = memberSection;
         let newField = field;
         if(social !== "none"){
-            newState.rowValues[newPrice].counter[newField][social] = e.target.value
+            newState.rowValues[newMember].counter[newField][social] = e.target.value
         }else{
-            newState.rowValues[newPrice].counter[newField] =  e.target.value
+            newState.rowValues[newMember].counter[newField] =  e.target.value
         }
         return{
           rowValues:newState.rowValues
@@ -137,7 +134,7 @@ class MakeTeam extends React.Component  {
   render(){
     return(
     <div className="team-div" > 
-        <h1> Priceing Feature </h1>
+        <h1> Team Member Feature </h1>
 
             <button onClick={e => this.memberBoxCreate()}>Add More Team Members</button>
 

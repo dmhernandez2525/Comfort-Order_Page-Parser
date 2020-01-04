@@ -9,7 +9,6 @@ class Team extends React.Component {
       this.socialOpen = this.socialOpen.bind(this)
   }
   socialOpen(url){
-      debugger
       window.open(url);
   }
 // EXAMPLE INPUT
@@ -80,7 +79,6 @@ class Team extends React.Component {
     }
     let display = Object.values(this.data).map(member =>{
         let socialLinks = Object.keys(member.socialLinks).map((social,i) => {
-            debugger
           let socialData = member.socialLinks[social]
           return (
               <li key={`${member.name}:${i}`}>

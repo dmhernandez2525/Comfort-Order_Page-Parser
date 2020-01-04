@@ -199,7 +199,6 @@ class CreateBusiness extends Component {
                         <div className="format-make-site">
                             <form onSubmit={e => {
                                 e.preventDefault();
-                                debugger
                                 let endFeatures = this.handleMainSubmit()
                                 makeBusiness({
                                     variables: {
