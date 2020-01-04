@@ -3,7 +3,14 @@ import { Mutation } from "react-apollo";
 import { withRouter } from 'react-router-dom';
 import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
+
 import Pricing from "../Features/CreateFeatures/MakePriceing";
+import About from "../Features/CreateFeatures/MakeAbout";
+import Hours from "../Features/CreateFeatures/MakeHours";
+import ImageCarousel from "../Features/CreateFeatures/MakeImageCarousel";
+import SpotlightGallery from "../Features/CreateFeatures/MakeSpotlightGallery";
+import Team from "../Features/CreateFeatures/MakeTeam";
+
 import "../css/master.css";
 const { CREATE_BUSINESS } = Mutations;
 // const { FETCH_BUSINESS } = Queries; rfq for editing
@@ -27,7 +34,7 @@ class CreateBusiness extends Component {
             allFeaturesDisplay:[],
             allFeaturesValues:[],
             divs:[],
-            businessData: "",
+            businessData: "About me",
             message:""
         };
         this.tete = React.createRef();
@@ -39,8 +46,12 @@ class CreateBusiness extends Component {
         this.allFeatures = {
             Order:"a",
             Booking:"a",
-            ThreePicSlider:"a",
-            Pricing: <Pricing returnType={"Pricing"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />
+            Pricing: <Pricing returnType={"Pricing"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />,
+            About: <About returnType={"About"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />,
+            Hours: <Hours returnType={"Hours"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />,
+            ImageCarousel: <ImageCarousel returnType={"ImageCarousel"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />,
+            SpotlightGallery: <SpotlightGallery returnType={"SpotlightGallery"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />,
+            Team: <Team returnType={"Team"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />
         };
         this.CreateFeatureOption = this.CreateFeatureOption.bind(this);
         this.CreateFeature = this.CreateFeature.bind(this);
@@ -92,8 +103,12 @@ class CreateBusiness extends Component {
         this.allFeatures = {
             Order: "a",
             Booking: "a",
-            ThreePicSlider: "a",
-            Pricing: <Pricing key={`Feature${all}Pricing` } returnType={"Pricing"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />
+            Pricing: <Pricing key={`Feature${all}Pricing` } returnType={"Pricing"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />,
+            About: <About key={`Feature${all}About` } returnType={"About"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />,
+            Hours: <Hours key={`Feature${all}Hours` } returnType={"Hours"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />,
+            ImageCarousel: <ImageCarousel key={`Feature${all}ImageCarousel` } returnType={"ImageCarousel"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />,
+            SpotlightGallery: <SpotlightGallery key={`Feature${all}SpotlightGallery` } returnType={"SpotlightGallery"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />,
+            Team: <Team key={`Feature${all}Team` } returnType={"Team"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />
         };
 
 
@@ -113,10 +128,12 @@ class CreateBusiness extends Component {
                     className="new-site-data FeatureNum"
                     onChange={this.updateFeature(`feature${all}`)}>
                     <option defaultValue>{`Feature ${all}`} </option>
-                    <option value="Order">Order</option>
-                    <option value="Booking">Booking</option>
-                    <option value="Three Pic Slider">Three Pic</option>
                     <option value="Pricing">Pricing</option>
+                    <option value="About">About</option>
+                    <option value="Hours">Hours</option>
+                    <option value="ImageCarousel">ImageCarousel</option>
+                    <option value="SpotlightGallery">SpotlightGallery</option>
+                    <option value="Team">Team</option>
                 </select>
 
             </div>
@@ -168,7 +185,6 @@ class CreateBusiness extends Component {
                     </div>
                 )
         })
-
         return (
             <Mutation
                 mutation={CREATE_BUSINESS}
@@ -183,6 +199,7 @@ class CreateBusiness extends Component {
                         <div className="format-make-site">
                             <form onSubmit={e => {
                                 e.preventDefault();
+                                debugger
                                 let endFeatures = this.handleMainSubmit()
                                 makeBusiness({
                                     variables: {
@@ -260,13 +277,6 @@ class CreateBusiness extends Component {
                                         onChange={this.update("template")}>
                                         <option defaultValue>template</option>
                                         <option value="Restaurant">Restaurant</option>
-                                    </select>
-                                    <select 
-                                        className="new-site-data"
-                                        value={this.state.businessData}
-                                        onChange={this.update("businessData")}>
-                                        <option defaultValue>businessData</option>
-                                        <option value="About me">About me</option>
                                     </select>
                                 </div>
 
