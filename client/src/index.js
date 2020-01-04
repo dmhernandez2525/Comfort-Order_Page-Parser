@@ -58,7 +58,8 @@ cache.writeData({
   data: {
     isLoggedIn: Boolean(token),
     role: "",
-    modalBool: false
+    modalBool: false,
+    cartItems: []
   }
 });
 
