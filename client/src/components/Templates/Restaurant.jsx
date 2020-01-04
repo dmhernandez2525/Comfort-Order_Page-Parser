@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import Footer from "./footer";
 import placeholder from "./placeholder.jpg"
 import favicon from "./favicon.ico"
@@ -72,6 +73,14 @@ class Restaurant extends React.Component {
       return <li><a onClick={() => this.executeScroll(this[`teleRef${i + 1}`])}>{allFeatures[feature].type}</a></li>
     })
 
+    nav.unshift(<li><a onClick={() => this.executeScroll(this.teleRefHome)}>Home</a></li>)
+    nav.push(<li><a onClick={() => this.executeScroll(this.teleRefContact)}>Contact</a></li>)
+    nav.push(<li><a onClick={() => this.executeScroll(this.teleRefSocal)}>Socal</a></li>)
+    nav.push(<li> <Link to="/login">Login</Link></li>)
+    nav.push(<li><Link to="/register">Register</Link></li>)
+                
+                
+
     let display = Object.keys(allFeatures).map((currentFeature,i) =>{
       return (
         <div id={`teleport-option${i}`} className="feature" ref={this[`teleRef${i + 1}`]}>
@@ -91,17 +100,14 @@ class Restaurant extends React.Component {
               <div className="nav-cart" onClick={() => this.props.setModalCache(true, this.setStateModalCB)}> <Modal modal="cart" modalBool={this.props.modalBool} setParentModalBool={this.setStateModalCB}/> </div>
 
               <ul id="top-menu" className="navbar-nav navbar-right">
-                <li><a onClick={() => this.executeScroll(this.teleRefHome)}>Home</a></li>
                 {nav}
-                <li><a onClick={() => this.executeScroll(this.teleRefContact)}>Contact</a></li>
-                <li><a onClick={() => this.executeScroll(this.teleRefSocal)}>Socal</a></li>
               </ul>
 
             </div>                        
           </div>
         </header>
 
-        <div id="teleport-Home" className="feature" ref={this.teleRefHome}>
+        <div id="teleport-Home" className="" ref={this.teleRefHome}>
           <section id="restaurant-hero-section">
             <div className="hero-photo-sizing">
               <div className="landing-photo-container">
