@@ -34,9 +34,14 @@ class DisplaySite extends React.Component {
         {({ loading, error, data }) => {
           if (loading) return <div>Loading</div>;
           if (error) return `Error! ${error.message}`;
+            let features = {}
+             data.business.features.forEach((feature,i) =>{
+               features[`feature${i+1}`] = JSON.parse(feature)
+            })
           return (
             <div >
-              <TemplateLibrary template={data.business.template}  features={data.business.features} businessData={data.business.businessData}/>
+              <TemplateLibrary template={data.business.template} features={features} businessData={data.business} />
+              {/* <TemplateLibrary template={data.business.template}  features={data.business.features} businessData={data.business.businessData}/> */}
             </div>
           )
         }}

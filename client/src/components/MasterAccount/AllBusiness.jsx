@@ -3,6 +3,7 @@ import { Query } from "react-apollo";
 import { withRouter } from 'react-router-dom';
 import Queries from "../../graphql/queries";
 import "../css/master.css";
+import Loading from "../Loading"
 const { FETCH_All_BUSINESS } = Queries;
 
 
@@ -32,14 +33,14 @@ class AllBusiness extends Component {
       >
           {({ loading, error,data }) => {
               if(error){return(<div>{error.networkError.message}</div>)}
-              else if (loading){return(<div>loading</div>)}
+              else if (loading){return(<div><Loading/></div>)}
               // rfq Make a Business index 
               let fealds = ["_id", "user", "features", "template", "name", "map", "url", "phoneNumber", "address", "slogan", "hours", "about", "businessData"]
               let allBusinesses = data.businesses.map(business => {
                 let businessInfo = fealds.map(feald => {
                   return (
                     <li key={`${business._id}` + feald }>
-                      {`${feald}: ${business.feald}`}
+                      {`${feald}: ${business[feald]}`}
                     </li>
                   )
                 })

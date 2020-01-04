@@ -65,6 +65,7 @@
     display: flex;
     flex-direction: column;
     width: 100vw;
+    height: fit-content;
     align-items: center;
 }
 
@@ -79,4 +80,52 @@
 .business-user-holders > h1{
     margin: 8px;
     font-size: larger;
+}
+
+.featureWrap{
+    display: flex;
+    background: aqua;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.FeatureDiv{
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    flex-direction: column;
+    align-items: center;
+    margin: 2vh;
+}
+
+
+.FeatureNum {
+    width: 25vw;
+    height: 5vh;
+    background-color: #CCCCCC;
+}
+
+.FeatureDynamic {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 90vw;
+    min-height: 20vh;
+    height: fit-content;
+    background-color: #999999;
+    margin: 2vh;
+}
+
+.cr-btt {
+    display: none;
+}
+.fake-bit-div {
+    display: flex;
+    justify-content: center;
+}
+.fake-bit-div > button {
+    height: 8vh;
+    width: 26vw;
+    margin-top: 3%;
 }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Query } from "react-apollo";
 import { withRouter } from 'react-router-dom';
 import Queries from "../../graphql/queries";
+import Loading from "../Loading"
 import "../css/master.css";
 const { FETCH_All_BUSINESS_USERS } = Queries;
 
@@ -32,7 +33,7 @@ class AllBusinessUsers extends Component {
       >
         {({ loading, error,data }) => {
             if(error){ return(<div>{error.networkError.message}</div>)}
-            else if (loading){return(<div>loading</div>)}
+            else if (loading){return(<div><Loading/></div>)}
             let allBusinessesUsers = data.businessUsers.map(user => {
                 return (
                    <li key={user._id} className="business-user-holders">
