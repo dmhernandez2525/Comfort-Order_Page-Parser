@@ -44,10 +44,18 @@ class AllBusiness extends Component {
                     </li>
                   )
                 })
+                
+                let linkSite = (
+                  <div className="link-site">
+                    <a href={`http://localhost:3000/#/site/${business._id}`} target="_blank" rel="noopener noreferrer" >Visit Site</a>
+                  </div>
+                )
+
                 return (
                   <div key={business._id} className="single-business">
                     <h1>{business.name}</h1>
                     <ul>{businessInfo}</ul>
+                    <h1>{linkSite}</h1>
                   </div>
                 )
               })

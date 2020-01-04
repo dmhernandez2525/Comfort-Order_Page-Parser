@@ -55,6 +55,7 @@
     height: 30vh;
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
 
 
@@ -120,12 +121,73 @@
 .cr-btt {
     display: none;
 }
-.fake-bit-div {
+.fake-bit-div, .add-fe-button {
     display: flex;
     justify-content: center;
 }
+
 .fake-bit-div > button {
-    height: 8vh;
+    height: 19vh;
     width: 26vw;
     margin-top: 3%;
+}
+
+.add-fe-button > button {
+    height: 4vh;
+    width: 26vw;
+    margin-top: 3%;
+    border-radius: 10px 100px / 120px;
+}
+
+.siteLink{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    border: 2px solid black;
+    align-items: center;
+}
+
+
+.siteLink > a{
+    font-size: x-large;
+}
+
+.siteLink > a:hover{
+    background: chartreuse;
+}
+
+.img-back-button {
+    background-image: url(/static/media/ComfortOrderLogo.cac019f9.png);
+    height: auto;
+    background-repeat: round;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: large;
+    font-weight: bold;
+    background-position: bottom;
+    background-repeat: space;
+    background-size: contain;
+}
+
+button:hover{
+    background: darkgray;
+}
+
+.make-account{
+    height: 10vh;
+    width: fit-content;
+    margin-top: 20px;
+}
+
+.link-site>a {
+    font-size: x-large;
+    background: chartreuse;
+}
+
+.all-user {
+    width: 100%;
+    line-height: 13vh;
 }

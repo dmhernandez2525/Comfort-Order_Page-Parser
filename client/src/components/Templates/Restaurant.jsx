@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "./nav";
+import { Link } from 'react-router-dom';
 import Footer from "./footer";
 import placeholder from "./placeholder.jpg"
 import favicon from "./favicon.ico"
@@ -73,6 +73,14 @@ class Restaurant extends React.Component {
       return <li><a onClick={() => this.executeScroll(this[`teleRef${i + 1}`])}>{allFeatures[feature].type}</a></li>
     })
 
+    nav.unshift(<li><a onClick={() => this.executeScroll(this.teleRefHome)}>Home</a></li>)
+    nav.push(<li><a onClick={() => this.executeScroll(this.teleRefContact)}>Contact</a></li>)
+    nav.push(<li><a onClick={() => this.executeScroll(this.teleRefSocal)}>Socal</a></li>)
+    nav.push(<li> <Link to="/login">Login</Link></li>)
+    nav.push(<li><Link to="/register">Register</Link></li>)
+                
+                
+
     let display = Object.keys(allFeatures).map((currentFeature,i) =>{
       return (
         <div id={`teleport-option${i}`} className="feature" ref={this[`teleRef${i + 1}`]}>
@@ -92,25 +100,22 @@ class Restaurant extends React.Component {
               <div className="nav-cart" onClick={() => this.props.setModalCache(true, this.setStateModalCB)}> <Modal modal="cart" modalBool={this.props.modalBool} setParentModalBool={this.setStateModalCB}/> </div>
 
               <ul id="top-menu" className="navbar-nav navbar-right">
-                <li><a onClick={() => this.executeScroll(this.teleRefHome)}>Home</a></li>
                 {nav}
-                <li><a onClick={() => this.executeScroll(this.teleRefContact)}>Contact</a></li>
-                <li><a onClick={() => this.executeScroll(this.teleRefSocal)}>Socal</a></li>
               </ul>
 
             </div>                        
           </div>
         </header>
 
-        <div id="teleport-Home" className="feature" ref={this.teleRefHome}>
+        <div id="teleport-Home" className="" ref={this.teleRefHome}>
           <section id="restaurant-hero-section">
             <div className="hero-photo-sizing">
               <div className="landing-photo-container">
                 <img src={placeholder}/>
                 <div className="top-hero-content">
-                  <span className="small-hero-title">Welcome</span>
-                  <h2 className="hero-title">Lorem Ipsum</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque voluptatem accusamus non quidem, deleniti optio.</p>           
+                  <span className="small-hero-title">Welcome To</span>
+                   <h2 className="hero-title">{this.props.businessData.name}</h2>
+                   <p>{this.props.businessData.slogan}</p>           
                 </div>
               </div>
             </div>
@@ -120,8 +125,8 @@ class Restaurant extends React.Component {
         {display}
 
         <div id="teleport-Contact" className="feature" ref={this.teleRefContact}>
-          <div id="map-directions-button" className="container"><a href="https://www.google.com/maps/dir//84-740 Kili Dr?hl=en-US">Click Here For Directions Help</a></div>
-          <div className="map-wrapper"><iframe id="restaurant-map" className="restaurant-map" src={`https://www.google.com/maps/embed/v1/place?key=${token}&q=84-740 Kili Dr`}></iframe></div>
+          <div id="map-directions-button" className="container"><a href={`https://www.google.com/maps/dir//${this.props.businessData.map}?hl=en-US`}>Click Here For Directions Help</a></div>
+          <div className="map-wrapper"><iframe id="restaurant-map" className="restaurant-map" src={`https://www.google.com/maps/embed/v1/place?key=${token}&q=${this.props.businessData.map}`}></iframe></div>
         </div>       
 
         <div id="teleport-footer" className="feature" ref={this.teleRefSocal}>

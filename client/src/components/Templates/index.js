@@ -10,6 +10,11 @@ import Restaurant from "./Restaurant";
 // START OF ALL THE FEATURES
 import Modal from "../Features/modal"
 import Pricing from "../Features/Pricing";
+import About from"../Features/About";
+import Hours from"../Features/Hours";
+import ImageCarousel from"../Features/ImageCarousel";
+import SpotlightGallery from"../Features/SpotlightGallery";
+import Team from"../Features/Team";
 // END OF ALL THE FEATURES
 
 class Index extends React.Component {
@@ -25,6 +30,16 @@ class Index extends React.Component {
     switch (feature) {
       case "Pricing":
         return <Pricing data={data}/>
+      case "About":
+        return <About data={data}/>
+      case "Hours":
+        return <Hours data={data}/>
+      case "ImageCarousel":
+        return <ImageCarousel data={data}/>
+      case "SpotlightGallery":
+        return <SpotlightGallery data={data}/>
+      case "Team":
+        return <Team data={data}/>
       default:
         return <div></div>
     }

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import Mutations from "../../graphql/mutations"
+import "../css/master.css";
+
 const { REGISTER_USER } = Mutations
 
 class MasterRegister extends Component {
@@ -54,32 +56,41 @@ class MasterRegister extends Component {
                 });
               }}
             >
-              <input className="new-user-data" 
-                value={this.state.name}
-                onChange={this.update("name")}
-                placeholder="name"
-              />
-              <input className="new-user-data"
-                value={this.state.email}
-                onChange={this.update("email")}
-                placeholder="Email"
-              />
-              <input className="new-user-data"
-                value={this.state.password}
-                onChange={this.update("password")}
-                type="password"
-                placeholder="Password"
-              />
-              <select className="new-user-data"
-                value={this.state.role}
-                onChange={this.update("role")}>
-                <option defaultValue>role</option>
-                <option value="Master">Master</option>
-                <option value="Business">Business</option>
-                <option value="EndUser">EndUser</option>
-              </select>
 
-              <button type="submit">Register Account</button>
+              <div className="all-user">
+              
+                <input className="new-user-data" 
+                  value={this.state.name}
+                  onChange={this.update("name")}
+                  placeholder="name"
+                />
+                <input className="new-user-data"
+                  value={this.state.email}
+                  onChange={this.update("email")}
+                  placeholder="Email"
+                />
+                <input className="new-user-data"
+                  value={this.state.password}
+                  onChange={this.update("password")}
+                  type="password"
+                  placeholder="Password"
+                />
+              </div>
+
+                <select className="new-user-data"
+                  value={this.state.role}
+                  onChange={this.update("role")}>
+                  <option defaultValue>role</option>
+                  <option value="Master">Master</option>
+                  <option value="Business">Business</option>
+                  <option value="EndUser">EndUser</option>
+                </select>
+
+
+              <div className="make-account">
+                <button type="submit">Register Account</button>
+              </div>
+
             </form>
           </div>
         )}

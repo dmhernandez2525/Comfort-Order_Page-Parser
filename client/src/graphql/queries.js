@@ -10,9 +10,16 @@ export default {
   FETCH_BUSINESS: gql`
     query FetchBusiness($id: ID!) {
         business(_id: $id) {
-          name
           features
           template
+          name
+          map
+          url
+          phoneNumber
+          address
+          slogan
+          hours
+          about
           businessData
         }
     }

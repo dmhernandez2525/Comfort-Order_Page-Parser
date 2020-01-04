@@ -1,5 +1,5 @@
 import React from "react";
-import TestFe from "./Pricing" // Just change this route
+import TestFe from "./About" // Just change this route
 
 class Test extends React.Component {
   constructor(props){
@@ -9,46 +9,14 @@ class Test extends React.Component {
 
   render(){
      // change data to the test data that you want   
-      let data = {
-        row1: {
-            name:"Free",
-            price: 0,
-            details: [
-                "Curabitur eu eros et risus rutrum elementum.",
-                "Phasellus a quam lobortis magna viverra tempus.",
-                "Sed dictum nibh porttitor aliquet pulvinar.",
-                "Pellentesque vestibulum erat eu ex laoreet volutpat.",
-            ]
-        },
-        row2: {
-            name:"Plus",
-            price: 9,
-            details: [
-                "Curabitur eu eros et risus rutrum elementum.",
-                "Phasellus a quam lobortis magna viverra tempus.",
-                "Sed dictum nibh porttitor aliquet pulvinar.",
-                "Pellentesque vestibulum erat eu ex laoreet volutpat.",
-                "Nam tempor ex auctor nunc gravida, vel facilisis eros sagittis.",
-                "Nullam quis eros ac eros cursus tempor a quis lorem.",
-            ]
-        },
-        row3: {
-            name:"Pro",
-            price: 20,
-            details: [
-                "Curabitur eu eros et risus rutrum elementum.",
-                "Phasellus a quam lobortis magna viverra tempus.",
-                "Sed dictum nibh porttitor aliquet pulvinar.",
-                "Pellentesque vestibulum erat eu ex laoreet volutpat.",
-                "Nam tempor ex auctor nunc gravida, vel facilisis eros sagittis.",
-                "Nullam quis eros ac eros cursus tempor a quis lorem.",
-                "Proin vel nisi sed mauris tristique tincidunt vulputate sit amet nulla.",
-                "Phasellus vulputate nisi in libero euismod, lacinia mattis ligula cursus.",
-                "Donec porta enim vitae mollis bibendum.",
-                "Fusce in erat id diam porttitor pellentesque et non tortor."
-            ]
+    let data = {
+        about:{
+            title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm incididunt",
+            text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra elit a vehicula viverra. Pellentesque scelerisque nisi eu dui vehicula, ut tristique dui accumsan. Nullam posuere bibendum condimentum. Aenean tempor arcu quis velit ultrices molestie. Etiam dignissim ex id arcu elementum consectetur. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi id dictum velit, ut varius nisi. Nullam lobortis eget lectus sed blandit. Phasellus ultrices felis ac sollicitudin mollis. Phasellus consectetur, sapien nec gravida vehicula, enim metus faucibus sapien, quis gravida libero libero id velit. Fusce augue mi, vestibulum sed dapibus non, faucibus sit amet urna. Praesent bibendum felis condimentum sem accumsan, id maximus velit egestas. Proin ut erat ligula. Etiam eu sollicitudin libero.",
+            pic: "https://ca.slack-edge.com/TL86V04VD-UL6LL1UJC-e8394a6f6209-48"
         }
     }
+
 
     return(
     <div > 

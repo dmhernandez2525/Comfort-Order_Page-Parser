@@ -1,10 +1,10 @@
 import React from "react";
 
 class NavBar extends React.Component {
-  constructor(props){
-    super(props)
+  // constructor(props){ rfq use when Component is being used in app
+  //   super(props)
 
-  }
+  // }
   render(){
     return(
     <div id="navbar" className="navbar" role="navigation">
@@ -13,12 +13,6 @@ class NavBar extends React.Component {
         <li><a href="#teleport-option2">Option 2</a></li>                       
         <li><a href="#teleport-option3">Option 3</a></li>                       
         <li><a href="#teleport-option4">Option 4</a></li> 
-        {/* <li><a href="#one">Option 5</a></li>                        */}
-
-        {/* <li><a href={`teleport-${this.props.navOption}`}>Option 5</a></li>
-        <li><a href={`teleport-${this.props.navOption}`}>Option 6</a></li>
-        <li><a href={`teleport-${this.props.navOption}`}>Option 7</a></li> 
-        <li><a href={`teleport-${this.props.navOption}`}>Option 8</a></li>  */}
       </ul>                            
     </div>
     )

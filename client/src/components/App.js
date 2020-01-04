@@ -24,7 +24,7 @@ import DisplaySite from "./Business/DisplaySite";
 import Four0Four from "./ComfortOrder/Four0Four";
 import Splash from "./ComfortOrder/Splash";
 import FeatureTest from "./Features/FeatureTest";
-import Test from "./Features/MakePriceing";
+import Test from "./Features/CreateFeatures/MakePriceing";
 
 require('dotenv').config();
 

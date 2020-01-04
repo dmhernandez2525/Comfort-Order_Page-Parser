@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/Price.css"
+import "../../css/MakeFeatures/MakePrice.css"
 
 class MakePriceing extends React.Component  {
   constructor(props){
@@ -144,3 +144,6 @@ class MakePriceing extends React.Component  {
 }
 
 export default MakePriceing
+
+
+
