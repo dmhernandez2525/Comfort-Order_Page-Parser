@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import {cartItemsSetter} from "../apollo_hooks_hoc"
 
 
 class Menu extends React.Component{
@@ -9,17 +10,18 @@ class Menu extends React.Component{
     }
   }
 
+
   
 
   render(){
     return(
       <div className="container">
         <ul>
-          {this.state.dummyInfo.map((ele) => {
-            <li onClick={() => console.log("add to cart cache")}>
-              {/* {ele} */}
+          {this.state.dummyInfo.map((ele, i) => (
+            <li key={i} onClick={() => this.props.addCartItems(ele)}>
+              {ele}
             </li>
-          })}
+          ))}
         </ul>
       </div>
     )
@@ -27,4 +29,4 @@ class Menu extends React.Component{
 
 }
 
-export default Menu
+export default cartItemsSetter(Menu)
