@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/Price.css"
+import "../../css/Price.css"
 
 class MakePriceing extends React.Component  {
   constructor(props){

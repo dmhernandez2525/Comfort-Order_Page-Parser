@@ -3,7 +3,7 @@ import { Mutation } from "react-apollo";
 import { withRouter } from 'react-router-dom';
 import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
-import Pricing from "../Features/MakePriceing";
+import Pricing from "../Features/CreateFeatures/MakePriceing";
 import "../css/master.css";
 const { CREATE_BUSINESS } = Mutations;
 // const { FETCH_BUSINESS } = Queries; rfq for editing

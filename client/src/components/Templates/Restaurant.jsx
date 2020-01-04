@@ -1,5 +1,4 @@
 import React from "react";
-import Nav from "./nav";
 import Footer from "./footer";
 import placeholder from "./placeholder.jpg"
 import favicon from "./favicon.ico"
@@ -8,7 +7,6 @@ import Modal from "../Features/modal"
 
 
 import { modalHOC } from "../apollo_hooks_hoc"
-import Menu from "../Features/menu"
 import "./global.css"
 const token = process.env.REACT_APP_TOKEN
 
