@@ -1,5 +1,5 @@
 import React from "react";
-import TestFe from "./Hours" // Just change this route
+import TestFe from "./About" // Just change this route
 
 class Test extends React.Component {
   constructor(props){
@@ -10,13 +10,11 @@ class Test extends React.Component {
   render(){
      // change data to the test data that you want   
     let data = {
-      Monday:{from:"10am",to:"10pm"},
-      Tuesday:{from:"10am",to:"10pm"},
-      Wednesday:{from:"10am",to:"10pm"},
-      Thursday:{from:"10am",to:"10pm"},
-      Friday:{from:"10am",to:"10pm"},
-      Saturday:{from:"10am",to:"10pm"},
-      Sunday:{from:"10am",to:"10pm"}
+        about:{
+            title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm incididunt",
+            text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra elit a vehicula viverra. Pellentesque scelerisque nisi eu dui vehicula, ut tristique dui accumsan. Nullam posuere bibendum condimentum. Aenean tempor arcu quis velit ultrices molestie. Etiam dignissim ex id arcu elementum consectetur. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi id dictum velit, ut varius nisi. Nullam lobortis eget lectus sed blandit. Phasellus ultrices felis ac sollicitudin mollis. Phasellus consectetur, sapien nec gravida vehicula, enim metus faucibus sapien, quis gravida libero libero id velit. Fusce augue mi, vestibulum sed dapibus non, faucibus sit amet urna. Praesent bibendum felis condimentum sem accumsan, id maximus velit egestas. Proin ut erat ligula. Etiam eu sollicitudin libero.",
+            pic: "https://ca.slack-edge.com/TL86V04VD-UL6LL1UJC-e8394a6f6209-48"
+        }
     }
 
 
