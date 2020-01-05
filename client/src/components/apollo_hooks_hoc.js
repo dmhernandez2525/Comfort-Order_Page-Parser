@@ -37,9 +37,10 @@ export function cartItemsSetter(Component) {
   return function WrappedComponent(props) {
     const client = useApolloClient();
     let cartQueryRead = client.readQuery({ query: CART })
-    function addCartItems(item) {
-      cartQueryRead.cartItems.push(item)
+    function addCartItems(itemObject, itemName) {
+      cartQueryRead.cartItems.push([itemName, itemObject])
       client.writeData({ data: { cartItems: cartQueryRead.cartItems } })
+      console.log(client.cache.data.data)
     }
 
     return <Component {...props} cartItems={cartQueryRead.cartItems} addCartItems={addCartItems}/>
