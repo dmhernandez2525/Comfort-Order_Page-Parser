@@ -17,21 +17,24 @@ class MakeMenuItem extends React.Component  {
   createCategory(name){
       return (
           <div className="category-items" key={`name${name}`}>
+              <h1 className="category-item-name">{name}</h1>
+              <div >
+                <input className="new-site-data"
+                    onChange={this.update(name, "image")}
+                    placeholder="image"
+                />
 
-              <input className="new-site-data"
-                  onChange={this.update(name, "image")}
-                  placeholder="image"
-              />
+                <input className="new-site-data"
+                    onChange={this.update(name, "price")}
+                    placeholder="price"
+                />
 
-              <input className="new-site-data"
-                  onChange={this.update(name, "price")}
-                  placeholder="price"
-              />
+                <input className="new-site-data"
+                    onChange={this.update(name, "description")}
+                    placeholder="description"
+                />                
+              </div>
 
-              <input className="new-site-data"
-                  onChange={this.update(name, "description")}
-                  placeholder="description"
-              />
           </div>
       )
   }
@@ -50,7 +53,6 @@ class MakeMenuItem extends React.Component  {
   handleSubmit(){
     let returnState  ={} 
     Object.keys(this.state).forEach(name =>{
-        debugger
         returnState[name] = this.state[name].data
     })
     this.handleFeatureSubmit(this.props.name,returnState)
@@ -96,11 +98,11 @@ class MakeMenuItem extends React.Component  {
     })
     return(
     <div className="category-div" > 
-        <h1> Category Item </h1>
+        <h1 className="category-item-name"> {`${this.props.name}`} </h1>
 
         <form className="category-submit" onSubmit={this.categoryItemCreate}>
             <input placeholder="name" ref="theInput"></input>
-            <button>Add More Category Items in Category</button>
+          <button>{`Add Category Items in ${this.props.name}`}</button>
         </form>
 
         {display}

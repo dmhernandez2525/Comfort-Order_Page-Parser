@@ -17,11 +17,8 @@ class MakeMenu extends React.Component  {
 
   createCategory(name){
     return (
-      <div>
-        {/* <input className="new-site-data"
-            onChange={this.update(name)}
-        /> */}
-        <MenuItem submit={this.handleItemSubmit} name={name}/>
+      <div key={`category-item-div${name}`}>
+        <MenuItem key={`category-item${name}`} submit={this.handleItemSubmit} name={name}/>
       </div>
 
     )
@@ -39,23 +36,18 @@ class MakeMenu extends React.Component  {
   }
 
   handleSubmit(){
-    debugger
     let returnState = {}
     Object.keys(this.state).forEach(name => {
-      debugger
       returnState[name] = this.state[name].data
     })
     this.handleFeatureSubmit(this.props.feature, returnState)
   }
 
   handleItemSubmit(name,data){
-    debugger
     this.setState(state => {
       let newState = Object.assign({}, state)
       let newName = name
-      debugger
       newState[newName].data = data
-      debugger
       return {
         [name]: newState[newName]
       }
