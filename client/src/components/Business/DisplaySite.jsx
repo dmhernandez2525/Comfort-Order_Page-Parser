@@ -18,13 +18,11 @@ class DisplaySite extends React.Component {
     }
   }
 
-
   update(field){
     return (e) => {
       this.setState({ [field]: e.target.value })
     }
   }
-
  
   handleSubmit(e){
     e.preventDefault();
@@ -42,10 +40,8 @@ class DisplaySite extends React.Component {
                features[`feature${i+1}`] = JSON.parse(feature)
             })
           return (
-            
             <div >
               <TemplateLibrary template={data.business.template} features={features} businessData={data.business} />
-              {/* <TemplateLibrary template={data.business.template}  features={data.business.features} businessData={data.business.businessData}/> */}
             </div>
           )
         }}
