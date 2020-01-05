@@ -15,11 +15,16 @@ class Cart extends React.Component {
       <h1>WHAT IT DOOOOOOO BB </h1>
       <h1>-Cart</h1>
       <ul id="top-menu" className="cart-nav cart-right">
-        {this.props.cartItems.map((ele, i ) => (
-          <li key={i} >
-            {ele}
-          </li>
-        ))}
+        {this.props.cartItems.map((ele, i ) => {
+          return(
+            <li key={i} >
+              {ele[0]}
+              <img href={ele[1].image}/>
+              {ele[1].price}
+              {ele[1].description}
+            </li>
+          )
+        })}
       </ul>                            
     </div>
     )
