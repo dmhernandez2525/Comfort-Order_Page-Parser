@@ -27,13 +27,11 @@ class ImageCarousel extends React.Component {
 // }
 
   render(){
-    let display = Object.values(this.data).map(slide =>{
+    let display = Object.values(this.data).map((slide,i) =>{
         return(
-            <div className="slide-all" key={slide.name}>
-                <div className="img-style" style={{backgroundImage: `url(${slide.picUrl})` }}>
-                    <h3>{slide.title}</h3>
-                    <p>{slide.detail}</p>
-                </div>
+            <div className="slide-all" key={`${slide.title}${i}`}>
+                <h3>{slide.title}</h3>
+                <p>{slide.detail}</p>
             </div>
         )
     })

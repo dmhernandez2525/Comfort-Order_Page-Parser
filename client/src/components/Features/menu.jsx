@@ -29,7 +29,7 @@ class Menu extends React.Component{
                   return ( 
                       <li onClick={() => this.props.addCartItems(currentItem, itemName)}>
                         <h1> {itemName} </h1>
-                        <img href={currentItem.image} />
+                        <img src={currentItem.image} />
                         <h2> {currentItem.price} </h2>
                         <p> {currentItem.description} </p>
                       </li>

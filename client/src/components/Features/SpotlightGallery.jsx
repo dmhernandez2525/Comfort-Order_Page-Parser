@@ -26,9 +26,8 @@ class SpotlightGallery extends React.Component {
     let display = Object.values(this.data).map((photo,i) =>{
         return(
             <div key={i}>
-                <div style={{backgroundImage: `url(${photo.picUrl})` }}>
-                    <p>{photo.comment}</p>
-                </div>
+              <img src={photo.picUrl} />
+              <p>{photo.comment}</p>
             </div>
         )
     })
