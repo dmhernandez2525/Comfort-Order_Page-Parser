@@ -27,7 +27,7 @@ class Menu extends React.Component{
              { Object.keys(options).map((itemName, i) => {
                   let currentItem = options[itemName]
                   return ( 
-                      <li onClick={() => this.props.addCartItems(currentItem, itemName)}>
+                      <li key={i} onClick={() => this.props.addCartItems(currentItem, itemName)}>
                         <h1> {itemName} </h1>
                         <img src={currentItem.image} />
                         <h2> {currentItem.price} </h2>

@@ -32,16 +32,16 @@ class DisplaySite extends React.Component {
     return (
       <div>
       <Query query={FETCH_BUSINESS} variables={{ id: this.props.match.params.id }}>
-        {({ loading, error, data }) => {
-          if (loading) return <div>Loading</div>;
-          if (error) return `Error! ${error.message}`;
+        {(data) => {
+          if (data.loading) return <div>Loading</div>;
+          if (data.error) return `Error! ${data.error.message}`;
             let features = {}
-             data.business.features.forEach((feature,i) =>{
+             data.data.business.features.forEach((feature,i) => {
                features[`feature${i+1}`] = JSON.parse(feature)
             })
           return (
             <div >
-              <TemplateLibrary template={data.business.template} features={features} businessData={data.business} />
+              <TemplateLibrary template={data.data.business.template} features={features} businessData={data.data.business} />
             </div>
           )
         }}
