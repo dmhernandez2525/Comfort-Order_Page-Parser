@@ -88,8 +88,7 @@ class Team extends React.Component {
         })
         return(
             <div key={member.name}>
-                <div className="member-pic" style={{ backgroundImage: `url(${member.pic})` }}>
-                </div>
+                <img src={member.pic} />
                 <div>
                     <h1>{member.name}</h1>
                     <p>{member.about}</p>

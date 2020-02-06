@@ -17,12 +17,12 @@ class About extends React.Component {
 //   }
 
   render(){
-    let display = Object.values(this.data).map((about) =>{
+    let display = Object.values(this.data).map((about,i) =>{
         return (
-            <div>
+          <div key={`${about.title}${i}`}>
                 <h1>{about.title}</h1>
                 <p>{about.text}</p>
-                <div className="about-pic" style={{ backgroundImage: `url(${about.pic})` }} ></div>
+                <img src={about.pic} />
             </div>
         )
     })

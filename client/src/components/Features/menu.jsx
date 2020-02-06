@@ -14,14 +14,31 @@ class Menu extends React.Component{
   
 
   render(){
+   
     return(
       <div className="container">
         <ul>
-          {this.state.dummyInfo.map((ele, i) => (
-            <li key={i} onClick={() => this.props.addCartItems(ele)}>
+          { Object.keys(this.props.data).map((ele,i) => {
+              let options = this.props.data[ele]
+              return (
+            <li key={i}>
               {ele}
+              <ul>
+             { Object.keys(options).map((itemName, i) => {
+                  let currentItem = options[itemName]
+                  return ( 
+                      <li key={i} onClick={() => this.props.addCartItems(currentItem, itemName)}>
+                        <h1> {itemName} </h1>
+                        <img src={currentItem.image} />
+                        <h2> {currentItem.price} </h2>
+                        <p> {currentItem.description} </p>
+                      </li>
+                  )
+              })}
+              </ul>
             </li>
-          ))}
+            )
+          })}
         </ul>
       </div>
     )

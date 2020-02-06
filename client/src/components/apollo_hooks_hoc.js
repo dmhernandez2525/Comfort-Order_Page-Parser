@@ -28,20 +28,21 @@ export function modalHOC(Component) {
 export function cartItemsGetter(Component) {
   return function WrappedComponent(props) {
     const client = useApolloClient();
-    let cartQueryRead = client.readQuery({ query: CART })
-    return <Component {...props} cartItems={cartQueryRead.cartItems}/>
+    // let { cartItems } = client.readQuery({ query: CART })
+    return <Component {...props} cartItems={client.cache.data.data.ROOT_QUERY.cartItems["json"]}/>
   }
 }
 
 export function cartItemsSetter(Component) {
   return function WrappedComponent(props) {
     const client = useApolloClient();
-    let cartQueryRead = client.readQuery({ query: CART })
-    function addCartItems(item) {
-      cartQueryRead.cartItems.push(item)
-      client.writeData({ data: { cartItems: cartQueryRead.cartItems } })
+    let { cartItems } = client.readQuery({ query: CART })
+    function addCartItems(itemObject, itemName) {
+      cartItems.push([itemName, itemObject])
+      client.writeData({ data: { cartItems } })
+      console.log(client.cache.data.data)
     }
 
-    return <Component {...props} cartItems={cartQueryRead.cartItems} addCartItems={addCartItems}/>
+    return <Component {...props} cartItems={cartItems} addCartItems={addCartItems}/>
   }
 }

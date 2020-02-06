@@ -1,11 +1,22 @@
 import React from "react";
 import TestFe from "./menu" // Just change this route
+import { modalHOC } from "../apollo_hooks_hoc"
+import Modal from "./modal"
+
+
 
 class Test extends React.Component {
   constructor(props){
     super(props)
       this.state = {}
+    this.setStateModalCB = this.setStateModalCB.bind(this);
   }
+
+  setStateModalCB(modalBool) {
+    this.setState({modalBool})
+
+    } 
+
 
   render(){
      // change data to the test data that you want   
@@ -89,11 +100,12 @@ class Test extends React.Component {
     }
     return(
     <div > 
+        <div className="nav-cart" onClick={() => this.props.setModalCache(true, this.setStateModalCB)}> <Modal modal="cart" modalBool={this.props.modalBool} setParentModalBool={this.setStateModalCB}/> </div>
         <TestFe data={data}/>                          
     </div>
     )
   }
 }
 
-export default Test
+export default modalHOC(Test)
 

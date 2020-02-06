@@ -10,6 +10,7 @@ import Hours from "../Features/CreateFeatures/MakeHours";
 import ImageCarousel from "../Features/CreateFeatures/MakeImageCarousel";
 import SpotlightGallery from "../Features/CreateFeatures/MakeSpotlightGallery";
 import Team from "../Features/CreateFeatures/MakeTeam";
+import Menu from "../Features/CreateFeatures/MakeMenu";
 
 import "../css/master.css";
 const { CREATE_BUSINESS } = Mutations;
@@ -51,7 +52,8 @@ class CreateBusiness extends Component {
             Hours: <Hours returnType={"Hours"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />,
             ImageCarousel: <ImageCarousel returnType={"ImageCarousel"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />,
             SpotlightGallery: <SpotlightGallery returnType={"SpotlightGallery"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />,
-            Team: <Team returnType={"Team"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />
+            Team: <Team returnType={"Team"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />,
+            Menu: <Menu returnType={"Menu"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />
         };
         this.CreateFeatureOption = this.CreateFeatureOption.bind(this);
         this.CreateFeature = this.CreateFeature.bind(this);
@@ -108,7 +110,8 @@ class CreateBusiness extends Component {
             Hours: <Hours key={`Feature${all}Hours` } returnType={"Hours"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />,
             ImageCarousel: <ImageCarousel key={`Feature${all}ImageCarousel` } returnType={"ImageCarousel"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />,
             SpotlightGallery: <SpotlightGallery key={`Feature${all}SpotlightGallery` } returnType={"SpotlightGallery"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />,
-            Team: <Team key={`Feature${all}Team` } returnType={"Team"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />
+            Team: <Team key={`Feature${all}Team` } returnType={"Team"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />,
+            Menu: <Menu key={`Feature${all}Menu` } returnType={"Menu"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />
         };
 
 
@@ -134,6 +137,7 @@ class CreateBusiness extends Component {
                     <option value="ImageCarousel">ImageCarousel</option>
                     <option value="SpotlightGallery">SpotlightGallery</option>
                     <option value="Team">Team</option>
+                    <option value="Menu">Menu</option>
                 </select>
 
             </div>

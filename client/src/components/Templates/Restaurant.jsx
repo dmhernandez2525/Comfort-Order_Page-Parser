@@ -24,6 +24,7 @@ class Restaurant extends React.Component {
     this.teleRef2 = React.createRef()
     this.teleRef3 = React.createRef()
     this.teleRef4 = React.createRef()
+    this.teleRef5 = React.createRef()
     this.teleRef6 = React.createRef()
     this.teleRef7 = React.createRef()
     this.teleRef8 = React.createRef()
@@ -70,20 +71,20 @@ class Restaurant extends React.Component {
     let css = ["container feature-display black", "container feature-display"]
 
     let nav = Object.keys(allFeatures).map((feature,i) =>{
-      return <li><a onClick={() => this.executeScroll(this[`teleRef${i + 1}`])}>{allFeatures[feature].type}</a></li>
+      return <li key={`${allFeatures[feature].type}${i}`} ><a onClick={() => this.executeScroll(this[`teleRef${i + 1}`])}>{allFeatures[feature].type}</a></li>
     })
 
-    nav.unshift(<li><a onClick={() => this.executeScroll(this.teleRefHome)}>Home</a></li>)
-    nav.push(<li><a onClick={() => this.executeScroll(this.teleRefContact)}>Contact</a></li>)
-    nav.push(<li><a onClick={() => this.executeScroll(this.teleRefSocal)}>Socal</a></li>)
-    nav.push(<li> <Link to="/login">Login</Link></li>)
-    nav.push(<li><Link to="/register">Register</Link></li>)
+    nav.unshift(<li key={`addOn1`} ><a onClick={() => this.executeScroll(this.teleRefHome)}>Home</a></li>)
+    nav.push(<li key={`addOn2`} ><a onClick={() => this.executeScroll(this.teleRefContact)}>Contact</a></li>)
+    nav.push(<li key={`addOn3`} ><a onClick={() => this.executeScroll(this.teleRefSocal)}>Socal</a></li>)
+    nav.push(<li key={`addOn4`} > <Link to="/login">Login</Link></li>)
+    nav.push(<li key={`addOn5`} ><Link to="/register">Register</Link></li>)
                 
                 
 
     let display = Object.keys(allFeatures).map((currentFeature,i) =>{
       return (
-        <div id={`teleport-option${i}`} className="feature" ref={this[`teleRef${i + 1}`]}>
+        <div key={`${i}${allFeatures[currentFeature].type}${i}`} id={`teleport-option${i}`} className="feature" ref={this[`teleRef${i + 1}`]}>
           <div className={css[ i % 2 ]}>
             <h2 className="hero-title">{allFeatures[currentFeature].type}</h2>
             {allFeatures[currentFeature].feature}
@@ -131,7 +132,7 @@ class Restaurant extends React.Component {
 
         <div id="teleport-footer" className="feature" ref={this.teleRefSocal}>
           <footer id="restaurant-footer">
-            <Footer /> 
+            <Footer key={"mainFooter"} /> 
           </footer>  
         </div>
 
