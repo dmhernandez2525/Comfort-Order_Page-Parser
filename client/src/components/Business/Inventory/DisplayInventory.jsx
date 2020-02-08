@@ -16,6 +16,9 @@ class Inventory extends React.Component {
             <div>
                 <h1>Inventory</h1>
                 <Link to="/businessLogin"> Back </Link>
+                <di>
+                    
+                </di>
 
             </div>
         )

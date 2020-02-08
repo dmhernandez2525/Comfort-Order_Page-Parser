@@ -34,8 +34,6 @@ export default {
         $phoneNumber: String!,
         $address: String!,
         $slogan: String!,
-        $hours: String!,
-        $about: String!,
         $userId: ID!,
         $features: [String], 
         $template: String!, 
@@ -47,8 +45,6 @@ export default {
           phoneNumber: $phoneNumber,
           address: $address,
           slogan: $slogan,
-          hours: $hours,
-          about: $about,
           userId: $userId,
           features: $features,
           template: $template,
@@ -67,8 +63,6 @@ export default {
             phoneNumber
             address
             slogan
-            hours
-            about
         }
       }
   `,

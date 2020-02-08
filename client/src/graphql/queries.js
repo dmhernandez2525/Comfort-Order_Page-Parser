@@ -18,8 +18,6 @@ export default {
           phoneNumber
           address
           slogan
-          hours
-          about
           businessData
         }
     }
@@ -40,8 +38,6 @@ export default {
           phoneNumber
           address
           slogan
-          hours
-          about
           businessData
         }
     }

@@ -21,12 +21,6 @@ const BusinessSchema = new Schema({
     slogan: {
         type: String
     },
-    hours: {
-        type: String
-    },
-    about: {
-        type: String
-    },
     name: {
         type: String,
         required: true

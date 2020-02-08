@@ -27,8 +27,6 @@ const BusinessType = new GraphQLObjectType({
     phoneNumber: { type: GraphQLString },
     address: { type: GraphQLString },
     slogan: { type: GraphQLString },
-    hours: { type: GraphQLString },
-    about: { type: GraphQLString },
     businessData: { type: new GraphQLList(GraphQLString) }
   })
 });

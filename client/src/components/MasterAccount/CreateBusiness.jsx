@@ -27,8 +27,6 @@ class CreateBusiness extends Component {
             phoneNumber: "Demo Site phoneNumber",
             address: "Demo Site address",
             slogan: "Demo Site slogan",
-            hours: "Demo Site hours",
-            about: "Demo Site about",
             template: "",
             userId: "5dee13bb4613a10017103002",
             allFeatures:[],
@@ -212,8 +210,6 @@ class CreateBusiness extends Component {
                                         phoneNumber: this.state.phoneNumber,
                                         address: this.state.address,
                                         slogan: this.state.slogan,
-                                        hours: this.state.hours,
-                                        about: this.state.about,
                                         template: this.state.template,
                                         userId: this.state.userId,
                                         features: endFeatures,
@@ -254,16 +250,6 @@ class CreateBusiness extends Component {
                                     placeholder="slogan"
                                 />
                                 {/* rfq days and hours */}
-                                <input className="new-site-data"
-                                    onChange={this.update("hours")}
-                                    value={this.state.hours}
-                                    placeholder="hours"
-                                />
-                                <textarea className="new-site-data"
-                                    onChange={this.update("about")}
-                                    value={this.state.about}
-                                    placeholder="about"
-                                />
                                 
                                 <input 
                                     className="new-site-data"
