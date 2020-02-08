@@ -18,7 +18,6 @@ export default {
           phoneNumber
           address
           slogan
-          businessData
         }
     }
   `,
@@ -38,7 +37,6 @@ export default {
           phoneNumber
           address
           slogan
-          businessData
         }
     }
   `,

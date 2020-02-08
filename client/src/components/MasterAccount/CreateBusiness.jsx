@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import { withRouter } from 'react-router-dom';
 import Mutations from "../../graphql/mutations";
-import Queries from "../../graphql/queries";
 
 import Pricing from "../Features/CreateFeatures/MakePriceing";
 import About from "../Features/CreateFeatures/MakeAbout";
@@ -30,18 +29,19 @@ class CreateBusiness extends Component {
             template: "",
             userId: "5dee13bb4613a10017103002",
             allFeatures:[],
-            allFeaturesDisplay:[],
+            // allFeaturesDisplay:[], rfq 2 not needed
             allFeaturesValues:[],
             divs:[],
-            businessData: "About me",
             message:""
         };
-        this.tete = React.createRef();
+        // this.tete = React.createRef(); rfq remove step 1
+
         this.updateCache = this.updateCache.bind(this)
         this.displayMessage = this.displayMessage.bind(this)
         this.handleFeatureSubmit = this.handleFeatureSubmit.bind(this)
         this.updateFeature = this.updateFeature.bind(this)
         // Rember to update CreateFeature if you add more
+
         this.allFeatures = {
             Order:"a",
             Booking:"a",
@@ -53,6 +53,7 @@ class CreateBusiness extends Component {
             Team: <Team returnType={"Team"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />,
             Menu: <Menu returnType={"Menu"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />
         };
+
         this.CreateFeatureOption = this.CreateFeatureOption.bind(this);
         this.CreateFeature = this.CreateFeature.bind(this);
         this.handleMainSubmit = this.handleMainSubmit.bind(this);
@@ -146,10 +147,10 @@ class CreateBusiness extends Component {
         return (e) => {
             let aa = { co: e.target.value, form: this.allFeatures[e.target.value] } 
             this.setState(state => {
-                const listOfAllFeatures = state.allFeaturesDisplay.concat(aa.form);
+                // const listOfAllFeatures = state.allFeaturesDisplay.concat(aa.form); rfq 2 not needed
                 const listOfAlldivs = state.divs.concat(aa.form);
                 return {
-                    allFeaturesDisplay: listOfAllFeatures,
+                    // allFeaturesDisplay: listOfAllFeatures, rfq 2 not needed
                     divs: listOfAlldivs
                 };
             });
@@ -187,6 +188,8 @@ class CreateBusiness extends Component {
                     </div>
                 )
         })
+
+
         return (
             <Mutation
                 mutation={CREATE_BUSINESS}
@@ -213,7 +216,6 @@ class CreateBusiness extends Component {
                                         template: this.state.template,
                                         userId: this.state.userId,
                                         features: endFeatures,
-                                        businessData: [this.state.businessData],
                                     }
                                 });
                             }}>

@@ -31,10 +31,7 @@ const BusinessSchema = new Schema({
     template: {
         type: String,
         required: true
-    },
-    businessData: [{
-        type: String
-    }]
+    }
 });
 
 module.exports = mongoose.model('business', BusinessSchema);

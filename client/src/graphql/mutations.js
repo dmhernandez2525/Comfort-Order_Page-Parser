@@ -36,8 +36,8 @@ export default {
         $slogan: String!,
         $userId: ID!,
         $features: [String], 
-        $template: String!, 
-        $businessData: [String]) {
+        $template: String!
+        ) {
         makeBusiness(
           name: $name,
           map: $map,
@@ -47,8 +47,7 @@ export default {
           slogan: $slogan,
           userId: $userId,
           features: $features,
-          template: $template,
-          businessData:$businessData 
+          template: $template
           ){
             _id
             user{
@@ -56,7 +55,6 @@ export default {
             }
             features
             template
-            businessData
             name
             map
             url
