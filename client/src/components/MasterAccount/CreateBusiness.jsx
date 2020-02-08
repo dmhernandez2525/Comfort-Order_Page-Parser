@@ -29,7 +29,6 @@ class CreateBusiness extends Component {
             template: "",
             userId: "5dee13bb4613a10017103002",
             allFeatures:[],
-            // allFeaturesDisplay:[], rfq 2 not needed
             allFeaturesValues:[],
             divs:[],
             message:""
@@ -99,6 +98,7 @@ class CreateBusiness extends Component {
     }
 
     CreateFeature(){
+        // this is the current feature number that you are on
         let all = this.state.allFeatures.length;
 
         this.allFeatures = {
@@ -128,7 +128,7 @@ class CreateBusiness extends Component {
             >
                 <select
                     className="new-site-data FeatureNum"
-                    onChange={this.updateFeature(`feature${all}`)}>
+                    onChange={this.updateFeature(`feature${all}`, all)}>
                     <option defaultValue>{`Feature ${all}`} </option>
                     <option value="Pricing">Pricing</option>
                     <option value="About">About</option>
@@ -143,14 +143,13 @@ class CreateBusiness extends Component {
         )
     }
 
-    updateFeature(field) {
+    updateFeature(field,index) {
         return (e) => {
             let aa = { co: e.target.value, form: this.allFeatures[e.target.value] } 
             this.setState(state => {
-                // const listOfAllFeatures = state.allFeaturesDisplay.concat(aa.form); rfq 2 not needed
-                const listOfAlldivs = state.divs.concat(aa.form);
+                state.divs.splice(index, 1, aa.form);
+                const listOfAlldivs = state.divs
                 return {
-                    // allFeaturesDisplay: listOfAllFeatures, rfq 2 not needed
                     divs: listOfAlldivs
                 };
             });
