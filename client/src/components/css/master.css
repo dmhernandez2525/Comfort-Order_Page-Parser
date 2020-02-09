@@ -6,9 +6,6 @@
 .single-business {
     margin: 5vw;
 }
-.single-business, ul {
-
-}
 
 .main-all-sites{
     text-align: center;
@@ -33,11 +30,11 @@
     margin: 6vh;
 }
 
-.create-business-site{
+/* .create-business-site{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
+} */
 
 .new-site-data{
     height: 20%;

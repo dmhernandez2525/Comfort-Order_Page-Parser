@@ -16,3 +16,7 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     })
 }
+
+let a = 1 
+
+console.log(a+= 1);
