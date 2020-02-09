@@ -33,8 +33,6 @@ class CreateBusiness extends Component {
             divs:[],
             message:""
         };
-        // this.tete = React.createRef(); rfq remove step 1
-
         this.updateCache = this.updateCache.bind(this)
         this.displayMessage = this.displayMessage.bind(this)
         this.handleFeatureSubmit = this.handleFeatureSubmit.bind(this)
@@ -67,7 +65,8 @@ class CreateBusiness extends Component {
     updateCache(client, { data }) {
         this.displayMessage(data)
         client.writeData({
-        data: { site: data.makeBusiness }
+            // rfq make it so that on creation of a new site that it automaticaly adds it to the master account 
+        data: { businesses: data.makeBusiness }
         });
     }  
 
@@ -130,13 +129,13 @@ class CreateBusiness extends Component {
                     className="new-site-data FeatureNum"
                     onChange={this.updateFeature(`feature${all}`, all)}>
                     <option defaultValue>{`Feature ${all}`} </option>
-                    <option value="Pricing">Pricing</option>
                     <option value="About">About</option>
-                    <option value="Hours">Hours</option>
                     <option value="ImageCarousel">ImageCarousel</option>
                     <option value="SpotlightGallery">SpotlightGallery</option>
                     <option value="Team">Team</option>
+                    <option value="Pricing">Pricing</option>
                     <option value="Menu">Menu</option>
+                    <option value="Hours">Hours</option>
                 </select>
 
             </div>
@@ -250,16 +249,12 @@ class CreateBusiness extends Component {
                                     value={this.state.slogan}
                                     placeholder="slogan"
                                 />
-                                {/* rfq days and hours */}
-                                
                                 <input 
                                     className="new-site-data"
                                     onChange={this.update("userId")}
                                     value={this.state.userId}
                                     placeholder="userId"
                                 />
-                                {/* rfq  Needs to be dinamic do a quirey */}
-                                
                                 <div className="new-site-data-div">
                                     <select 
                                         className="new-site-data"
@@ -274,7 +269,6 @@ class CreateBusiness extends Component {
 
                             </div>
                         </form>
-                            {/* rfq  Needs to be dinamic do a quirey */}
                             {/* THIS IS THE START OF THE FEATURES */}
                             <div>
                                 {diplay}
