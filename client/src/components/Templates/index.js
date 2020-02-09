@@ -50,9 +50,12 @@ class Index extends React.Component {
 
   formatFeatures(){
     let fe = {}
+    debugger
     Object.keys(this.props.features).map(feature => {
+      debugger
       let key = Object.keys(this.props.features[feature]);
       let value = Object.values(this.props.features[feature]);
+      debugger
       fe[feature] = {
         feature: this.makeFeature(key[0], value[0]),
         type: key[0]
@@ -63,10 +66,9 @@ class Index extends React.Component {
 
     render() {
         if (this.props.template === "Restaurant"){
-        debugger
             return <Restaurant features={this.features} businessData={this.props.businessData}/>
         }
-        return <four0four />
+        return <four0four/>
     }
 }
 

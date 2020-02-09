@@ -46,7 +46,6 @@ class MakeAbout extends React.Component  {
       <Mutation
         mutation={CREATE_FEATURE}
           update={(cache, data) => {
-            debugger
             this.handleSubmit(data.data.makeFeature._id)
           }}
         onCompleted={(cache, data) => { 

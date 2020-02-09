@@ -18,7 +18,6 @@ class About extends React.Component {
 //   }
 
   render(){
-    debugger
     let display = Object.values(this.data).map((about,i) =>{
         return (
           <div key={`${about.title}${i}`}>

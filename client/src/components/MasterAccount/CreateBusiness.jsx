@@ -13,7 +13,6 @@ import Menu from "../Features/CreateFeatures/MakeMenu";
 
 import "../css/master.css";
 const { CREATE_BUSINESS } = Mutations;
-// const { FETCH_BUSINESS } = Queries; rfq for editing
 
 
 class CreateBusiness extends Component {
@@ -28,16 +27,26 @@ class CreateBusiness extends Component {
             slogan: "Demo Site slogan",
             template: "",
             userId: "5dee13bb4613a10017103002",
+            divs:[],
+            message:"",
+            allFeaturesId:[],
+            
             allFeatures:[],
             allFeaturesValues:[],
-            divs:[],
-            allFeaturesId:[],
-            message:""
         };
-        this.updateCache = this.updateCache.bind(this)
+
+
+        this.updateCache = this.updateCache.bind(this) // not currently working 
+
+        // used to let user link to new site and notifie that it was sucsefuly created 
         this.displayMessage = this.displayMessage.bind(this)
+
+        // used by feature after it has sucsufuly made its mutation
         this.handleFeatureSubmit = this.handleFeatureSubmit.bind(this)
+
         this.updateFeature = this.updateFeature.bind(this)
+
+
         // Rember to update CreateFeature if you add more
 
         this.allFeatures = {
@@ -54,7 +63,6 @@ class CreateBusiness extends Component {
 
         this.CreateFeatureOption = this.CreateFeatureOption.bind(this);
         this.CreateFeature = this.CreateFeature.bind(this);
-        this.handleMainSubmit = this.handleMainSubmit.bind(this);
 
     }
 
@@ -77,20 +85,15 @@ class CreateBusiness extends Component {
     }  
 
     handleFeatureSubmit(feature,data){
-        let newFeature = Object.assign({}, this.state.allFeaturesValues[feature])
-        let oldFeature = Object.assign({}, this.state.allFeaturesValues[feature])
+        let newFeature = Object.assign({}, this.state.allFeaturesId[feature])
+        let oldFeature = Object.assign({}, this.state.allFeaturesId[feature])
 
-        let dupFeature = [...this.state.allFeaturesValues]
         let dupFeatureId = [...this.state.allFeaturesId]
 
-        let all = { co: this.state.divs[feature].props.returnType, form: this.state.divs[feature], return: data, num: feature}
-        // dupFeature.splice(feature, 1, all); rfq old 
-        // dupFeature.splice(feature, 1, data);
-        // dupFeatureId.splice(feature, 1, data);
         dupFeatureId.push(data);
         newFeature.return = data
+
         this.setState({ allFeaturesId: dupFeatureId })
-        // this.setState({ allFeaturesValues: dupFeatureId }) rfq old one 
         alert(`OLD:${JSON.stringify(oldFeature.return)} vs NEW:${JSON.stringify(newFeature.return)} `);
     }
 
@@ -103,6 +106,7 @@ class CreateBusiness extends Component {
 
     CreateFeature(){
         // this is the current feature number that you are on
+        // rfq min posable data
         let all = this.state.allFeatures.length;
 
         this.allFeatures = {
@@ -161,12 +165,6 @@ class CreateBusiness extends Component {
     }
 
 
-    handleMainSubmit(){
-        return this.state.allFeaturesValues.map(feature => {
-           return JSON.stringify({ [feature.co]: feature.return })
-        })
-    }
-
     render() {
         let messageSite;
         if(this.state.message !== ""){
@@ -201,15 +199,12 @@ class CreateBusiness extends Component {
             >
                 {(makeBusiness, { loading, error,data }) => {
                     if(error) {
-                        debugger
                         return (<div>{error}</div>)
                     }
                     return (                
                         <div className="format-make-site">
                             <form onSubmit={e => {
                                 e.preventDefault();
-                                // let endFeatures = this.handleMainSubmit()
-                                debugger
                                 makeBusiness({
                                     variables: {
                                         name: this.state.name,
@@ -221,7 +216,6 @@ class CreateBusiness extends Component {
                                         template: this.state.template,
                                         userId: this.state.userId,
                                         features: this.state.allFeaturesId
-                                        // features: endFeatures, rfq old 
                                     }
                                 });
                             }}>

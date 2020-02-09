@@ -32,8 +32,7 @@ class AllBusiness extends Component {
         onCompleted={(cache, data) => {}}
       >
           {({ loading, error,data }) => {
-              if(error){debugger 
-                return(<div>{error.networkError.message}</div>)}
+              if(error){return(<div>{error.networkError.message}</div>)}
               else if (loading){return(<div><Loading/></div>)}
               // rfq Make a Business index 
               let fealds = ["_id", "user", "features", "template", "name", "map", "url", "phoneNumber", "address", "slogan" ]
