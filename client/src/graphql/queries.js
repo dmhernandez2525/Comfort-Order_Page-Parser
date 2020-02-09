@@ -10,11 +10,14 @@ export default {
   FETCH_BUSINESS: gql`
     query FetchBusiness($id: ID!) {
         business(_id: $id) {
-          features
           template
           name
           map
           url
+          features{
+            data
+            name
+          }
           phoneNumber
           address
           slogan
@@ -29,8 +32,10 @@ export default {
             _id
             email
           }
-          features
           template
+          features {
+            _id
+          }
           name
           map
           url

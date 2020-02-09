@@ -36,8 +36,10 @@ class DisplaySite extends React.Component {
           if (loading) return <div>Loading</div>;
           if (error) return `Error! ${error.message}`;
             let features = {}
-             data.business.features.forEach((feature,i) =>{
-               features[`feature${i+1}`] = JSON.parse(feature)
+            debugger
+            data.business.features.forEach((feature,i) =>{
+              debugger
+              features[`feature${i + 1}`] = { [feature.name]:JSON.parse(feature.data[0])}
             })
           return (
             <div >

@@ -63,6 +63,7 @@ class Index extends React.Component {
 
     render() {
         if (this.props.template === "Restaurant"){
+        debugger
             return <Restaurant features={this.features} businessData={this.props.businessData}/>
         }
         return <four0four />

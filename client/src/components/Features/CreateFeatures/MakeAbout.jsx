@@ -1,5 +1,8 @@
 import React from "react";
+import { Mutation } from "react-apollo";
+import Mutations from "../../../graphql/mutations";
 import "../../css/MakeFeatures/MakeAbout.css"
+const { CREATE_FEATURE } = Mutations;
 
 class MakeAbout extends React.Component  {
   constructor(props){
@@ -15,8 +18,8 @@ class MakeAbout extends React.Component  {
     this.update = this.update.bind(this)
   }
 
-  handleSubmit(){
-    this.handleFeatureSubmit(this.props.feature, {about: this.state})
+  handleSubmit(data){
+    this.handleFeatureSubmit(this.props.feature, data)
   }
 
   update(field) {
@@ -40,10 +43,36 @@ class MakeAbout extends React.Component  {
 
   render(){
     return(
-    <div className="about-div" > 
-        <h1> About Feature </h1>
+      <Mutation
+        mutation={CREATE_FEATURE}
+          update={(cache, data) => {
+            this.handleSubmit(data.data.makeFeature._id)
+          }}
+        onCompleted={(cache, data) => { 
+          // this.handleSubmit(cache.makeFeature._id)
+        }}
+      >
+          {(CreateFeature, { loading, error,data }) => {
+              if(error) {
+                  return (<div>{error.networkError.message}</div>)
+              }
+              return (                
+                  <div className="format-make-site">
+                      <form onSubmit={e => {
+                          e.preventDefault();
+                          let data = JSON.stringify(this.state);
+                          let order = this.props.feature.toString();
+                          CreateFeature({
+                              variables: {
+                                  cssName: "1",
+                                  name: "About",
+                                  data: data,
+                                  order: order
+                              }
+                          });
+                      }}>
 
-        <form className="about-submit" onSubmit={this.handleSubmit }>
+        <h1> About Feature </h1>
             <div className="days">
 
                     <input className="about-data"
@@ -67,6 +96,10 @@ class MakeAbout extends React.Component  {
           <input type="submit"/>
         </form>
     </div>
+
+    
+                )}}
+            </Mutation>
     )
   }
 }

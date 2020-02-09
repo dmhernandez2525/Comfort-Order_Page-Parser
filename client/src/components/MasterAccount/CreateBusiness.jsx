@@ -31,6 +31,7 @@ class CreateBusiness extends Component {
             allFeatures:[],
             allFeaturesValues:[],
             divs:[],
+            allFeaturesId:[],
             message:""
         };
         this.updateCache = this.updateCache.bind(this)
@@ -80,12 +81,15 @@ class CreateBusiness extends Component {
         let oldFeature = Object.assign({}, this.state.allFeaturesValues[feature])
 
         let dupFeature = [...this.state.allFeaturesValues]
+        let dupFeatureId = [...this.state.allFeaturesId]
 
         let all = { co: this.state.divs[feature].props.returnType, form: this.state.divs[feature], return: data, num: feature}
-        dupFeature.splice(feature, 1, all);
-
+        // dupFeature.splice(feature, 1, all); rfq old 
+        // dupFeature.splice(feature, 1, data);
+        dupFeatureId.splice(feature, 1, data);
         newFeature.return = data
-        this.setState({ allFeaturesValues: dupFeature })
+        this.setState({ allFeaturesId: dupFeatureId })
+        // this.setState({ allFeaturesValues: dupFeatureId }) rfq old one 
         alert(`OLD:${JSON.stringify(oldFeature.return)} vs NEW:${JSON.stringify(newFeature.return)} `);
     }
 
@@ -196,13 +200,14 @@ class CreateBusiness extends Component {
             >
                 {(makeBusiness, { loading, error,data }) => {
                     if(error) {
-                        return (<div>{error.networkError.message}</div>)
+                        debugger
+                        return (<div>{error}</div>)
                     }
                     return (                
                         <div className="format-make-site">
                             <form onSubmit={e => {
                                 e.preventDefault();
-                                let endFeatures = this.handleMainSubmit()
+                                // let endFeatures = this.handleMainSubmit()
                                 makeBusiness({
                                     variables: {
                                         name: this.state.name,
@@ -213,7 +218,8 @@ class CreateBusiness extends Component {
                                         slogan: this.state.slogan,
                                         template: this.state.template,
                                         userId: this.state.userId,
-                                        features: endFeatures,
+                                        features: this.state.allFeaturesId
+                                        // features: endFeatures, rfq old 
                                     }
                                 });
                             }}>

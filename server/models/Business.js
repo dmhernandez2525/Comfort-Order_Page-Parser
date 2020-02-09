@@ -25,8 +25,12 @@ const BusinessSchema = new Schema({
         type: String,
         required: true
     },
+    // features: [{
+    //     type: String
+    // }], rfq 
     features: [{
-        type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'feature'
     }],
     template: {
         type: String,

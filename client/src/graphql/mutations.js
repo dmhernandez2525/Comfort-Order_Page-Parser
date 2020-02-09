@@ -53,7 +53,9 @@ export default {
             user{
               email
             }
-            features
+            features{
+              _id
+            }
             template
             name
             map
@@ -61,6 +63,24 @@ export default {
             phoneNumber
             address
             slogan
+        }
+      }
+  `,
+    CREATE_FEATURE: gql `
+      mutation CreateFeature(
+        $cssName: String!,
+        $name: String!,
+        $data: String!,
+        $order: String!
+        ) {
+        makeFeature(
+          cssName: $cssName,
+          name: $name,
+          data: $data,
+          order: $order
+          ){
+            _id
+            data
         }
       }
   `,
