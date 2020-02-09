@@ -20,7 +20,6 @@ class CreateBusiness extends Component {
         super(props);
         this.state = {
             name: "Demo Site name",
-            map: "Demo Site map",
             url: "Demo Site url",
             phoneNumber: "Demo Site phoneNumber",
             address: "Demo Site address",
@@ -31,6 +30,7 @@ class CreateBusiness extends Component {
             message:"",
             allFeaturesId:[],
             
+            // rfq get rid of one
             allFeatures:[],
             allFeaturesValues:[],
         };
@@ -208,7 +208,6 @@ class CreateBusiness extends Component {
                                 makeBusiness({
                                     variables: {
                                         name: this.state.name,
-                                        map: this.state.map,
                                         url: this.state.url,
                                         phoneNumber: this.state.phoneNumber,
                                         address: this.state.address,
@@ -224,11 +223,6 @@ class CreateBusiness extends Component {
                                     onChange={this.update("name")}
                                     value={this.state.name}
                                     placeholder="Name"
-                                />
-                                <input className="new-site-data"
-                                    onChange={this.update("map")}
-                                    value={this.state.map}
-                                    placeholder="map"
                                 />
                                 <input className="new-site-data"
                                     onChange={this.update("url")}

@@ -37,7 +37,6 @@ const BusinessType = new GraphQLObjectType({
 
     template: { type: GraphQLString },
     name: { type: GraphQLString },
-    map: { type: GraphQLString },
     url: { type: GraphQLString },
     phoneNumber: { type: GraphQLString },
     address: { type: GraphQLString },

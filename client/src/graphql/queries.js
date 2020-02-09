@@ -12,7 +12,6 @@ export default {
         business(_id: $id) {
           template
           name
-          map
           url
           features{
             data
@@ -37,7 +36,6 @@ export default {
             _id
           }
           name
-          map
           url
           phoneNumber
           address

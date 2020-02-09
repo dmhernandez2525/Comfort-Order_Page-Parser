@@ -23,7 +23,6 @@ const mutation = new GraphQLObjectType({
       type: BusinessType,
       args: {
           name: {type: GraphQLString},
-          map: {type: GraphQLString},
           url: {type: GraphQLString},
           phoneNumber: {type: GraphQLString},
           address: {type: GraphQLString},
@@ -34,7 +33,6 @@ const mutation = new GraphQLObjectType({
       },
       resolve(parentValue, {
             name,
-            map,
             url,
             phoneNumber,
             address,
@@ -45,7 +43,6 @@ const mutation = new GraphQLObjectType({
       }) {
         let newBusiness =  new Business({
             name,
-            map,
             url,
             phoneNumber,
             address,

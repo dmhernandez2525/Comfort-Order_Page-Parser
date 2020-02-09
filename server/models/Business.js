@@ -5,9 +5,6 @@ const BusinessSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "user"
     },
-    map: {
-        type: String
-    },
     url: {
         type: String,
         required: true

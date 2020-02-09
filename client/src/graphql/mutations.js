@@ -29,7 +29,6 @@ export default {
     CREATE_BUSINESS: gql `
       mutation CreateBusiness(
         $name: String!,
-        $map: String!,
         $url: String!,
         $phoneNumber: String!,
         $address: String!,
@@ -40,7 +39,6 @@ export default {
         ) {
         makeBusiness(
           name: $name,
-          map: $map,
           url: $url,
           phoneNumber: $phoneNumber,
           address: $address,
@@ -55,7 +53,6 @@ export default {
             }
             template
             name
-            map
             url
             phoneNumber
             address
