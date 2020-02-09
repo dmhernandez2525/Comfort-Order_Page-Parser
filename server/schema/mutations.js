@@ -29,7 +29,7 @@ const mutation = new GraphQLObjectType({
           address: {type: GraphQLString},
           slogan: {type: GraphQLString},
           userId: { type: GraphQLID },
-          features: { type: new GraphQLList(GraphQLString) },
+          features: { type: new GraphQLList(GraphQLID) },
           template: { type: GraphQLString },
       },
       resolve(parentValue, {
@@ -54,6 +54,7 @@ const mutation = new GraphQLObjectType({
             features,
             template,
         })
+        console.log(features)
         newBusiness.save();
         return newBusiness
       }

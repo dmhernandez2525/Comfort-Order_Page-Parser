@@ -35,7 +35,7 @@ export default {
         $address: String!,
         $slogan: String!,
         $userId: ID!,
-        $features: [String], 
+        $features: [ID!],
         $template: String!
         ) {
         makeBusiness(
@@ -52,9 +52,6 @@ export default {
             _id
             user{
               email
-            }
-            features{
-              _id
             }
             template
             name

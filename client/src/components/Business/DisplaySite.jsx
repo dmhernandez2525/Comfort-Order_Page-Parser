@@ -39,7 +39,7 @@ class DisplaySite extends React.Component {
             debugger
             data.business.features.forEach((feature,i) =>{
               debugger
-              features[`feature${i + 1}`] = { [feature.name]:JSON.parse(feature.data[0])}
+              features[`feature${i + 1}`] = { [feature.name]:[JSON.parse(feature.data[0])]}
             })
           return (
             <div >

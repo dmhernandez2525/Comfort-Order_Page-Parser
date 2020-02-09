@@ -86,7 +86,8 @@ class CreateBusiness extends Component {
         let all = { co: this.state.divs[feature].props.returnType, form: this.state.divs[feature], return: data, num: feature}
         // dupFeature.splice(feature, 1, all); rfq old 
         // dupFeature.splice(feature, 1, data);
-        dupFeatureId.splice(feature, 1, data);
+        // dupFeatureId.splice(feature, 1, data);
+        dupFeatureId.push(data);
         newFeature.return = data
         this.setState({ allFeaturesId: dupFeatureId })
         // this.setState({ allFeaturesValues: dupFeatureId }) rfq old one 
@@ -208,6 +209,7 @@ class CreateBusiness extends Component {
                             <form onSubmit={e => {
                                 e.preventDefault();
                                 // let endFeatures = this.handleMainSubmit()
+                                debugger
                                 makeBusiness({
                                     variables: {
                                         name: this.state.name,

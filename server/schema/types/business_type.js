@@ -29,7 +29,7 @@ const BusinessType = new GraphQLObjectType({
           return Business.findById(parentValue._id)
             .populate("features")
             .then(business => {
-              console.log(business.features)
+              // console.log(business.features)
               return business.features
             });
         }
