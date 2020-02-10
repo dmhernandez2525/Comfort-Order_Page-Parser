@@ -7,6 +7,7 @@ class About extends React.Component {
       this.state = {}
       this.data = this.props.data
   }
+  
 // EXAMPLE INPUT
 //   data:{
 //       about:{

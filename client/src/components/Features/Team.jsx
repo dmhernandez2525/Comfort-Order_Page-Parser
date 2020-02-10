@@ -77,8 +77,10 @@ class Team extends React.Component {
       reddit:"https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/reddit-icon_32x32.png",
       pr:"",
     }
-    let display = Object.values(this.data).map(member =>{
+    let display = Object.values(this.data[0]).map(member =>{
+      debugger
         let socialLinks = Object.keys(member.socialLinks).map((social,i) => {
+          debugger
           let socialData = member.socialLinks[social]
           return (
               <li key={`${member.name}:${i}`}>

@@ -35,7 +35,7 @@ class AllBusiness extends Component {
               if(error){return(<div>{error.networkError.message}</div>)}
               else if (loading){return(<div><Loading/></div>)}
               // rfq Make a Business index 
-              let fealds = ["_id", "user", "features", "template", "name", "map", "url", "phoneNumber", "address", "slogan", "hours", "about", "businessData"]
+              let fealds = ["_id", "user", "features", "template", "name", "url", "phoneNumber", "address", "slogan" ]
               let allBusinesses = data.businesses.map(business => {
                 let businessInfo = fealds.map(feald => {
                   return (
