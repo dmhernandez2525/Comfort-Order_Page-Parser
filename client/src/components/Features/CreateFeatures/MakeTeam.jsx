@@ -1,5 +1,8 @@
 import React from "react";
+import { Mutation } from "react-apollo";
+import Mutations from "../../../graphql/mutations";
 import "../../css/MakeFeatures/MakeTeam.css"
+const { CREATE_FEATURE } = Mutations;
 
 class MakeTeam extends React.Component  {
   constructor(props){
@@ -88,7 +91,7 @@ class MakeTeam extends React.Component  {
           socialLinks: newFormat
       }
     })
-    this.handleFeatureSubmit(this.props.feature, returnState)
+    return returnState
   }
 
   update(memberSection,field,social = "none") {
@@ -133,23 +136,54 @@ class MakeTeam extends React.Component  {
 
   render(){
     return(
-    <div className="team-div" > 
-        <h1> Team Member Feature </h1>
+      <Mutation
+        mutation={CREATE_FEATURE}
+          update={(cache, data) => {
+            this.handleFeatureSubmit(this.props.feature, data.data.makeFeature._id)
+          }}
+        onCompleted={(cache, data) => {}}
+      >
+          {(CreateFeature, { loading, error,data }) => {
+              if(error) {
+                return (<div>{error.networkError.message}</div>)}
+              return (  
+                <div className="team-div">
+                  <h1> Team Member Feature </h1>
+                  <button onClick={e => this.memberBoxCreate()}>Add More Team Members</button>              
+                    <div className="team-div">
+                        <form className="team-submit" onSubmit={e => {
+                            e.preventDefault();
+                            let data = this.handleSubmit();
+                            data = JSON.stringify(data)
+                            let order = this.props.feature.toString();
+                            CreateFeature({
+                                variables: {
+                                    cssName: "1",
+                                    name: "Team",
+                                    data: data,
+                                    order: order
+                                }
+                            });
+                        }}>
 
-            <button onClick={e => this.memberBoxCreate()}>Add More Team Members</button>
+                        <h1>facebook: :*linkedin: :*twitter: :*youtube: :*instagram: :*skype: :*pinterest: :*reddit: :*pr: :*</h1>
+                        {this.state.rows}
+                        <input type="submit"/>
 
-        <form className="team-submit" onSubmit={this.handleSubmit }>
-        <h1>facebook: :*linkedin: :*twitter: :*youtube: :*instagram: :*skype: :*pinterest: :*reddit: :*pr: :*</h1>
-          {this.state.rows}
-          <input type="submit"/>
-        </form>
-        
-    </div>
+                      </form>
+                  </div>
+                </div>
+              )
+          }}
+      </Mutation>
     )
   }
 }
 
 export default MakeTeam
+
+
+
 
 
 

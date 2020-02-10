@@ -35,7 +35,6 @@ class DisplaySite extends React.Component {
         {({ loading, error, data }) => {
           if (loading) return <div>Loading</div>;
           if (error) return `Error! ${error.message}`;
-          debugger
             let features = {}
             data.business.features.forEach((feature,i) =>{
               // refacter based on order 
