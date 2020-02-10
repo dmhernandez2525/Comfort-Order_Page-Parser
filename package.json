@@ -6,15 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run startN\" \"npm run client\"",
     "client-install": "npm install --prefix client",
     "client": "npm start --prefix client",
     "server": "nodemon index.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "postcss": "postcss client/src/components/css/master.css -o main.css",
-    "postcss2": "postcss client/src/components/css/**/*.css --dir dist --use autoprefixer && postcss client/src/components/css/*.css --dir dist --use autoprefixer",
-    "postcss3": "postcss client/src/components/css/**/*.css > main2.css --use autoprefixer && postcss client/src/components/css/*.css --dir dist --use autoprefixer",
-    "startG": "gulp css"
+    "startN": "gulp start"
   },
   "author": "Daniel Hernandez",
   "license": "Proprietary",
@@ -41,6 +38,7 @@
     "autoprefixer": "^9.7.4",
     "cssnano": "^4.1.10",
     "gulp": "^4.0.2",
+    "gulp-nodemon": "^2.4.2",
     "gulp-postcss": "^8.0.0"
   }
 }

@@ -2,6 +2,7 @@ var postcss = require('gulp-postcss');
 var gulp = require('gulp');
 var autoprefixer = require('autoprefixer');
 var cssnano = require('cssnano');
+var nodemon = require('gulp-nodemon')
 
 gulp.task('css', function () {
     var plugins = [
@@ -12,3 +13,13 @@ gulp.task('css', function () {
         .pipe(postcss(plugins))
         .pipe(gulp.dest('./dist'));
 });
+gulp.task('start', function (done) {
+    nodemon({
+      script: 'index.js'
+    , ext: 'css jsx'
+    , tasks: ['css'] 
+    , env: { 'NODE_ENV': 'development' }
+    , ignore: ['node_modules/**', 'dist/**']
+    , done: done
+    })
+  })

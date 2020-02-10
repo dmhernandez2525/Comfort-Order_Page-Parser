@@ -17,7 +17,6 @@
     font-size: xx-large;
     margin: 6vh;
 }
-
 .main-make-business {
     text-align: center;
     font-size: xx-large;
@@ -30,11 +29,11 @@
     margin: 6vh;
 }
 
-/* .create-business-site{
+.create-business-site{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-} */
+}
 
 .new-site-data{
     height: 20%;
