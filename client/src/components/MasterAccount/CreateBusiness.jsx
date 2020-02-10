@@ -26,13 +26,13 @@ class CreateBusiness extends Component {
             slogan: "Demo Site slogan",
             template: "",
             userId: "5dee13bb4613a10017103002",
+            // this is the data that will be renderd on User Interface
             divs:[],
             message:"",
             allFeaturesId:[],
             
-            // rfq get rid of one
             allFeatures:[],
-            allFeaturesValues:[],
+            // allFeaturesValues:[], rfq get rid of
         };
 
 
@@ -52,18 +52,17 @@ class CreateBusiness extends Component {
         this.allFeatures = {
             Order:"a",
             Booking:"a",
-            Pricing: <Pricing returnType={"Pricing"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />,
-            About: <About returnType={"About"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />,
-            Hours: <Hours returnType={"Hours"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />,
-            ImageCarousel: <ImageCarousel returnType={"ImageCarousel"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />,
-            SpotlightGallery: <SpotlightGallery returnType={"SpotlightGallery"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />,
-            Team: <Team returnType={"Team"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />,
-            Menu: <Menu returnType={"Menu"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeaturesValues.length}  />
+            Pricing: <Pricing returnType={"Pricing"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeatures.length}  />,
+            About: <About returnType={"About"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeatures.length}  />,
+            Hours: <Hours returnType={"Hours"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeatures.length}  />,
+            ImageCarousel: <ImageCarousel returnType={"ImageCarousel"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeatures.length}  />,
+            SpotlightGallery: <SpotlightGallery returnType={"SpotlightGallery"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeatures.length}  />,
+            Team: <Team returnType={"Team"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeatures.length}  />,
+            Menu: <Menu returnType={"Menu"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={this.state.allFeatures.length}  />
         };
 
         this.CreateFeatureOption = this.CreateFeatureOption.bind(this);
         this.CreateFeature = this.CreateFeature.bind(this);
-
     }
 
 
@@ -107,37 +106,37 @@ class CreateBusiness extends Component {
     CreateFeature(){
         // this is the current feature number that you are on
         // rfq min posable data
-        let all = this.state.allFeatures.length;
+        let indexForFeature = this.state.allFeatures.length;
 
         this.allFeatures = {
             Order: "a",
             Booking: "a",
-            Pricing: <Pricing key={`Feature${all}Pricing` } returnType={"Pricing"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />,
-            About: <About key={`Feature${all}About` } returnType={"About"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />,
-            Hours: <Hours key={`Feature${all}Hours` } returnType={"Hours"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />,
-            ImageCarousel: <ImageCarousel key={`Feature${all}ImageCarousel` } returnType={"ImageCarousel"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />,
-            SpotlightGallery: <SpotlightGallery key={`Feature${all}SpotlightGallery` } returnType={"SpotlightGallery"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />,
-            Team: <Team key={`Feature${all}Team` } returnType={"Team"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />,
-            Menu: <Menu key={`Feature${all}Menu` } returnType={"Menu"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={all} />
+            Pricing: <Pricing key={`Feature${indexForFeature}Pricing` } returnType={"Pricing"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={indexForFeature} />,
+            About: <About key={`Feature${indexForFeature}About` } returnType={"About"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={indexForFeature} />,
+            Hours: <Hours key={`Feature${indexForFeature}Hours` } returnType={"Hours"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={indexForFeature} />,
+            ImageCarousel: <ImageCarousel key={`Feature${indexForFeature}ImageCarousel` } returnType={"ImageCarousel"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={indexForFeature} />,
+            SpotlightGallery: <SpotlightGallery key={`Feature${indexForFeature}SpotlightGallery` } returnType={"SpotlightGallery"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={indexForFeature} />,
+            Team: <Team key={`Feature${indexForFeature}Team` } returnType={"Team"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={indexForFeature} />,
+            Menu: <Menu key={`Feature${indexForFeature}Menu` } returnType={"Menu"} handleFeatureSubmit={(a, b) => this.handleFeatureSubmit(a, b)} feature={indexForFeature} />
         };
 
 
 
-        this.setState( state =>  {
-            const list = state.allFeaturesValues.concat({ [all]:{co:"",form:"",return:"",num:all}});
-            return {allFeaturesValues: list};
-        });
+        // this.setState( state =>  {
+        //     const list = state.allFeaturesValues.concat({ [all]:{co:"",form:"",return:"",num:all}});
+        //     return {allFeaturesValues: list};
+        // });
 
         return (
             <div
-                key={`Feature${all}`}
+                key={`Feature${indexForFeature}`}
                 onSubmit={e => { e.preventDefault(); }}
                 className="FeatureDiv"
             >
                 <select
                     className="new-site-data FeatureNum"
-                    onChange={this.updateFeature(`feature${all}`, all)}>
-                    <option defaultValue>{`Feature ${all}`} </option>
+                    onChange={this.updateFeature(`feature${indexForFeature}`, indexForFeature)}>
+                    <option defaultValue>{`Feature ${indexForFeature}`} </option>
                     <option value="About">About</option>
                     <option value="ImageCarousel">ImageCarousel</option>
                     <option value="SpotlightGallery">SpotlightGallery</option>
@@ -153,9 +152,9 @@ class CreateBusiness extends Component {
 
     updateFeature(field,index) {
         return (e) => {
-            let aa = { co: e.target.value, form: this.allFeatures[e.target.value] } 
+            let formatedFeature = { co: e.target.value, form: this.allFeatures[e.target.value] } 
             this.setState(state => {
-                state.divs.splice(index, 1, aa.form);
+                state.divs.splice(index, 1, formatedFeature.form);
                 const listOfAlldivs = state.divs
                 return {
                     divs: listOfAlldivs
