@@ -103,10 +103,10 @@ class Template extends React.Component  {
                           e.preventDefault();
                           CreateFeature({
                               variables: {
-                                  data: data,
-                                  data: data,
-                                  data: data,
-                                  data: data,
+                                cssName: "1",
+                                name: "Team",
+                                data: data,
+                                order: order
                               }
                           });
                       }}>
