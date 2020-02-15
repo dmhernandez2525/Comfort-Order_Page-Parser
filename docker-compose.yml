@@ -6,7 +6,7 @@ services:
         ports:            
             - "3000:3000"        
         volumes:            
-            - ./node-frontend:/client            
+            - ./client:/client            
             - /client/node_modules        
         links:            
             - api        
@@ -14,13 +14,13 @@ services:
            - conetwork
         
     api:        
-        image: webapp-api        
+        image: comfort-order-api        
         restart: always        
         ports:            
             - "9000:9000"        
         volumes:        
-            - ./api:/api        
-            - /api/node_modules        
+            - .:/api        
+            - ./node_modules        
         depends_on:            
             - mongodb        
         networks:            

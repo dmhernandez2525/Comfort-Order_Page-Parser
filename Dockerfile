@@ -4,7 +4,7 @@ FROM node:10-alpine
 WORKDIR /api
 
 # copy package.json into the container at /api
-COPY ../package*.json /api/
+COPY package.json /api/
 
 # install dependencies
 RUN npm install

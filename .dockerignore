@@ -3,4 +3,3 @@
 node_modules
 /config/keys_dev.js
 .git
-*docker-compose*
