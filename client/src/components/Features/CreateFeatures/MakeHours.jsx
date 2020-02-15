@@ -77,7 +77,7 @@ class MakeHours extends React.Component  {
                         CreateFeature({
                             variables: {
                               cssName: "1",
-                              name: "Team",
+                              name: "Hours",
                               data: data,
                               order: order
                             }
