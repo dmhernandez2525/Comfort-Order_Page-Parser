@@ -101,6 +101,9 @@ class Template extends React.Component  {
                   <div className="format-make-site">
                       <form onSubmit={e => {
                           e.preventDefault();
+                          let data = this.handleSubmit()
+                          data = JSON.stringify(data)
+                          let order = this.props.feature.toString();
                           CreateFeature({
                               variables: {
                                 cssName: "1",
@@ -119,11 +122,6 @@ class Template extends React.Component  {
           }}
       </Mutation>
     )
-
-
-
-
-
 
     
   }
