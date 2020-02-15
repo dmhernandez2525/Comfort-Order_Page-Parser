@@ -62,3 +62,6 @@ typings/
 
 #config for the keys 
 /config/keys_dev.js
+
+
+data-node
