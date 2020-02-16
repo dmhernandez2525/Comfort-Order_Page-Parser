@@ -2,6 +2,8 @@ import React from "react";
 import { Mutation } from "react-apollo";
 import Mutations from "../../../graphql/mutations";
 import "../../css/MakeFeatures/MakeAbout.css"
+
+const endpoint = "http://localhost:5000/upload";
 const { CREATE_FEATURE } = Mutations;
 
 class MakeAbout extends React.Component  {
@@ -10,12 +12,15 @@ class MakeAbout extends React.Component  {
     this.state = {
         title:"",
         text:"",
-        pic:""
+        pic:"",
+        description: "",
+        selectedFile: null
 
     }
     this.handleFeatureSubmit = this.props.handleFeatureSubmit
     this.handleSubmit = this.handleSubmit.bind(this)
     this.update = this.update.bind(this)
+    this.updatePic = this.updatePic.bind(this)
   }
 
   handleSubmit(data){
@@ -31,6 +36,35 @@ class MakeAbout extends React.Component  {
         }
       })}
   }
+
+
+  updatePic() {
+    return e => {
+      debugger
+      e.persist()
+      e.preventDefault();
+      this.setState({
+        description: e.target.value,
+        selectedFile: e.target.files[0]
+      });
+    }
+  }
+
+  handleUpload = event => {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    data.append("file", this.state.selectedFile, this.state.description);
+
+    axios
+      .post(endpoint, data)
+      .then((imageUrl) => {
+        alert(imageUrl);
+      })
+      .catch(error => {
+        alert("Oops some error happened, please try again");
+      });
+  };
+
 
 // EXAMPLE INPUT
 //   data:{
@@ -86,11 +120,18 @@ class MakeAbout extends React.Component  {
                         placeholder="text"
                     />                    
                     {/* rfq this needs to use aws upload */}
+                    <input className="about-data" 
+                        type="file" 
+                        onChange={this.updatePic("pic")}
+                        value={this.state.pic} 
+                    />
+                    
+                    {/* 
                     <input className="about-data"
                         onChange={this.update("pic")}
                         value={this.state.pic}
                         placeholder="pic"
-                    />                    
+                    />                     */}
 
             </div>
           <input type="submit"/>
