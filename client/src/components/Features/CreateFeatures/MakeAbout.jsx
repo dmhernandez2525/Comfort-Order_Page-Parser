@@ -21,6 +21,7 @@ class MakeAbout extends React.Component  {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.update = this.update.bind(this)
     this.updatePic = this.updatePic.bind(this)
+    this.handleUpload = this.handleUpload.bind(this)
   }
 
   handleSubmit(data){
@@ -44,21 +45,29 @@ class MakeAbout extends React.Component  {
       e.persist()
       e.preventDefault();
       this.setState({
+        pic:e.target,
         description: e.target.value,
         selectedFile: e.target.files[0]
       });
+      debugger
+
     }
   }
 
-  handleUpload = event => {
-    event.preventDefault();
-    const data = new FormData(event.target);
+  handleUpload(target) {
+    debugger
+    const data = new FormData(this.state.pic);
     data.append("file", this.state.selectedFile, this.state.description);
 
-    axios
-      .post(endpoint, data)
+    fetch(endpoint, {
+      method: 'post',
+      body: JSON.stringify(data)
+    })
       .then((imageUrl) => {
         alert(imageUrl);
+        this.setState({
+          pic: imageUrl
+        })
       })
       .catch(error => {
         alert("Oops some error happened, please try again");
@@ -92,6 +101,7 @@ class MakeAbout extends React.Component  {
               }
               return (                
                   <div className="format-make-site">
+                  <button onClick={this.handleUpload}>handleUpload</button>
                       <form onSubmit={e => {
                           e.preventDefault();
                           let data = JSON.stringify(this.state);
@@ -123,7 +133,7 @@ class MakeAbout extends React.Component  {
                     <input className="about-data" 
                         type="file" 
                         onChange={this.updatePic("pic")}
-                        value={this.state.pic} 
+                        // value={this.state.pic.value} 
                     />
                     
                     {/* 
@@ -136,6 +146,8 @@ class MakeAbout extends React.Component  {
             </div>
           <input type="submit"/>
         </form>
+
+
     </div>
 
     
