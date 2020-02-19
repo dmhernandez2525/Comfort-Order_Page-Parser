@@ -3,8 +3,9 @@ import { Mutation } from "react-apollo";
 import Mutations from "../../../graphql/mutations";
 import "../../css/MakeFeatures/MakeAbout.css"
 
-const endpoint = "http://localhost:5000/upload";
+const endpoint = "http://localhost:5000/";
 const { CREATE_FEATURE } = Mutations;
+const axios = require('axios');
 
 class MakeAbout extends React.Component  {
   constructor(props){
@@ -44,8 +45,9 @@ class MakeAbout extends React.Component  {
       debugger
       e.persist()
       e.preventDefault();
+      debugger
       this.setState({
-        pic:e.target,
+        pic:e.target.files[0],
         description: e.target.value,
         selectedFile: e.target.files[0]
       });
@@ -56,20 +58,27 @@ class MakeAbout extends React.Component  {
 
   handleUpload(target) {
     debugger
-    const data = new FormData(this.state.pic);
-    data.append("file", this.state.selectedFile, this.state.description);
-
-    fetch(endpoint, {
+    let data = new FormData();
+    data.append("image", this.state.pic, this.state.pic.name);
+    debugger
+    axios({
+      // headers: {
+      //   'Content-Type': 'multipart/form-data'
+      // },
       method: 'post',
-      body: JSON.stringify(data)
+      url: "http://localhost:5000/fileUplode",
+      data
+      // data: { image:data }
     })
       .then((imageUrl) => {
+        debugger
         alert(imageUrl);
         this.setState({
           pic: imageUrl
         })
       })
       .catch(error => {
+        debugger
         alert("Oops some error happened, please try again");
       });
   };
@@ -136,8 +145,8 @@ class MakeAbout extends React.Component  {
                         // value={this.state.pic.value} 
                     />
                     
-                    {/* 
-                    <input className="about-data"
+                    
+                    {/* <input className="about-data"
                         onChange={this.update("pic")}
                         value={this.state.pic}
                         placeholder="pic"
