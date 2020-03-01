@@ -5,9 +5,6 @@ const BusinessSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "user"
     },
-    map: {
-        type: String
-    },
     url: {
         type: String,
         required: true
@@ -21,26 +18,21 @@ const BusinessSchema = new Schema({
     slogan: {
         type: String
     },
-    hours: {
-        type: String
-    },
-    about: {
-        type: String
-    },
     name: {
         type: String,
         required: true
     },
+    // features: [{
+    //     type: String
+    // }], rfq 
     features: [{
-        type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'feature'
     }],
     template: {
         type: String,
         required: true
-    },
-    businessData: [{
-        type: String
-    }]
+    }
 });
 
 module.exports = mongoose.model('business', BusinessSchema);

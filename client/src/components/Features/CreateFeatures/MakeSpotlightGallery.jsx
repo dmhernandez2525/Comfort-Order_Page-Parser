@@ -1,5 +1,8 @@
 import React from "react";
+import { Mutation } from "react-apollo";
+import Mutations from "../../../graphql/mutations";
 import "../../css/MakeFeatures/MakeSpotlightGallery.css"
+const { CREATE_FEATURE } = Mutations;
 
 class MakeSpotlightGallery extends React.Component  {
   constructor(props){
@@ -60,7 +63,7 @@ class MakeSpotlightGallery extends React.Component  {
         comment:obj.counter[`comment${i}`],
       }
     })
-    this.handleFeatureSubmit(this.props.feature, returnState)
+    return returnState
   }
 
   update(gallerySection,field) {
@@ -96,17 +99,44 @@ class MakeSpotlightGallery extends React.Component  {
 
   render(){
     return(
-    <div className="gallery-div" > 
-            <h1> Gallery Feature </h1>
+      <Mutation
+        mutation={CREATE_FEATURE}
+          update={(cache, data) => {
+            this.handleFeatureSubmit(this.props.feature, data.data.makeFeature._id)
+          }}
+        onCompleted={(cache, data) => {}}
+      >
+          {(CreateFeature, { loading, error,data }) => {
+              if(error) {return (<div>{error.networkError.message}</div>)}
+              return (                
+                <div className="gallery-div" >
+                  <h1> Gallery Feature </h1>
 
-            <button onClick={e => this.GalleryBoxCreate()}>Add More Gallery options</button>
+                  <button onClick={e => this.GalleryBoxCreate()}>Add More Gallery options</button>
+                    <form className="gallery-submit" 
+                      onSubmit={e => {
+                          e.preventDefault();
+                          let data = this.handleSubmit()
+                          data = JSON.stringify(data)
+                          let order = this.props.feature.toString();
+                          CreateFeature({
+                              variables: {
+                                cssName: "1",
+                                name: "SpotlightGallery",
+                                data: data,
+                                order: order
+                              }
+                          });
+                      }}>
 
-        <form className="gallery-submit" onSubmit={this.handleSubmit }>
-          {this.state.rows}
-          <input type="submit"/>
-        </form>
-        
-    </div>
+                    {this.state.rows}
+                    <input type="submit" />
+
+                    </form>
+                </div>
+              )
+          }}
+      </Mutation>
     )
   }
 }

@@ -1,12 +1,15 @@
 import React from "react";
 import "../css/Features/About.css"
 
+
+
 class About extends React.Component {
   constructor(props){
     super(props)
-      this.state = {}
+      this.state = { }
       this.data = this.props.data
   }
+  
 // EXAMPLE INPUT
 //   data:{
 //       about:{
@@ -35,4 +38,11 @@ class About extends React.Component {
 }
 
 export default About
+
+
+
+
+
+
+
 

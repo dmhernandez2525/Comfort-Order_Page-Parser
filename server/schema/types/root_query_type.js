@@ -8,6 +8,9 @@ const User = mongoose.model("user");
 const BusinessType = require("./business_type");
 const Business = mongoose.model("business");
 
+const FeatureType = require("./feature_type");
+const Feature = mongoose.model("feature");
+
 
 const RootQueryType = new GraphQLObjectType({
   name: "RootQueryType",
@@ -44,7 +47,14 @@ const RootQueryType = new GraphQLObjectType({
         let allBusiness = Business.find({})
         return allBusiness
       }
-    }
+    },
+    feature: {
+      type: FeatureType,
+      args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
+      resolve(_, args) {
+        return Feature.findById(args._id);
+      }
+    }    
   })
 });
 

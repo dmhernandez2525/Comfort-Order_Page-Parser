@@ -1,5 +1,9 @@
 import React from "react";
+import { Mutation } from "react-apollo";
+import Mutations from "../../../graphql/mutations";
 import "../../css/MakeFeatures/MakePrice.css"
+const { CREATE_FEATURE } = Mutations;
+
 
 class MakePriceing extends React.Component  {
   constructor(props){
@@ -66,7 +70,7 @@ class MakePriceing extends React.Component  {
         details: newFormat
       }
     })
-    this.handleFeatureSubmit(this.props.feature, returnState)
+    return returnState
   }
 
   update(priceSec,field) {
@@ -128,18 +132,48 @@ class MakePriceing extends React.Component  {
 
   render(){
     return(
-    <div className="price-div" > 
-        <h1> Priceing Feature </h1>
+      <Mutation
+        mutation={CREATE_FEATURE}
+          update={(cache, data) => {
+            debugger
+            this.handleFeatureSubmit(this.props.feature, data.data.makeFeature._id)
+          }}
+        onCompleted={(cache, data) => {}}
+      >
+          {(CreateFeature, { loading, error,data }) => {
+              if(error) {return (<div>{error.networkError.message}</div>)}
+              return (                
+                <div className="price-div" >
+                  <h1> Priceing Feature </h1>
+                  <button onClick={e => this.pricingBoxCreate()}>Add More Pricing options</button>
 
-        <button onClick={e => this.pricingBoxCreate()}>Add More Pricing options</button>
+                    <form className="price-submit"
+                      onSubmit={e => {
+                        e.preventDefault();
+                        let data = this.handleSubmit()
+                        data = JSON.stringify(data)
+                        let order = this.props.feature.toString();
+                        CreateFeature({
+                            variables: {
+                              cssName: "1",
+                              name: "Pricing",
+                              data: data,
+                              order: order
+                            }
+                        });
+                    }}>
 
-        <form className="price-submit" onSubmit={this.handleSubmit }>
-          {this.state.rows}
-          <input type="submit"/>
-        </form>
-        
-    </div>
+                    {this.state.rows}
+                    <input type="submit" />
+
+                  </form>
+                </div>
+              )
+          }}
+      </Mutation>
     )
+
+    
   }
 }
 

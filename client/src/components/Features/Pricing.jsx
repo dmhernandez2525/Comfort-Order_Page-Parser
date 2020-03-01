@@ -50,6 +50,8 @@ class Pricing extends React.Component {
 
   render(){
     let display = Object.values(this.data).map(plan =>{
+      debugger
+      plan = Object.values(plan)[0]
         let rowDetails = plan.details.map(detail => {
           return (
             <li key={`${plan.name}:${detail}`}>{detail}</li>

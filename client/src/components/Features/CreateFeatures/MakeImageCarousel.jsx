@@ -1,5 +1,8 @@
 import React from "react";
+import { Mutation } from "react-apollo";
+import Mutations from "../../../graphql/mutations";
 import "../../css/MakeFeatures/MakeImageCarousel.css"
+const { CREATE_FEATURE } = Mutations;
 
 class MakeCarousel extends React.Component  {
   constructor(props){
@@ -65,7 +68,7 @@ class MakeCarousel extends React.Component  {
         detail:obj.counter[`detail${i}`],
       }
     })
-    this.handleFeatureSubmit(this.props.feature, returnState)
+    return returnState
   }
 
   update(carouselSection,field) {
@@ -103,19 +106,49 @@ class MakeCarousel extends React.Component  {
 // }
 
   render(){
+
     return(
-    <div className="image-carousel-div" > 
-        <h1> Carousel Feature </h1>
+      <Mutation
+        mutation={CREATE_FEATURE}
+          update={(cache, data) => {
+            this.handleFeatureSubmit(this.props.feature, data.data.makeFeature._id)
+          }}
+        onCompleted={(cache, data) => {}}
+      >
+          {(CreateFeature, { loading, error,data }) => {
+              if(error) {return (<div>{error.networkError.message}</div>)}
+              return (                
+                <div className="image-carousel-div" >
+                  <h1> Carousel Feature </h1>
 
-        <button onClick={e => this.carouselBoxCreate()}>Add More Carousel options</button>
+                  <button onClick={e => this.carouselBoxCreate()}>Add More Carousel options</button>
+                  <form className="image-carousel-submit"
+                   onSubmit={e => {
+                      e.preventDefault();
+                      let data = this.handleSubmit()
+                      data = JSON.stringify(data)
+                      let order = this.props.feature.toString();
+                      CreateFeature({
+                          variables: {
+                            cssName: "1",
+                            name: "ImageCarousel",
+                            data: data,
+                            order: order
+                          }
+                      });
+                  }}>
 
-        <form className="image-carousel-submit" onSubmit={this.handleSubmit }>
-          {this.state.rows}
-          <input type="submit"/>
-        </form>
-        
-    </div>
+                    {this.state.rows}
+                    <input type="submit" />
+
+                  </form>
+                </div>
+              )
+          }}
+      </Mutation>
     )
+
+
   }
 }
 

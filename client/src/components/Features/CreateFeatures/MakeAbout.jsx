@@ -1,5 +1,10 @@
 import React from "react";
+import { Mutation } from "react-apollo";
+import Mutations from "../../../graphql/mutations";
 import "../../css/MakeFeatures/MakeAbout.css"
+
+const endpoint = "http://localhost:5000/upload";
+const { CREATE_FEATURE } = Mutations;
 
 class MakeAbout extends React.Component  {
   constructor(props){
@@ -7,16 +12,20 @@ class MakeAbout extends React.Component  {
     this.state = {
         title:"",
         text:"",
-        pic:""
+        pic:"",
+        description: "",
+        selectedFile: null
 
     }
     this.handleFeatureSubmit = this.props.handleFeatureSubmit
     this.handleSubmit = this.handleSubmit.bind(this)
     this.update = this.update.bind(this)
+    this.updatePic = this.updatePic.bind(this)
+    this.handleUpload = this.handleUpload.bind(this)
   }
 
-  handleSubmit(){
-    this.handleFeatureSubmit(this.props.feature, {about: this.state})
+  handleSubmit(data){
+    this.handleFeatureSubmit(this.props.feature, data)
   }
 
   update(field) {
@@ -29,6 +38,43 @@ class MakeAbout extends React.Component  {
       })}
   }
 
+
+  updatePic() {
+    return e => {
+      debugger
+      e.persist()
+      e.preventDefault();
+      this.setState({
+        pic:e.target,
+        description: e.target.value,
+        selectedFile: e.target.files[0]
+      });
+      debugger
+
+    }
+  }
+
+  handleUpload(target) {
+    debugger
+    const data = new FormData(this.state.pic);
+    data.append("file", this.state.selectedFile, this.state.description);
+
+    fetch(endpoint, {
+      method: 'post',
+      body: JSON.stringify(data)
+    })
+      .then((imageUrl) => {
+        alert(imageUrl);
+        this.setState({
+          pic: imageUrl
+        })
+      })
+      .catch(error => {
+        alert("Oops some error happened, please try again");
+      });
+  };
+
+
 // EXAMPLE INPUT
 //   data:{
 //       about:{
@@ -40,10 +86,37 @@ class MakeAbout extends React.Component  {
 
   render(){
     return(
-    <div className="about-div" > 
-        <h1> About Feature </h1>
+      <Mutation
+        mutation={CREATE_FEATURE}
+          update={(cache, data) => {
+            this.handleSubmit(data.data.makeFeature._id)
+          }}
+        onCompleted={(cache, data) => { 
+          // this.handleSubmit(cache.makeFeature._id)
+        }}
+      >
+          {(CreateFeature, { loading, error,data }) => {
+              if(error) {
+                  return (<div>{error.networkError.message}</div>)
+              }
+              return (                
+                  <div className="format-make-site">
+                  <button onClick={this.handleUpload}>handleUpload</button>
+                      <form onSubmit={e => {
+                          e.preventDefault();
+                          let data = JSON.stringify(this.state);
+                          let order = this.props.feature.toString();
+                          CreateFeature({
+                              variables: {
+                                  cssName: "1",
+                                  name: "About",
+                                  data: data,
+                                  order: order
+                              }
+                          });
+                      }}>
 
-        <form className="about-submit" onSubmit={this.handleSubmit }>
+        <h1> About Feature </h1>
             <div className="days">
 
                     <input className="about-data"
@@ -57,16 +130,29 @@ class MakeAbout extends React.Component  {
                         placeholder="text"
                     />                    
                     {/* rfq this needs to use aws upload */}
+                    <input className="about-data" 
+                        type="file" 
+                        onChange={this.updatePic("pic")}
+                        // value={this.state.pic.value} 
+                    />
+                    
+                    {/* 
                     <input className="about-data"
                         onChange={this.update("pic")}
                         value={this.state.pic}
                         placeholder="pic"
-                    />                    
+                    />                     */}
 
             </div>
           <input type="submit"/>
         </form>
+
+
     </div>
+
+    
+                )}}
+            </Mutation>
     )
   }
 }

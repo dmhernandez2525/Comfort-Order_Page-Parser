@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLBoolean,GraphQLList } = graphql;
 const User = mongoose.model("user");
+const Feature = mongoose.model("feature");
+const Business = mongoose.model("business");
 
 
 const BusinessType = new GraphQLObjectType({
@@ -19,17 +21,26 @@ const BusinessType = new GraphQLObjectType({
             });
         }
     },
-    features: { type:  new GraphQLList(GraphQLString) },
+    // features: { type:  new GraphQLList(GraphQLString) }, rfq
+
+    features: {
+        type: new GraphQLList(require("./feature_type")),
+        resolve(parentValue) {
+          return Business.findById(parentValue._id)
+            .populate("features")
+            .then(business => {
+              // console.log(business.features)
+              return business.features
+            });
+        }
+    },
+
     template: { type: GraphQLString },
     name: { type: GraphQLString },
-    map: { type: GraphQLString },
     url: { type: GraphQLString },
     phoneNumber: { type: GraphQLString },
     address: { type: GraphQLString },
     slogan: { type: GraphQLString },
-    hours: { type: GraphQLString },
-    about: { type: GraphQLString },
-    businessData: { type: new GraphQLList(GraphQLString) }
   })
 });
 
