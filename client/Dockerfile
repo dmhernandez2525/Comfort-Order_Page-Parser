@@ -17,4 +17,5 @@ COPY . /client/
 EXPOSE 3000
 
 # Run the app when the container launches
-# CMD ["npm", "start"]
+CMD ["npm", "start"]
+# docker build -t image_name .
