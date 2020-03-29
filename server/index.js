@@ -1,6 +1,6 @@
 const express = require("express");
 
-const app = require("./server/server");
+const app = require("./server");
 
 const path = require('path');
 
@@ -16,7 +16,3 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     })
 }
-
-let a = 1 
-
-console.log(a+= 1);

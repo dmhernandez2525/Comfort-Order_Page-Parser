@@ -9,7 +9,7 @@ gulp.task('css', function () {
         autoprefixer({Browserslist: ['last 1 version']}),
         cssnano()
     ];
-    return gulp.src('./client/src/components/css/**/*.css')
+    return gulp.src('../client/src/components/css/**/*.css')
         .pipe(postcss(plugins))
         .pipe(gulp.dest('./dist'));
 });
