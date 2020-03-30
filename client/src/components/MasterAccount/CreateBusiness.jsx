@@ -11,7 +11,6 @@ import SpotlightGallery from "../Features/CreateFeatures/MakeSpotlightGallery";
 import Team from "../Features/CreateFeatures/MakeTeam";
 import Menu from "../Features/CreateFeatures/MakeMenu";
 
-import "../css/master.css";
 const { CREATE_BUSINESS } = Mutations;
 
 

@@ -8,7 +8,6 @@ import Modal from "../Features/modal"
 
 
 import { modalHOC } from "../apollo_hooks_hoc"
-import "./global.css"
 const token = process.env.REACT_APP_TOKEN
 
 class Restaurant extends React.Component {

@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/Features/ImageCarousel.css"
 
 class ImageCarousel extends React.Component {
   constructor(props){

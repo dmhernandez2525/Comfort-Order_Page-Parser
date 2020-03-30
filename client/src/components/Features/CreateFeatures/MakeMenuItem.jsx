@@ -1,5 +1,4 @@
 import React from "react";
-import "../../css/MakeFeatures/MakeCategory.css"
 
 
 class MakeMenuItem extends React.Component  {

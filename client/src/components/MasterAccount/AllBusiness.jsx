@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Query } from "react-apollo";
 import { withRouter } from 'react-router-dom';
 import Queries from "../../graphql/queries";
-import "../css/master.css";
 import Loading from "../Loading"
 const { FETCH_All_BUSINESS } = Queries;
 

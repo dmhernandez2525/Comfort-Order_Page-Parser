@@ -1,6 +1,5 @@
 import React from "react";
 import MenuItem from "./MakeMenuItem";
-import "../../css/MakeFeatures/MakeCategory.css"
 
 class MakeMenu extends React.Component  {
   constructor(props){

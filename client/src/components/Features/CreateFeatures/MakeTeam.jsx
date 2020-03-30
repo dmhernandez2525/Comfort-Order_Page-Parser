@@ -1,7 +1,6 @@
 import React from "react";
 import { Mutation } from "react-apollo";
 import Mutations from "../../../graphql/mutations";
-import "../../css/MakeFeatures/MakeTeam.css"
 const { CREATE_FEATURE } = Mutations;
 
 class MakeTeam extends React.Component  {

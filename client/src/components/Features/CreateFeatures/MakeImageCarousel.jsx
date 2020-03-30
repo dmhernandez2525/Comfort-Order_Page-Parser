@@ -1,7 +1,6 @@
 import React from "react";
 import { Mutation } from "react-apollo";
 import Mutations from "../../../graphql/mutations";
-import "../../css/MakeFeatures/MakeImageCarousel.css"
 const { CREATE_FEATURE } = Mutations;
 
 class MakeCarousel extends React.Component  {

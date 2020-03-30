@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import Mutations from "../../graphql/mutations"
-import "../css/master.css";
-
 const { REGISTER_USER } = Mutations
 
 class MasterRegister extends Component {

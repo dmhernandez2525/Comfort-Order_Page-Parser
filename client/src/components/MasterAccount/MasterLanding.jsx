@@ -4,7 +4,6 @@ import AllBusiness from './AllBusiness';
 import AllBusinessUsers from './AllBusinessUsers';
 import CreateBusiness from './CreateBusiness';
 import MasterRegister from './MasterRegister';
-import "../css/master.css"
 
 
 class MasterLanding extends Component {

@@ -3,7 +3,6 @@ import { Query } from "react-apollo";
 import { withRouter } from 'react-router-dom';
 import Queries from "../../graphql/queries";
 import Loading from "../Loading"
-import "../css/master.css";
 const { FETCH_All_BUSINESS_USERS } = Queries;
 
 
