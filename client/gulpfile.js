@@ -15,7 +15,7 @@ gulp.task('css', function () {
 });
 gulp.task('start', function (done) {
     nodemon({
-      script: 'index.js'
+      script: 'react-scripts start'
     , ext: 'css jsx'
     , tasks: ['css'] 
     , env: { 'NODE_ENV': 'development' }
