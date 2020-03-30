@@ -9,14 +9,13 @@ gulp.task('css', function () {
         autoprefixer({Browserslist: ['last 1 version']}),
         cssnano()
     ];
-    return gulp.src('./client/src/components/css/**/*.css')
+    return gulp.src('./src/css/**/*.css')
         .pipe(postcss(plugins))
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest('./public/dist'));
 });
 gulp.task('start', function (done) {
     nodemon({
-      script: 'index.js'
-    , ext: 'css jsx'
+     ext: 'css jsx'
     , tasks: ['css'] 
     , env: { 'NODE_ENV': 'development' }
     , ignore: ['node_modules/**', 'dist/**']

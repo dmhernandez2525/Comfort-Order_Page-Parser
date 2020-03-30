@@ -1,7 +1,8 @@
 version: "3"
 services:  
     client:
-        image: comfort-order-client        
+        build:
+            context: ./client        
         restart: always        
         ports:            
             - "3000:3000"        
@@ -14,7 +15,8 @@ services:
            - conetwork
         
     api:        
-        image: comfort-order-api        
+        build:
+            context: ./server       
         restart: always        
         ports:            
             - "9000:9000"        
