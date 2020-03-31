@@ -23,7 +23,7 @@ let httpLink;
 if (process.env.NODE_ENV === 'production') {
   httpLink = createHttpLink({
     // uri: "http://localhost:5000/graphql",
-    uri: "https://comfort-order.herokuapp.com/graphql",
+    uri: "https://comfort-order-api.herokuapp.com/graphql",
     headers: {
       // pass our token into the header of each request
       authorization: localStorage.getItem("auth-token")
