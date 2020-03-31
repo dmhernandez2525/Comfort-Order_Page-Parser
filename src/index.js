@@ -20,7 +20,7 @@ const cache = new InMemoryCache({
 });
 
 let httpLink;
-// if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   httpLink = createHttpLink({
     // uri: "http://localhost:5000/graphql",
     uri: "https://comfort-order-api.herokuapp.com/graphql",
@@ -29,16 +29,16 @@ let httpLink;
       authorization: localStorage.getItem("auth-token")
     }
   });
-// }else{
-//   httpLink = createHttpLink({
-//     uri: "http://localhost:5000/graphql",
-//     // uri: "https://comfort-order.herokuapp.com/graphql",
-//     headers: {
-//       // pass our token into the header of each request
-//       authorization: localStorage.getItem("auth-token")
-//     }
-//   });
-// }
+}else{
+  httpLink = createHttpLink({
+    uri: "http://localhost:5000/graphql",
+    // uri: "https://comfort-order.herokuapp.com/graphql",
+    headers: {
+      // pass our token into the header of each request
+      authorization: localStorage.getItem("auth-token")
+    }
+  });
+}
 
 const errorLink = onError(({ graphQLErrors }) => {
   if (graphQLErrors) graphQLErrors.map(({ message }) => console.log(message));
