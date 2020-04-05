@@ -27,6 +27,8 @@ import FeatureTest from "./Features/FeatureTest";
 import FeatureTestModal from "./Features/FeatureTestWithModal";
 import Test from "./Features/CreateFeatures/MakePriceing";
 
+import '@comfort-order/dry/dist/index.css';
+
 require('dotenv').config();
 
 
