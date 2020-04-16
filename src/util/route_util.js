@@ -11,95 +11,81 @@ const AuthRoute = ({
   routeType,
   ...rest
 }) => (
-    <Query query={IS_LOGGED_IN}>
-      {({ data }) => {
-        // if the route type is "auth" then this route will only render if the
-        // user is not logged in - useful for authentication routes
-        // like login or register
-        if (routeType === "auth") {
-          return (
-            <Route
-              path={path}
-              exact={exact}
-              render={props =>
-                !data.isLoggedIn ? <Component {...props} /> : <Redirect to="/" />
+  <Query query={IS_LOGGED_IN}>
+    {({ data }) => {
+      // if the route type is "auth" then this route will only render if the
+      // user is not logged in - useful for authentication routes
+      // like login or register
+      if (routeType === "auth") {
+        return (
+          <Route
+            path={path}
+            exact={exact}
+            render={(props) => {
+              if (data.isLoggedIn) {
+                if (data.role === "Business") {
+                  return <Redirect to="/businessLogin" />;
+                } else if (data.role === "EndUser") {
+                  return <Redirect to="/UserLanding" />;
+                }
+              } else {
+                if (path === "/register" || path === "/login") {
+                  return <Component {...props} />;
+                } else {
+                  return <Redirect to="/home" />;
+                }
               }
-            />
-          );
-        } 
-        
-        else if (routeType === "Master") {
-          // otherwise this will be a protected route which will only
-          // render the component if the user is logged in
-          return (
-            <Route
-              {...rest}
-              render={props =>
-                (data.isLoggedIn && data.role === "Master") ? (
-                  <Component {...props} />
-                ) : (
-                    <Redirect to="/login" />
-                  )
-              }
-            />
-          );
-        }
-        
-        
-        else if (routeType === "Business") {
-          // otherwise this will be a protected route which will only
-          // render the component if the user is logged in
-          return (
-            <Route
-              {...rest}
-              render={props =>
-                (data.isLoggedIn && data.role === "Business") ? (
-                  <Component {...props} />
-                ) : (
-                    <Redirect to="/login" />
-                  )
-              }
-            />
-          );
-        }
-
-        else if (routeType === "EndUser") {
-          // otherwise this will be a protected route which will only
-          // render the component if the user is logged in
-          return (
-            <Route
-              {...rest}
-              render={props =>
-                (data.isLoggedIn && data.role === "EndUser") ? (
-                  <Component {...props} />
-                ) : (
-                    <Redirect to="/login" />
-                  )
-              }
-            />
-          );
-        }
-
-        else {
-          // otherwise this will be a protected route which will only
-          // render the component if the user is logged in
-          return (
-            <Route
-              {...rest}
-              render={props =>
-                data.isLoggedIn ? (
-                  <Component {...props} />
-                ) : (
-                    <Redirect to="/login" />
-                  )
-              }
-            />
-          );
-        }
-
-
-      }}
-    </Query>
-  );
+            }}
+          />
+        );
+      } else if (routeType === "Business") {
+        // otherwise this will be a protected route which will only
+        // render the component if the user is logged in
+        return (
+          <Route
+            {...rest}
+            render={(props) =>
+              data.isLoggedIn && data.role === "Business" ? (
+                <Component {...props} />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+        );
+      } else if (routeType === "EndUser") {
+        // otherwise this will be a protected route which will only
+        // render the component if the user is logged in
+        return (
+          <Route
+            {...rest}
+            render={(props) =>
+              data.isLoggedIn && data.role === "EndUser" ? (
+                <Component {...props} />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+        );
+      } else {
+        // otherwise this will be a protected route which will only
+        // render the component if the user is logged in
+        return (
+          <Route
+            {...rest}
+            render={(props) =>
+              data.isLoggedIn ? (
+                <Component {...props} />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+        );
+      }
+    }}
+  </Query>
+);
 
 export default AuthRoute;

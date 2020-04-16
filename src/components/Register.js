@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
-import Mutations from "../graphql/mutations"
-const { REGISTER_USER } = Mutations
+import Mutations from "../graphql/mutations";
+const { REGISTER_USER } = Mutations;
 
 class Register extends Component {
   constructor(props) {
@@ -11,17 +11,17 @@ class Register extends Component {
       name: "",
       email: "",
       password: "",
-      role:"EndUser"
+      role: "EndUser",
     };
   }
 
   update(field) {
-    return e => this.setState({ [field]: e.target.value });
+    return (e) => this.setState({ [field]: e.target.value });
   }
 
   updateCache(client, { data }) {
     client.writeData({
-      data: { isLoggedIn: data.register.loggedIn }
+      data: { isLoggedIn: data.register.loggedIn },
     });
   }
 
@@ -29,25 +29,25 @@ class Register extends Component {
     return (
       <Mutation
         mutation={REGISTER_USER}
-        onCompleted={data => {
+        onCompleted={(data) => {
           const { token } = data.register;
           localStorage.setItem("auth-token", token);
           this.props.history.push("/");
         }}
         update={(client, data) => this.updateCache(client, data)}
       >
-        {registerUser => (
+        {(registerUser) => (
           <div>
             <form
-              onSubmit={e => {
+              onSubmit={(e) => {
                 e.preventDefault();
                 registerUser({
                   variables: {
                     name: this.state.name,
                     email: this.state.email,
                     password: this.state.password,
-                    role: this.state.role
-                  }
+                    role: this.state.role,
+                  },
                 });
               }}
             >
