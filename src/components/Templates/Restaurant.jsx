@@ -118,7 +118,6 @@ class Restaurant extends React.Component {
         </div>
       );
     });
-    debugger;
 
     return (
       <div className="restaurant template">

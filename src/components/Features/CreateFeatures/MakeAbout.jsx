@@ -39,7 +39,6 @@ class MakeAbout extends React.Component {
 
   updatePic() {
     return (e) => {
-      debugger;
       e.persist();
       e.preventDefault();
       this.setState({
@@ -47,12 +46,10 @@ class MakeAbout extends React.Component {
         description: e.target.value,
         selectedFile: e.target.files[0],
       });
-      debugger;
     };
   }
 
   handleUpload(target) {
-    debugger;
     const data = new FormData(this.state.pic);
     data.append("file", this.state.selectedFile, this.state.description);
 

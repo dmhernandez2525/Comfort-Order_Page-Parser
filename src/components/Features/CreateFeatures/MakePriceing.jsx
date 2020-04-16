@@ -140,7 +140,6 @@ class MakePriceing extends React.Component {
       <Mutation
         mutation={CREATE_FEATURE}
         update={(cache, data) => {
-          debugger;
           this.handleFeatureSubmit(
             this.props.feature,
             data.data.makeFeature._id

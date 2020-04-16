@@ -85,9 +85,7 @@ class Team extends React.Component {
       pr: "",
     };
     let display = Object.values(this.data[0]).map((member) => {
-      debugger;
       let socialLinks = Object.keys(member.socialLinks).map((social, i) => {
-        debugger;
         let socialData = member.socialLinks[social];
         return (
           <li key={`${member.name}:${i}`}>
