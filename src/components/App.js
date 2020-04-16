@@ -14,7 +14,6 @@ import UserProfile from "./EndUser/UserProfile";
 import UserSupport from "./EndUser/UserSupport";
 
 
-import MasterLanding from "./MasterAccount/MasterLanding";
 import AuthRoute from '../util/route_util'
 import Nav from "./Nav";
 import Restaurant from "./Templates/Restaurant"
@@ -42,7 +41,6 @@ const App = () => {
         <Switch>
           <AuthRoute exact path="/register" component={Register} routeType="auth" />
           <AuthRoute exact path="/login" component={Login} routeType="auth" />
-          <AuthRoute exact path="/Master" component={MasterLanding} routeType="Master" />
 
           <AuthRoute exact path="/BusinessLogin" component={BusinessLanding} routeType="Business" />
           <AuthRoute exact path="/Profile" component={Profile} routeType="Business" />
@@ -63,7 +61,6 @@ const App = () => {
 
           {/* <AuthRoute exact path="/" component={BusinessLanding} routeType="Business"/> */}
           <Route exact path="/" component={Splash} />
-          {/* <AuthRoute exact path="/" component={MasterLanding} routeType="Master"/> */}
           {/* <AuthRoute exact path="/" component={UserLanding} routeType="EndUser" /> */}
           <Route path="/" component={Four0Four} />
         </Switch>

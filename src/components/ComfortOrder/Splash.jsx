@@ -11,7 +11,7 @@ class Splash extends React.Component {
   render() {
     return (
       <div>        
-        <Header1 cla="Def"/>
+        <Header1 cla="Tri" backGroundUrl="https://ca.slack-edge.com/TL86V04VD-UL6LL1UJC-e8394a6f6209-512" />
         <Link className="LinkButton" to="/businessLogin"> businessLogin </Link>
         <Link className="LinkButton" to="/UserLanding"> UserLanding </Link>
       </div>
