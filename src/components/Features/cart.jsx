@@ -1,34 +1,36 @@
 import React from "react";
-import {cartItemsGetter} from "../apollo_hooks_hoc";
+import { cartItemsGetter } from "../apollo_hooks_hoc";
 
 class Cart extends React.Component {
-  constructor(props){
-    super(props)
-      this.state = {
-          
-      }
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
 
-  render(){
-    return(
-    <div id="cart" className="cart" onClick={() => console.log("HELLO BB FROM CART")}>
-      <h1>WHAT IT DOOOOOOO BB </h1>
-      <h1>-Cart</h1>
-      <ul id="top-menu" className="cart-nav cart-right">
-        {this.props.cartItems.map((ele, i ) => {
-          return(
-            <li key={i} >
-              {ele[0]}
-              <img href={ele[1].image}/>
-              {ele[1].price}
-              {ele[1].description}
-            </li>
-          )
-        })}
-      </ul>                            
-    </div>
-    )
+  render() {
+    return (
+      <div
+        id="cart"
+        className="cart"
+        onClick={() => console.log("HELLO BB FROM CART")}
+      >
+        <h1>WHAT IT DOOOOOOO BB </h1>
+        <h1>-Cart</h1>
+        <ul id="top-menu" className="cart-nav cart-right">
+          {this.props.cartItems.map((ele, i) => {
+            return (
+              <li key={i}>
+                {ele[0]}
+                <img href={ele[1].image} />
+                {ele[1].price}
+                {ele[1].description}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
   }
 }
 
-export default cartItemsGetter(Cart)
+export default cartItemsGetter(Cart);

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
-import Mutations from "../graphql/mutations"
-const { LOGIN_USER } = Mutations
+import Mutations from "../graphql/mutations";
+const { LOGIN_USER } = Mutations;
 
 class Login extends Component {
   constructor(props) {
@@ -9,53 +9,50 @@ class Login extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
     };
   }
 
   update(field) {
-    return e => this.setState({ [field]: e.target.value });
+    return (e) => this.setState({ [field]: e.target.value });
   }
-  
-  updateCache(client, {data}) {
+
+  updateCache(client, { data }) {
     client.writeData({
       data: {
         isLoggedIn: data.login.loggedIn,
-        role: data.login.role
-      }
+        role: data.login.role,
+      },
     });
-  }  
-  
+  }
+
   render() {
     return (
       <Mutation
         mutation={LOGIN_USER}
-        onCompleted={data => {
-          
+        onCompleted={(data) => {
           const { token } = data.login;
           localStorage.setItem("auth-token", token);
-          if (data.login.role === "Master"){
+          if (data.login.role === "Master") {
             this.props.history.push("/Master");
-          }
-          else if (data.login.role === "Business"){
+          } else if (data.login.role === "Business") {
             this.props.history.push("/BusinessLogin");
-          }
-          else if (data.login.role === "EndUser"){
+          } else if (data.login.role === "EndUser") {
             this.props.history.push("/UserLanding");
           }
         }}
         update={(client, data) => this.updateCache(client, data)}
       >
-        {loginUser => (
+        {(loginUser) => (
           <div>
             <form
-              onSubmit={e => {
+              onSubmit={(e) => {
                 e.preventDefault();
                 loginUser({
                   variables: {
                     email: this.state.email,
-                    password: this.state.password
-                  }
+                    password: this.state.password,
+                  },
                 });
               }}
             >

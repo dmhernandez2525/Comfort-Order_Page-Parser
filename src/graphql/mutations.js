@@ -2,7 +2,12 @@ import gql from "graphql-tag";
 
 export default {
   REGISTER_USER: gql`
-    mutation RegisterUser($name: String!, $role: String!, $email: String!, $password: String!) {
+    mutation RegisterUser(
+      $name: String!
+      $role: String!
+      $email: String!
+      $password: String!
+    ) {
       register(name: $name, role: $role, email: $email, password: $password) {
         token
         loggedIn
@@ -26,56 +31,51 @@ export default {
       }
     }
   `,
-    CREATE_BUSINESS: gql `
-      mutation CreateBusiness(
-        $name: String!,
-        $url: String!,
-        $phoneNumber: String!,
-        $address: String!,
-        $slogan: String!,
-        $userId: ID!,
-        $features: [ID!],
-        $template: String!
-        ) {
-        makeBusiness(
-          name: $name,
-          url: $url,
-          phoneNumber: $phoneNumber,
-          address: $address,
-          slogan: $slogan,
-          userId: $userId,
-          features: $features,
-          template: $template
-          ){
-            _id
-            user{
-              email
-            }
-            template
-            name
-            url
-            phoneNumber
-            address
-            slogan
+  CREATE_BUSINESS: gql`
+    mutation CreateBusiness(
+      $name: String!
+      $url: String!
+      $phoneNumber: String!
+      $address: String!
+      $slogan: String!
+      $userId: ID!
+      $features: [ID!]
+      $template: String!
+    ) {
+      makeBusiness(
+        name: $name
+        url: $url
+        phoneNumber: $phoneNumber
+        address: $address
+        slogan: $slogan
+        userId: $userId
+        features: $features
+        template: $template
+      ) {
+        _id
+        user {
+          email
         }
+        template
+        name
+        url
+        phoneNumber
+        address
+        slogan
       }
+    }
   `,
-    CREATE_FEATURE: gql `
-      mutation CreateFeature(
-        $cssName: String!,
-        $name: String!,
-        $data: String!,
-        $order: String!
-        ) {
-        makeFeature(
-          cssName: $cssName,
-          name: $name,
-          data: $data,
-          order: $order
-          ){
-            _id
-            data
-        }
+  CREATE_FEATURE: gql`
+    mutation CreateFeature(
+      $cssName: String!
+      $name: String!
+      $data: String!
+      $order: String!
+    ) {
+      makeFeature(cssName: $cssName, name: $name, data: $data, order: $order) {
+        _id
+        data
       }
+    }
   `,
-}
+};
