@@ -4,9 +4,9 @@ import Footer from "./footer";
 import placeholder from "./placeholder.jpg";
 import favicon from "./favicon.ico";
 import companyLogo from "./ComfortOrderLogo.png";
-import Modal from "../Features/modal";
+// import Modal from "../Features/modal";
 
-import { modalHOC } from "../apollo_hooks_hoc";
+import { modalHOC } from "../../utils/apollo_hooks_hoc";
 const token = process.env.REACT_APP_TOKEN;
 
 class Restaurant extends React.Component {
@@ -130,14 +130,12 @@ class Restaurant extends React.Component {
                   this.props.setModalCache(true, this.setStateModalCB)
                 }
               >
-                {" "}
-                <Modal
+                {/* <Modal
                   modal="cart"
                   modalBool={this.props.modalBool}
                   setParentModalBool={this.setStateModalCB}
-                />{" "}
+                /> */}
               </div>
-
               <ul id="top-menu" className="navbar-nav navbar-right">
                 {nav}
               </ul>

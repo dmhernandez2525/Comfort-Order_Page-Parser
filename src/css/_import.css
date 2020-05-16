@@ -1,17 +1,15 @@
-@import './master.css';
-@import './loading.css';
-@import './index.css';
-@import './global.css';
-@import './business.css';
-@import './MakeFeatures/MakeAbout.css';
+@import "./master.css";
+@import "./loading.css";
+@import "./index.css";
+@import "./global.css";
+@import "./business.css";
+/* @import './MakeFeatures/MakeAbout.css';
 @import './MakeFeatures/MakeCategory.css';
 @import './MakeFeatures/MakeHours.css';
 @import './MakeFeatures/MakeImageCarousel.css';
 @import './MakeFeatures/MakePrice.css';
 @import './MakeFeatures/MakeSpotlightGallery.css';
-@import './MakeFeatures/MakeTeam.css';
-@import './Features/About.css';
-@import './Features/ImageCarousel.css';
-@import './Features/Team.css';
-
-
+@import './MakeFeatures/MakeTeam.css'; */
+/* @import "./Features/About.css";
+@import "./Features/ImageCarousel.css";
+@import "./Features/Team.css"; */

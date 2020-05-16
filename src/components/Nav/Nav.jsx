@@ -1,5 +1,5 @@
 import { Query } from "react-apollo";
-import Queries from "../graphql/queries";
+import Queries from "../../graphql/queries";
 import { ApolloConsumer } from "react-apollo";
 import React from "react";
 import { Link, withRouter } from "react-router-dom";

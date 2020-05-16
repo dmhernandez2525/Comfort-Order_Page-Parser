@@ -1,20 +1,28 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import four0four from "../ComfortOrder/Four0Four";
+import four0four from "../Four0Four";
 
 // START OF ALL THE TEMPLATES
 import Restaurant from "./Restaurant";
 // END OF ALL THE TEMPLATES
 
 // START OF ALL THE FEATURES
-import Modal from "../Features/modal";
-import Pricing from "../Features/Pricing";
-import About from "../Features/About";
-import Hours from "../Features/Hours";
-import ImageCarousel from "../Features/ImageCarousel";
-import SpotlightGallery from "../Features/SpotlightGallery";
-import Team from "../Features/Team";
-import Menu from "../Features/menu";
+// import Modal from "../Features/modal";
+// import Pricing, from "../Features/Pricing";
+// import About, from "../Features/About";
+// import Hours, from "../Features/Hours";
+// import ImageCarousel, from "../Features/ImageCarousel";
+// import SpotlightGallery, from "../Features/SpotlightGallery";
+// import Team, from "../Features/Team";
+// import Menu, from "../Features/menu";
+import // Pricing,
+// About,
+// Hours,
+// ImageCarousel,
+// SpotlightGallery,
+// Team,
+// Menu,
+"@comfort-order/dry";
 // END OF ALL THE FEATURES
 
 class Index extends React.Component {
@@ -28,21 +36,21 @@ class Index extends React.Component {
   makeFeature(feature, data) {
     switch (feature) {
       case "Pricing":
-        return <Pricing data={data} />;
+        return <div></div>; //<Pricing data={data} />;
       case "About":
-        return <About data={data} />;
+        return <div></div>; //<About data={data} />;
       case "Hours":
-        return <Hours data={data} />;
+        return <div></div>; //<Hours data={data} />;
       case "ImageCarousel":
-        return <ImageCarousel data={data} />;
+        return <div></div>; //<ImageCarousel data={data} />;
       case "SpotlightGallery":
-        return <SpotlightGallery data={data} />;
+        return <div></div>; //<SpotlightGallery data={data} />;
       case "Team":
-        return <Team data={data} />;
+        return <div></div>; //<Team data={data} />;
       case "Menu":
-        return <Menu data={data} />;
+        return <div></div>; //<Menu data={data} />;
       default:
-        return <div></div>;
+        return <div></div>; //<div></div>;
     }
   }
 
