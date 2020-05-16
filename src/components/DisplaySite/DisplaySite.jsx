@@ -3,7 +3,7 @@ import { Query } from "react-apollo";
 import Queries from "../../graphql/queries";
 import { withRouter } from "react-router-dom";
 // import * as FeatureLibrary from "../Features/Order";
-import TemplateLibrary from "../../Pages/Templates/index";
+import { Restaurant } from "@comfort-order/dry";
 const {
   FETCH_BUSINESS,
   // IS_LOGGED_IN  rfq for loading user account
@@ -46,7 +46,7 @@ class DisplaySite extends React.Component {
             });
             return (
               <div>
-                <TemplateLibrary
+                <Restaurant
                   template={data.data.business.template}
                   features={features}
                   businessData={data.data.business}

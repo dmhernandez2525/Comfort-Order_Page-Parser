@@ -5,7 +5,6 @@ import Register from "./Auth/Register";
 
 import AuthRoute from "../utils/route_util";
 import Nav from "./Nav/Nav";
-import Restaurant from "../Pages/Templates/Restaurant";
 
 import DisplaySite from "./DisplaySite/DisplaySite";
 
@@ -33,7 +32,6 @@ const App = () => {
           <AuthRoute exact path="/login" component={Login} routeType="auth" />
 
           <Route exact path="/site/:id" component={DisplaySite} />
-          <Route exact path="/restdummy" component={Restaurant} />
 
           {/* <AuthRoute exact path="/" component={BusinessLanding} routeType="Business"/> */}
           <Route path="/home" component={Splash} />
