@@ -2,8 +2,7 @@ import React from "react";
 import { Query } from "react-apollo";
 import Queries from "../../graphql/queries";
 import { withRouter } from "react-router-dom";
-// import * as FeatureLibrary from "../Features/Order";
-import { Restaurant } from "@comfort-order/dry";
+import { Templates } from "@comfort-order/dry";
 const {
   FETCH_BUSINESS,
   // IS_LOGGED_IN  rfq for loading user account
@@ -44,9 +43,11 @@ class DisplaySite extends React.Component {
                 [feature.name]: [JSON.parse(feature.data[0])],
               };
             });
+            //  this is going to look at all of the Templates coming from dry and add the corect one
+            const TemplateType = Templates[data.data.business.template];
             return (
               <div>
-                <Restaurant
+                <TemplateType
                   template={data.data.business.template}
                   features={features}
                   businessData={data.data.business}
